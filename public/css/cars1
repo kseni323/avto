@@ -1,0 +1,59 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #f9f9f9;
+}
+
+.container {
+    max-width: 1200px;
+}
+
+.car-title {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.car-detail-image {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.car-features {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.booking-box {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.booking-box h5 {
+    margin-bottom: 15px;
+}
+
+.booking-box .form-group {
+    margin-bottom: 15px;
+}
+
+.booking-box .price {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.btn-primary {
+    background-color: #04DBC0;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+}
+
+.btn-primary:hover {
+    background-color: #029E8B;
+}

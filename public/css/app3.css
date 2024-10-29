@@ -1,0 +1,69 @@
+.cars_section {
+    padding: 0;
+    margin: 0;
+    margin-bottom: 50px; /* Отступ снизу от другой секции */
+}
+
+.carousel-inner {
+    position: relative;
+    height: 500px; /* Устанавливаем высоту для карусели */
+    background-color: rgba(0, 0, 0, 0.6); /* Затемнение картинки */
+    display: flex;
+    align-items: center; /* Центрируем изображение по вертикали */
+}
+
+.car-image {
+    object-fit: cover; /* Масштабируем изображение, чтобы оно отображалось полностью */
+    height: 100%;
+    width: 100%;
+}
+
+.carousel-caption {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%); /* Центрируем контент по вертикали */
+    width: 100%;
+    display: flex;
+    justify-content: space-between; /* Размещаем элементы по разным сторонам */
+    padding: 0 50px; /* Отступы по краям */
+}
+
+.carousel-caption h8 {
+    font-size: 2em;
+    color: #fff;
+    margin: 0;
+}
+
+.carousel-caption .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #04DBC0;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    transition: background-color 0.3s ease;
+}
+
+.carousel-caption .btn:hover {
+    background-color: #357fce;
+}
+
+.carousel-item {
+    position: relative;
+}
+
+.carousel-item::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Затемнение изображения */
+    z-index: 1;
+}
+
+.carousel-caption {
+    z-index: 2; /* Контент поверх затемнения */
+}
