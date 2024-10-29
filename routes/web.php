@@ -19,12 +19,6 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-Route::get('/', function () {
-    return ['Laravel' => app()->version()];
-});
-
-require __DIR__.'/auth.php';
-
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
