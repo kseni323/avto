@@ -31,8 +31,7 @@ Route::get('/cars1', function () {
 
 require __DIR__.'/auth.php';
 
-Route::group(['prefix' => 'admin'], function () {
+Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Voyager::routes();
 });
-
 
