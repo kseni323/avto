@@ -96,17 +96,49 @@
        
 
 <section class="reservation_section" style="padding:50px 0px" id="reserve">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-5"></div>
-			<div class="col-md-7">
-				<form method="POST" action="reserve.php" id="reservation_form" class="car-reservation-form"><div class="text_header"><span>
-							Найдите свой автомобиль
-						</span></div> <div><div class="form-group"><label for="pickup_location">Место получения</label> <input type="text" name="pickup_location" placeholder="Кольцовская, 54" class="form-control"> <!----></div> <div class="form-group"><label for="return_location">Место возврата</label> <input type="text" name="return_location" placeholder="Кольцовская, 54" class="form-control"> <!----></div> <div class="form-group"><label for="pickup_date">Дата аренды</label> <input type="date" min="2024-10-02" name="pickup_date" class="form-control"> <!----></div> <div class="form-group"><label for="return_date">Дата возврата</label> <input type="date" min="2024-10-03" name="return_date" class="form-control"> <!----></div> <button type="submit" name="reserve_car" class="btn sbmt-bttn">Бронируйте мгновенно</button></div></form>
-			</div>
-		</div>
-	</div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5"></div>
+            <div class="col-md-7">
+                <form method="POST" action="reserve.php" id="reservation_form" class="car-reservation-form">
+                    <div class="text_header"><span>Найдите свой автомобиль</span></div>
+                    <div>
+                        <div class="form-group">
+                            <label for="pickup_location">Место получения</label>
+                            <input type="text" name="pickup_location" placeholder="Кольцовская, 54" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="return_location">Место возврата</label>
+                            <input type="text" name="return_location" placeholder="Кольцовская, 54" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="pickup_date">Дата аренды</label>
+                            <input type="date" min="2024-10-02" name="pickup_date" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="return_date">Дата возврата</label>
+                            <input type="date" min="2024-10-03" name="return_date" class="form-control">
+                        </div>
+                        <button type="button" class="btn sbmt-bttn" onclick="showUserForm()">Бронируйте мгновенно</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </section>
+
+<!-- Модальное окно для имени и email -->
+<div id="userModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <form id="userForm" method="POST" action="reserve.php">
+            <h4>Введите свои данные</h4>
+            <input type="text" name="name" placeholder="Ваше имя" required>
+            <input type="email" name="email" placeholder="Ваш email" required>
+            <button type="submit">Далее</button>
+        </form>
+    </div>
+</div>
 
 
 <section class="widget_section" id="contact-us">
@@ -137,12 +169,12 @@
                     <h3><ya-tr-span data-index="105-0" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Расслыка" data-translation="Рассылка" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">Расслыка</ya-tr-span></h3>
                     <p style="margin-bottom:0px"><ya-tr-span data-index="106-0" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Don't miss a thing! " data-translation="Не пропустите ни одной детали! " data-ch="0" data-type="trSpan" style="visibility: inherit !important;">Ничего не пропустите!</ya-tr-span><ya-tr-span data-index="106-1" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Sign up to receive daily deals" data-translation="Подпишитесь, чтобы получать ежедневные предложения" data-ch="0" data-type="trSpan" style="visibility: inherit !important;"> Подпишитесь, чтобы получать ежедневные предложения</ya-tr-span></p>
                     <div class="subscribe_form">
-                        <form action="#" class="subscribe_form" novalidate="true">
-                            <input type="email" name="EMAIL" id="subs-email" class="form_input" placeholder="Почта...">
-                            <button type="submit" class="submit"><ya-tr-span data-index="107-0" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Подписаться" data-translation="Подписка" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">ПОДПИСАТЬСЯ</ya-tr-span></button>
-                            <div class="clearfix"></div>
-                        </form>
-                    </div>
+    <form method="POST" action="subscribe.php" class="subscribe_form" novalidate="true">
+        <input type="email" name="EMAIL" id="subs-email" class="form_input" placeholder="Почта..." required>
+        <button type="submit" class="submit">ПОДПИСАТЬСЯ</button>
+        <div class="clearfix"></div>
+    </form>
+</div>
                 </div>
             </div>
         </div>
