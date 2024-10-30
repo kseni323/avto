@@ -3,7 +3,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['EMAIL'])) {
     $email = $_POST['EMAIL'];
 
     // Подключение к базе данных
-    $pdo = new PDO('mysql:host=localhost;dbname=your_database', 'username', 'password');
+    $pdo = new PDO('mysql:host=localhost;dbname=drivegal_avto', 'root', '');
     
     // Вставка данных в таблицу subscriptions, избегая дублирования
     $stmt = $pdo->prepare("INSERT IGNORE INTO subscriptions (email) VALUES (?)");

@@ -9,7 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['name'], $_POST['email'
     $return_date = $_POST['return_date'];
 
     // Подключение к базе данных
-    $pdo = new PDO('mysql:host=localhost;dbname=your_database', 'username', 'password');
+    $pdo = new PDO('mysql:host=localhost;dbname=drivegal_avto', 'root', '');
     
     // Вставка данных в таблицу reservations
     $stmt = $pdo->prepare("INSERT INTO reservations (name, email, pickup_location, return_location, pickup_date, return_date) VALUES (?, ?, ?, ?, ?, ?)");

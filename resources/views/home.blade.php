@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="css/app3.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/forms.js" defer></script>
 </head>
 </head>
 
@@ -171,7 +172,7 @@
                     <div class="subscribe_form">
     <form method="POST" action="subscribe.php" class="subscribe_form" novalidate="true">
         <input type="email" name="EMAIL" id="subs-email" class="form_input" placeholder="Почта..." required>
-        <button type="submit" class="submit">ПОДПИСАТЬСЯ</button>
+        <button type="button" class="submit" onclick="subscribeUser()">ПОДПИСАТЬСЯ</button>
         <div class="clearfix"></div>
     </form>
 </div>
