@@ -3,17 +3,6 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('home');
-});
-
-Route::get('/cars', function () {
-    return view('cars');
-});
-
-Route::get('/cars1', function () {
-    return view('cars1');
-});
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -27,7 +16,20 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function () {
+Route::get('/', function () {
+    return view('home');
+});
+
+Route::get('/cars', function () {
+    return view('cars');
+});
+
+Route::get('/cars1', function () {
+    return view('cars1');
+});
+
+Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
+
 
