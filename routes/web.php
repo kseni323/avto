@@ -3,6 +3,8 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use TCG\Voyager\Facades\Voyager;
+use App\Http\Controllers\CarController;
+
 
 Route::get('/', function () {
     return view('home');
@@ -29,6 +31,10 @@ Route::get('/cars', function () {
 Route::get('/cars1', function () {
     return view('cars1');
 });
+
+Route::get('/cars', [CarController::class, 'showCars']);
+
+Route::post('/filter-cars', [CarController::class, 'filter'])->name('cars.filter');
 
 require __DIR__.'/auth.php';
 
