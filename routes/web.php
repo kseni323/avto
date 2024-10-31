@@ -36,11 +36,15 @@ Route::get('/show', function () {
 Route::get('/cars', [CarController::class, 'index'])->name('cars.index');
 Route::post('/filter-cars', [CarController::class, 'filterCars']);
 
+Route::get('/cars/{id}', [CarController::class, 'show'])->name('cars.show');
 
+Route::post('/subscribe', [SubscriptionController::class, 'subscribe']);
 
 require __DIR__.'/auth.php';
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
+
+
 

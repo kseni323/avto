@@ -25,5 +25,9 @@ public function filter(Request $request)
     return response()->json(['html' => $html]);
 }
 
-
+public function show($id)
+{
+    $car = Car::findOrFail($id);
+    return view('cars.show', compact('car'));
+}
 }
