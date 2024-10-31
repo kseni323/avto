@@ -13,7 +13,14 @@ return new class extends Migration
     {
         Schema::create('cars', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('name'); // Название автомобиля, например, "Hyundai Solaris"
+            $table->text('description')->nullable(); // Описание автомобиля
+            $table->decimal('price', 10, 2); // Цена аренды, например, 2933 ₽
+            $table->string('image')->nullable(); // Путь к изображению автомобиля
+            $table->enum('class', ['Эконом', 'Бизнес', 'Внедорожник']); // Класс автомобиля
+            $table->enum('transmission', ['Автоматическая', 'Механическая']); // Тип трансмиссии
+            $table->enum('drive_type', ['Передний', 'Задний', 'Полный']); // Тип привода
+            $table->timestamps(); // Дата создания и обновления записи
         });
     }
 
