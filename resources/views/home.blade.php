@@ -120,7 +120,7 @@
                             <label for="return_date">Дата возврата</label>
                             <input type="date" min="2024-10-03" name="return_date" class="form-control">
                         </div>
-                        <a href="/cars" class="btn sbmt-bttn">Бронируйте мгновенно</a>
+                        <a href="/" class="btn sbmt-bttn">Бронируйте мгновенно</a>
                     </div>
                 </form>
             </div>

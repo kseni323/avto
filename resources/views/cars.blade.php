@@ -17,18 +17,6 @@
         <h12 class="text-center">АВТОМОБИЛИ</h12>
         <form class="row g-3">
             <div class="col-md-4">
-                <label for="pickupLocation" class="form-label">Место получения</label>
-                <input type="text" class="form-control" id="pickupLocation" placeholder="Кольцовская, 54">
-            </div>
-            <div class="col-md-4">
-                <label for="returnLocation" class="form-label">Место возврата</label>
-                <input type="text" class="form-control" id="returnLocation" placeholder="Кольцовская, 54">
-            </div>
-            <div class="col-md-4">
-                <label for="rentalDate" class="form-label">Дата аренды/возврата</label>
-                <input type="date" class="form-control" id="rentalDate">
-            </div>
-            <div class="col-md-4">
                 <label for="classFilter" class="form-label">Класс</label>
                 <select id="classFilter" class="form-select">
                     <option>Эконом</option>
