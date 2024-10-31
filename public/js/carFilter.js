@@ -18,7 +18,6 @@ document.querySelectorAll('.form-select').forEach(select => {
         })
         .then(response => response.json())
         .then(data => {
-            // Update the car display section with the filtered cars
             document.querySelector('#car-results').innerHTML = data.html;
         });
     });

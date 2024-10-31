@@ -32,9 +32,9 @@ Route::get('/cars1', function () {
     return view('cars1');
 });
 
-Route::get('/cars', [CarController::class, 'showCars']);
 
-Route::post('/filter-cars', [CarController::class, 'filter'])->name('cars.filter');
+Route::get('/cars', [CarController::class, 'index'])->name('cars.index');
+Route::post('/filter-cars', [CarController::class, 'filterCars']);
 
 require __DIR__.'/auth.php';
 
