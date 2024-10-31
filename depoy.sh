@@ -7,7 +7,7 @@ echo "Deploying..."
 
 git pull origin main
 
-php8.3 atrisan down
+php8.3 artisan down
 
 php8.3 composer.phar install --no dev
 
