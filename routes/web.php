@@ -36,6 +36,8 @@ Route::get('/cars1', function () {
 Route::get('/cars', [CarController::class, 'index'])->name('cars.index');
 Route::post('/filter-cars', [CarController::class, 'filterCars']);
 
+Route::get('/cars1/{id}', 'CarController@show')->name('car.show');
+
 require __DIR__.'/auth.php';
 
 Route::group(['prefix' => 'admin'], function () {

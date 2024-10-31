@@ -16,16 +16,16 @@
         <div class="row">
             <!-- Car Image and Details -->
             <div class="col-md-8">
-                <h2 class="car-title">Аренда Mercedes Benz E-class</h2>
-                <img src="images/car4.jpg" class="img-fluid car-detail-image" alt="Hyundai Solaris">
+                <h2 class="car-title">Аренда {{ $car->title }}</h2>
+                <img src="{{ $car->image }}" class="img-fluid car-detail-image" alt="{{ $car->title }}">
                 
                 <div class="car-features mt-4">
                     <h5><strong>Характеристики автомобиля</strong></h5>
                     <p><strong>Общая информация</strong></p>
-                    <p><strong>Трансмиссия</strong>.....................................автоматическая трансмиссия</p>
-                    <p><strong>Привод</strong>.....................................Передний/задний привод</p>
-                    <p><strong>Класс</strong>.....................................Эконом</p>
-                    <p><strong>Кондиционер</strong>..............................есть</p>
+                    <p><strong>Трансмиссия</strong>.....................................{{ $car->transmission }}</p>
+                    <p><strong>Привод</strong>.....................................{{ $car->drive_type }}</p>
+                    <p><strong>Класс</strong>.....................................{{ $car->class }}</p>
+                    <p><strong>Кондиционер</strong>..............................{{ $car->air_conditioning ? 'есть' : 'нет' }}</p>
                 </div>
             </div>
             
@@ -40,18 +40,23 @@
                         </div>
                         <div class="form-group">
                             <label for="pickupLocation">Место получения автомобиля</label>
-                            <input type="text" id="pickupLocation" class="form-control" placeholder="Кольцовская, 54">
+                            <input type="text" id="pickupLocation" class="form-control" placeholder="Введите место получения">
                         </div>
                         <div class="form-group">
-                            <label for="rentalDates">Дата аренды/возврата</label>
-                            <div class="d-flex">
-                                <input type="text" class="form-control mr-2" placeholder="дд.мм.гггг">
-                                <input type="text" class="form-control" placeholder="дд.мм.гггг">
-                            </div>
+                            <label for="returnLocation">Место возврата автомобиля</label>
+                            <input type="text" id="returnLocation" class="form-control" placeholder="Введите место возврата">
+                        </div>
+                        <div class="form-group">
+                            <label>Дата аренды</label>
+                            <input type="date" class="form-control" name="pickup_date">
+                        </div>
+                        <div class="form-group">
+                            <label>Дата возврата</label>
+                            <input type="date" class="form-control" name="return_date">
                         </div>
                         <div class="price mt-3">
-                            <p>1500 ₽ в сутки</p>
-                            <p><small>депозит 0₽</small></p>
+                            <p>{{ $car->price }} ₽ в сутки</p>
+                            <p><small>депозит {{ $car->deposit }}₽</small></p>
                         </div>
                         <button type="submit" class="btn btn-primary btn-block">Забронировать</button>
                     </form>
