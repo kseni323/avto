@@ -120,7 +120,7 @@
                             <label for="return_date">Дата возврата</label>
                             <input type="date" min="2024-10-03" name="return_date" class="form-control">
                         </div>
-                        <button type="button" class="btn sbmt-bttn" onclick="showUserForm()">Бронируйте мгновенно</button>
+                        <a href="/cars1" class="btn sbmt-bttn">ПОСМОТРЕТЬ ВСЕ</a>
                     </div>
                 </form>
             </div>
@@ -128,18 +128,6 @@
     </div>
 </section>
 
-<!-- Модальное окно для имени и email -->
-<div id="userModal" class="modal">
-    <div class="modal-content">
-        <span class="close" onclick="closeModal()">&times;</span>
-        <form id="userForm" method="POST" action="reserve.php">
-            <h4>Введите свои данные</h4>
-            <input type="text" name="name" placeholder="Ваше имя" required>
-            <input type="email" name="email" placeholder="Ваш email" required>
-            <button type="submit">Далее</button>
-        </form>
-    </div>
-</div>
 
 
 <section class="widget_section" id="contact-us">

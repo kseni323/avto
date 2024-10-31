@@ -4,6 +4,10 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use TCG\Voyager\Facades\Voyager;
 
+Route::get('/', function () {
+    return view('home');
+});
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -17,9 +21,6 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-Route::get('/', function () {
-    return view('home');
-});
 
 Route::get('/cars', function () {
     return view('cars');
@@ -27,6 +28,10 @@ Route::get('/cars', function () {
 
 Route::get('/cars1', function () {
     return view('cars1');
+});
+
+Route::get('/res', function () {
+    return view('res');
 });
 
 require __DIR__.'/auth.php';
