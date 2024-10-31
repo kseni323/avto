@@ -36,7 +36,7 @@ Route::get('/cars1', function () {
 Route::get('/cars', [CarController::class, 'index'])->name('cars.index');
 Route::post('/filter-cars', [CarController::class, 'filterCars']);
 
-Route::get('/cars1/{id}', 'CarController@show')->name('car.show');
+Route::get('/cars/{id}', [CarController::class, 'show'])->name('cars.show');
 
 require __DIR__.'/auth.php';
 

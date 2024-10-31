@@ -57,7 +57,7 @@
                     <div class="card-body">
                         <p class="card-text">{{ $car->description }}</p>
                         <p class="card-text"><strong>{{ $car->price }} ₽</strong></p>
-                        <a href="/" class="btn btn-outline-primary">Подробнее</a>
+                        <a href="{{ route('cars.show', $car->id) }}" class="btn btn-outline-primary">Подробнее</a>
                     </div>
                 </div>
             </div>

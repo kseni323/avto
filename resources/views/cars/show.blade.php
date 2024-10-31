@@ -17,18 +17,18 @@
             <!-- Car Image and Details -->
             <div class="col-md-8">
                 <h2 class="car-title">Аренда {{ $car->title }}</h2>
-                <img src="{{ $car->image }}" class="img-fluid car-detail-image" alt="{{ $car->title }}">
-                
+                <img src="{{ $car->image_url }}" class="img-fluid car-detail-image" alt="{{ $car->title }}">
+
                 <div class="car-features mt-4">
                     <h5><strong>Характеристики автомобиля</strong></h5>
-                    <p><strong>Общая информация</strong></p>
-                    <p><strong>Трансмиссия</strong>.....................................{{ $car->transmission }}</p>
-                    <p><strong>Привод</strong>.....................................{{ $car->drive_type }}</p>
-                    <p><strong>Класс</strong>.....................................{{ $car->class }}</p>
-                    <p><strong>Кондиционер</strong>..............................{{ $car->air_conditioning ? 'есть' : 'нет' }}</p>
+                    <p><strong>Общая информация:</strong> {{ $car->description }}</p>
+                    <p><strong>Трансмиссия:</strong> {{ $car->transmission }}</p>
+                    <p><strong>Привод:</strong> {{ $car->drive_type }}</p>
+                    <p><strong>Класс:</strong> {{ $car->class }}</p>
+                    <p><strong>Кондиционер:</strong> {{ $car->air_conditioning ? 'Есть' : 'Нет' }}</p>
                 </div>
             </div>
-            
+
             <!-- Booking Parameters -->
             <div class="col-md-4">
                 <div class="booking-box p-4">

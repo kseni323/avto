@@ -28,7 +28,6 @@ public function filter(Request $request)
 public function show($id)
 {
     $car = Car::findOrFail($id);
-    return view('cars1', compact('car'));
+    return view('cars.show', compact('car'));
 }
-
 }
