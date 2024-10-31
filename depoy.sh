@@ -9,7 +9,7 @@ git pull origin main
 
 php8.3 artisan down
 
-php8.3 composer.phar install --dev
+php8.3 composer.phar install 
 
 php8.3 artisan migrate
 
