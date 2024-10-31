@@ -21,6 +21,6 @@ php8.3 artisan rote:cache
 
 php8.3 artisan view:cache
 
-php8.3 atrisan up
+php8.3 artisan up
 
 echo "Done!"
