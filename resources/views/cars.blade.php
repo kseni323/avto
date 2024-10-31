@@ -13,13 +13,14 @@
 </head>
 
 <body>
-<section class="container my-4">
-    <h2 class="text-center">АВТОМОБИЛИ</h2>
-    <form method="GET" action="{{ route('cars.index') }}" class="row g-3">
+    <!-- Фильтры для поиска автомобилей -->
+    <section class="container my-4">
+    <h12 class="text-center">АВТОМОБИЛИ</h12>
+    <form class="row g-3">
         <div class="col-md-4">
             <label for="classFilter" class="form-label">Класс</label>
-            <select id="classFilter" name="class" class="form-select">
-                <option value="">Все классы</option>
+            <select id="classFilter" class="form-select">
+                <option value="">Все</option>
                 <option value="Эконом">Эконом</option>
                 <option value="Бизнес">Бизнес</option>
                 <option value="Внедорожник">Внедорожник</option>
@@ -27,42 +28,28 @@
         </div>
         <div class="col-md-4">
             <label for="transmissionFilter" class="form-label">Трансмиссия</label>
-            <select id="transmissionFilter" name="transmission" class="form-select">
-                <option value="">Все трансмиссии</option>
+            <select id="transmissionFilter" class="form-select">
+                <option value="">Все</option>
                 <option value="Автоматическая">Автоматическая</option>
                 <option value="Механическая">Механическая</option>
             </select>
         </div>
         <div class="col-md-4">
             <label for="driveTypeFilter" class="form-label">Привод</label>
-            <select id="driveTypeFilter" name="drive_type" class="form-select">
-                <option value="">Все приводы</option>
+            <select id="driveTypeFilter" class="form-select">
+                <option value="">Все</option>
                 <option value="Передний">Передний</option>
                 <option value="Задний">Задний</option>
                 <option value="Полный">Полный</option>
             </select>
         </div>
-        <div class="col-md-12 mt-3">
-            <button type="submit" class="btn btn-primary">Фильтровать</button>
-        </div>
     </form>
-    
-    <div class="row mt-4" id="car-results">
-        @foreach ($cars as $car)
-            <div class="col-md-4">
-                <div class="card">
-                    <img src="{{ $car->image }}" class="card-img-top" alt="{{ $car->title }}">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ $car->title }}</h5>
-                        <p class="card-text">{{ $car->description }}</p>
-                        <p class="card-text"><strong>{{ $car->price }} ₽</strong></p>
-                        <a href="/" class="btn btn-outline-primary">Подробнее</a>
-                    </div>
-                </div>
-            </div>
-        @endforeach
-    </div>
 </section>
+
+<section class="container my-4">
+    <div class="row" id="car-results">
+        @include('partials.car_list')
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
