@@ -28,8 +28,8 @@ Route::get('/cars', function () {
     return view('cars');
 });
 
-Route::get('/cars1', function () {
-    return view('cars1');
+Route::get('/show', function () {
+    return view('show');
 });
 
 
