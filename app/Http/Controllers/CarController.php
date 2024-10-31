@@ -2,7 +2,7 @@
 
 
 use App\Models\Car;
-class CarController extends Controller
+class CarController extends Controllers
 {
 public function showCars()
 {
