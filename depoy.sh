@@ -17,7 +17,7 @@ php8.3 artisan config:cache
 
 php8.3 artisan event:cache
 
-php8.3 artisan rote:cache
+php8.3 artisan route:cache
 
 php8.3 artisan view:cache
 
