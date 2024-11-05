@@ -30,7 +30,7 @@ class ReservationController extends Controller
         // Сообщение об успешном бронировании
         return back()->with('success', 'Ваше бронирование подтверждено!');
     }
-    public function reserve(Request $request)
+    public function reservation(Request $request)
     {
         // Сохранение данных с первой формы (pickup location, return location, даты, тип автомобиля)
         $reservation = new Reservation();

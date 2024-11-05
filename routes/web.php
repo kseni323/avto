@@ -39,7 +39,7 @@ Route::post('/filter-cars', [CarController::class, 'filterCars']);
 
 Route::get('/cars/{id}', [CarController::class, 'show'])->name('cars.show');
 
-Route::post('/reserve', [ReservationController::class, 'store'])->name('reserve.store');
+Route::post('/reservation', [ReservationController::class, 'store'])->name('reservation.store');
 
 Route::post('/confirm-reservation', [ReservationController::class, 'confirm']);
 
