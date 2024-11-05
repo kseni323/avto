@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use TCG\Voyager\Facades\Voyager;
 use App\Http\Controllers\CarController;
+use App\Http\Controllers\ReservationController;
 
 
 Route::get('/', function () {
@@ -37,6 +38,10 @@ Route::get('/cars', [CarController::class, 'index'])->name('cars.index');
 Route::post('/filter-cars', [CarController::class, 'filterCars']);
 
 Route::get('/cars/{id}', [CarController::class, 'show'])->name('cars.show');
+
+Route::post('/reserve', [ReservationController::class, 'store'])->name('reserve.store');
+
+Route::post('/confirm-reservation', [ReservationController::class, 'confirm']);
 
 require __DIR__.'/auth.php';
 

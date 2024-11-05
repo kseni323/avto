@@ -102,7 +102,8 @@
         <div class="row">
             <div class="col-md-5"></div>
             <div class="col-md-7">
-                <form method="POST" action="reserve.php" id="reservation_form" class="car-reservation-form">
+                <form method="POST" action="{{ route('reservation.store') }}" id="reservation_form" class="car-reservation-form">
+                    @csrf
                     <div class="text_header"><span>Найдите свой автомобиль</span></div>
                     <div>
                         <div class="form-group">
@@ -115,13 +116,21 @@
                         </div>
                         <div class="form-group">
                             <label for="pickup_date">Дата аренды</label>
-                            <input type="date" min="2024-10-02" name="pickup_date" class="form-control">
+                            <input type="date" min="{{ now()->toDateString() }}" name="pickup_date" class="form-control">
                         </div>
                         <div class="form-group">
                             <label for="return_date">Дата возврата</label>
-                            <input type="date" min="2024-10-03" name="return_date" class="form-control">
+                            <input type="date" min="{{ now()->addDay()->toDateString() }}" name="return_date" class="form-control">
                         </div>
-                        <a href="/" class="btn sbmt-bttn">Бронируйте мгновенно</a>
+                        <div class="form-group">
+                            <label for="car_type">Тип автомобиля</label>
+                            <select name="car_type" class="form-control">
+                                <option value="Эконом">Эконом</option>
+                                <option value="Бизнес">Бизнес</option>
+                                <option value="Внедорожник">Внедорожник</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn sbmt-bttn">Бронируйте мгновенно</button>
                     </div>
                 </form>
             </div>
