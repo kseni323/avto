@@ -28,7 +28,7 @@ public function filter(Request $request)
 public function show($id)
 {
     $car = Car::findOrFail($id);
-    $reservationData = session('reservation_data');
+    $reservationData = session('reservationData', []);
 
     return view('cars.show', compact('car', 'reservationData'));
 }
