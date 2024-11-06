@@ -35,19 +35,19 @@
                     <form>
                         <div class="form-group">
                             <label for="pickupLocation">Место получения автомобиля</label>
-                            <input type="text" id="pickupLocation" class="form-control" placeholder="Введите место получения">
+                            <input type="text" id="pickupLocation" placeholder="Введите место получения" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label for="returnLocation">Место возврата автомобиля</label>
-                            <input type="text" id="returnLocation" class="form-control" placeholder="Введите место возврата">
+                            <input type="text" id="returnLocation" placeholder="Введите место возврата" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label>Дата аренды</label>
-                            <input type="date" class="form-control" name="pickup_date">
+                            <input type="date"  name="pickup_date" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label>Дата возврата</label>
-                            <input type="date" class="form-control" name="return_date">
+                            <input type="date" name="return_date" class="form-control" required>
                         </div>
                         <div class="price mt-3">
                             <p>{{ $car->price }} ₽ в сутки</p>
@@ -55,6 +55,33 @@
                         </div>
                         <button type="submit" class="btn btn-primary btn-block">Забронировать</button>
                     </form>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const dailyPrice = {{ $car->price }};
+        const pickupDateInput = document.getElementById('pickup_date');
+        const returnDateInput = document.getElementById('return_date');
+        const totalPriceDisplay = document.getElementById('total-price');
+
+        function calculateTotalPrice() {
+            const pickupDate = new Date(pickupDateInput.value);
+            const returnDate = new Date(returnDateInput.value);
+
+            if (pickupDate && returnDate && returnDate > pickupDate) {
+                const timeDiff = returnDate - pickupDate;
+                const days = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
+                const totalPrice = days * dailyPrice;
+
+                totalPriceDisplay.textContent = `Итоговая цена: ${totalPrice} ₽`;
+            } else {
+                totalPriceDisplay.textContent = '';
+            }
+        }
+
+        pickupDateInput.addEventListener('change', calculateTotalPrice);
+        returnDateInput.addEventListener('change', calculateTotalPrice);
+    });
+</script>
                 </div>
             </div>
         </div>

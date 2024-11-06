@@ -44,10 +44,6 @@ Route::post('/filter-cars', [CarController::class, 'filterCars']);
 
 Route::get('/cars/{id}', [CarController::class, 'show'])->name('cars.show');
 
-Route::post('/booking/redirect', [ReservationController::class, 'redirectWithReservationData'])->name('booking.redirect');
-
-Route::post('/booking/store', [ReservationController::class, 'store'])->name('booking.store');
-
 
 require __DIR__.'/auth.php';
 

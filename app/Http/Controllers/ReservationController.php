@@ -35,22 +35,4 @@ class ReservationController extends Controller
     return redirect()->route('cars.show', ['car' => $car->id])
                      ->with('reservationData', $data); // Передача данных бронирования
 }
-
-public function redirectWithReservationData(Request $request)
-{
-    $data = $request->validate([
-        'pickup_location' => 'required|string',
-        'return_location' => 'required|string',
-        'pickup_date' => 'required|date',
-        'return_date' => 'required|date',
-        'car_model' => 'required|string',
-    ]);
-
-    // Поиск автомобиля по модели
-    $car = Car::where('name', $data['car_model'])->firstOrFail();
-
-    // Перенаправление на страницу автомобиля с данными бронирования
-    return redirect()->route('cars.show', $car->id)->with('reservationData', $data);
-}
-
 }

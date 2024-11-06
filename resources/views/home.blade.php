@@ -10,8 +10,11 @@
     <link rel="stylesheet" href="css/app1.css">
     <link rel="stylesheet" href="css/app3.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/forms.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
     <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 </head>
@@ -109,8 +112,7 @@
         <div class="row">
             <div class="col-md-5"></div>
             <div class="col-md-7">
-            <form method="POST" action="{{ route('booking.redirect') }}" id="reservation_form" class="car-reservation-form">
-            @csrf
+            <>
                     <div class="text_header"><span>Найдите свой автомобиль</span></div>
                     <div>
                         <div class="form-group">
@@ -139,11 +141,44 @@
                                 <option value="porsche_cayenne">Porsche Cayenne Hybrid</option>
                             </select>
                         </div>
-                        <a href="/cars" class="btn sbmt-bttn">Бронируйте мгновенно</a>
+                        <a href="#" class="btn sbmt-bttn" data-bs-toggle="modal" data-bs-target="#bookingModal">Бронируйте мгновенно</a>
+                </form>
+
+                <div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="bookingModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="bookingModalLabel">Введите свои данные</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+            </div>
+            <div class="modal-body">
+                <form id="modalForm">
+                    <div class="form-group mb-3">
+                        <label for="user_name">Имя</label>
+                        <input type="text" id="user_name" name="user_name" class="form-control" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="user_email">Электронная почта</label>
+                        <input type="email" id="user_email" name="user_email" class="form-control" required>
+                    </div>
+                    <div class="form-check mb-3">
+                        <input type="checkbox" class="form-check-input" id="create_account">
+                        <label class="form-check-label" for="create_account">Хотите создать личный кабинет?</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Отправить</button>
                 </form>
             </div>
         </div>
-    iv>
+    </div>
+</div>
+
+<!-- Уведомление о подтверждении -->
+<div id="confirmationMessage" class="alert alert-success text-center" style="display: none; position: fixed; top: 20px; left: 50%; transform: translateX(-50%); z-index: 1050;">
+    Сообщение с дальнейшими деталями отправлено на вашу почту.
+</div>
+            </div>
+        </div>
+</div>
 </section>
 
 <script>
@@ -225,6 +260,26 @@ function redirectToCarDetails() {
 				</div>
 			</div>
 		</footer>
+
+        <script>
+        // Обработка отправки формы в модальном окне
+        document.getElementById('modalForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Отмена стандартной отправки формы
+            
+            // Закрытие модального окна
+            let bookingModal = new bootstrap.Modal(document.getElementById('bookingModal'));
+            bookingModal.hide();
+
+            // Показать уведомление
+            let confirmationMessage = document.getElementById('confirmationMessage');
+            confirmationMessage.style.display = 'block';
+
+            // Скрыть уведомление через 3 секунды
+            setTimeout(function() {
+                confirmationMessage.style.display = 'none';
+            }, 3000);
+        });
+    </script>
 
 
 </body>
