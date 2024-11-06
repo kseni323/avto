@@ -43,6 +43,7 @@ Route::post('/reservation', [ReservationController::class, 'store'])->name('rese
 
 Route::post('/confirm-reservation', [ReservationController::class, 'confirm']);
 
+require __DIR__.'/auth.php';
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
