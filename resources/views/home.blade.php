@@ -109,7 +109,7 @@
         <div class="row">
             <div class="col-md-5"></div>
             <div class="col-md-7">
-            <>
+            <form>
                     <div class="text_header"><span>Найдите свой автомобиль</span></div>
                     <div>
                         <div class="form-group">
@@ -138,7 +138,7 @@
                                 <option value="porsche_cayenne">Porsche Cayenne Hybrid</option>
                             </select>
                         </div>
-                        <a href="#" class="btn sbmt-bttn" data-bs-toggle="modal" data-bs-target="#bookingModal">Бронируйте мгновенно</a>
+                        <a href="/cars" class="btn sbmt-bttn">Бронируйте мгновенно</a>
                 </form>
 
                 <div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="bookingModalLabel" aria-hidden="true">
@@ -257,26 +257,6 @@ function redirectToCarDetails() {
 				</div>
 			</div>
 		</footer>
-
-        <script>
-        // Обработка отправки формы в модальном окне
-        document.getElementById('modalForm').addEventListener('submit', function(event) {
-            event.preventDefault(); // Отмена стандартной отправки формы
-            
-            // Закрытие модального окна
-            let bookingModal = new bootstrap.Modal(document.getElementById('bookingModal'));
-            bookingModal.hide();
-
-            // Показать уведомление
-            let confirmationMessage = document.getElementById('confirmationMessage');
-            confirmationMessage.style.display = 'block';
-
-            // Скрыть уведомление через 3 секунды
-            setTimeout(function() {
-                confirmationMessage.style.display = 'none';
-            }, 3000);
-        });
-    </script>
 
 
 </body>
