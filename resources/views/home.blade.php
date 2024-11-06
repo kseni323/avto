@@ -107,102 +107,112 @@
 
        
 
-<section class="reservation_section" style="padding:50px 0px" id="reserve">
+< class="reservation_section" style="padding:50px 0px" id="reserve">
     <div class="container">
         <div class="row">
             <div class="col-md-5"></div>
             <div class="col-md-7">
-            <form method="POST" action="{{ route('booking.redirect') }}" id="reservation_form" class="car-reservation-form">
-            @csrf
-                    <div class="text_header"><span>Найдите свой автомобиль</span></div>
-                    <div>
-                        <div class="form-group">
-                            <label for="pickup_location">Место получения</label>
-                            <input type="text" id="pickup_location" name="pickup_location" placeholder="Кольцовская, 54" class="form-control" required>
+            <form id="bookingForm">
+        <div class="form-group">
+            <label for="pickup_location">Место получения</label>
+            <input type="text" id="pickup_location" name="pickup_location" placeholder="Кольцовская, 54" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="return_location">Место возврата</label>
+            <input type="text" id="return_location" name="return_location" placeholder="Кольцовская, 54" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="pickup_date">Дата аренды</label>
+            <input type="date" id="pickup_date" min="{{ now()->toDateString() }}" name="pickup_date" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="return_date">Дата возврата</label>
+            <input type="date" id="return_date" min="{{ now()->addDay()->toDateString() }}" name="return_date" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="car_model">Модель автомобиля</label>
+            <select name="car_model" class="form-control" required>
+                <option value="">Выберите модель</option>
+                <option value="mini_cooper">MINI Cooper</option>
+                <option value="mercedes_e_class">Mercedes Benz E-class</option>
+                <option value="porsche_cayenne">Porsche Cayenne Hybrid</option>
+            </select>
+        </div>
+        <a href="#" class="btn sbmt-bttn" data-bs-toggle="modal" data-bs-target="#bookingModal" onclick="validateMainForm(event)">Бронируйте мгновенно</a>
+        </form>
+        <div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="bookingModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="bookingModalLabel">Введите свои данные</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="modalForm">
+                        <div class="form-group mb-3">
+                            <label for="user_name">Имя</label>
+                            <input type="text" id="user_name" name="user_name" class="form-control" required>
                         </div>
-                        <div class="form-group">
-                            <label for="return_location">Место возврата</label>
-                            <input type="text" id="return_location" name="return_location" placeholder="Кольцовская, 54" class="form-control" required>
+                        <div class="form-group mb-3">
+                            <label for="user_email">Электронная почта</label>
+                            <input type="email" id="user_email" name="user_email" class="form-control" required>
                         </div>
-                        <div class="form-group">
-                            <label for="pickup_date">Дата аренды</label>
-                            <input type="date" id="pickup_date" min="{{ now()->toDateString() }}" name="pickup_date" class="form-control" required>
+                        <div class="form-check mb-3">
+                            <input type="checkbox" class="form-check-input" id="create_account">
+                            <label class="form-check-label" for="create_account">Хотите создать личный кабинет?</label>
                         </div>
-                        <div class="form-group">
-                            <label for="return_date">Дата возврата</label>
-                            <input type="date" id="return_date" min="{{ now()->addDay()->toDateString() }}" name="return_date" class="form-control" required>
-                        </div>
-                    </div>
-                        <div class="form-group">
-                            <label for="car_model">Модель автомобиля</label>
-                            <select name="car_model" class="form-control" required>
-                                <option value="">Выберите модель</option>
-                                <option value="mini_cooper">MINI Cooper</option>
-                                <option value="mercedes_e_class">Mercedes Benz E-class</option>
-                                <option value="porsche_cayenne">Porsche Cayenne Hybrid</option>
-                            </select>
-                        </div>
-                        <a href="#" class="btn sbmt-bttn" data-bs-toggle="modal" data-bs-target="#bookingModal">Бронируйте мгновенно</a>
-                </form>
-
-                <div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="bookingModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="bookingModalLabel">Введите свои данные</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
-            </div>
-            <div class="modal-body">
-                <form id="modalForm">
-                    <div class="form-group mb-3">
-                        <label for="user_name">Имя</label>
-                        <input type="text" id="user_name" name="user_name" class="form-control" required>
-                    </div>
-                    <div class="form-group mb-3">
-                        <label for="user_email">Электронная почта</label>
-                        <input type="email" id="user_email" name="user_email" class="form-control" required>
-                    </div>
-                    <div class="form-check mb-3">
-                        <input type="checkbox" class="form-check-input" id="create_account">
-                        <label class="form-check-label" for="create_account">Хотите создать личный кабинет?</label>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Отправить</button>
-                </form>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" form="modalForm" class="btn btn-primary">Отправить</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
+    <div id="confirmationMessage" class="alert alert-success text-center">
+        Сообщение с дальнейшими деталями отправлено на вашу почту.
+        <button type="button" class="btn-close" onclick="closeConfirmationMessage()" aria-label="Закрыть"></button>
+    </div>
 
-<!-- Уведомление о подтверждении -->
-<div id="confirmationMessage" class="alert alert-success text-center" style="display: none; position: fixed; top: 20px; left: 50%; transform: translateX(-50%); z-index: 1050;">
-    Сообщение с дальнейшими деталями отправлено на вашу почту.
-</div>
-            </div>
-        </div>
-    iv>
+    <!-- Подключение Bootstrap JS и Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
+
+    <!-- JavaScript для логики проверки и управления подтверждением -->
+    <script>
+        // Проверка обязательных полей основной формы
+        function validateMainForm(event) {
+            const form = document.getElementById('bookingForm');
+            if (!form.checkValidity()) {
+                event.preventDefault(); // Блокируем кнопку, если есть незаполненные обязательные поля
+                alert('Пожалуйста, заполните все обязательные поля перед бронированием.');
+            }
+        }
+
+        // Обработка отправки формы в модальном окне
+        document.getElementById('modalForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Отмена стандартной отправки формы
+            
+            // Закрытие модального окна
+            let bookingModal = new bootstrap.Modal(document.getElementById('bookingModal'));
+            bookingModal.hide();
+
+            // Показать уведомление
+            let confirmationMessage = document.getElementById('confirmationMessage');
+            confirmationMessage.style.display = 'block';
+        });
+
+        // Закрыть сообщение подтверждения вручную
+        function closeConfirmationMessage() {
+            document.getElementById('confirmationMessage').style.display = 'none';
+        }
+    </script>
+    </div>
+ </div>
+ </div>
 </section>
 
-<script>
-function redirectToCarDetails() {
-    // Получаем значения полей формы
-    const pickupLocation = document.getElementById('pickup_location').value;
-    const returnLocation = document.getElementById('return_location').value;
-    const pickupDate = document.getElementById('pickup_date').value;
-    const returnDate = document.getElementById('return_date').value;
-    const carModel = document.getElementById('car_model').value;
 
-    if (!pickupLocation || !returnLocation || !pickupDate || !returnDate || !carModel) {
-        alert("Пожалуйста, заполните все поля.");
-        return;
-    }
-
-    // Формируем URL с параметрами
-    const url = `/cars/${carModel}?pickup_location=${encodeURIComponent(pickupLocation)}&return_location=${encodeURIComponent(returnLocation)}&pickup_date=${pickupDate}&return_date=${returnDate}`;
-
-    // Переход на детальную страницу автомобиля
-    window.location.href = url;
-}
-</script>
 
 
 
