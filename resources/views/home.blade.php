@@ -102,41 +102,63 @@
         <div class="row">
             <div class="col-md-5"></div>
             <div class="col-md-7">
-                <form method="POST" action="{{ route('reservation.store') }}" id="reservation_form" class="car-reservation-form">
-                    @csrf
+                <form id="reservation_form" class="car-reservation-form">
                     <div class="text_header"><span>Найдите свой автомобиль</span></div>
                     <div>
                         <div class="form-group">
                             <label for="pickup_location">Место получения</label>
-                            <input type="text" name="pickup_location" placeholder="Кольцовская, 54" class="form-control">
+                            <input type="text" id="pickup_location" name="pickup_location" placeholder="Кольцовская, 54" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label for="return_location">Место возврата</label>
-                            <input type="text" name="return_location" placeholder="Кольцовская, 54" class="form-control">
+                            <input type="text" id="return_location" name="return_location" placeholder="Кольцовская, 54" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label for="pickup_date">Дата аренды</label>
-                            <input type="date" min="{{ now()->toDateString() }}" name="pickup_date" class="form-control">
+                            <input type="date" id="pickup_date" min="{{ now()->toDateString() }}" name="pickup_date" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label for="return_date">Дата возврата</label>
-                            <input type="date" min="{{ now()->addDay()->toDateString() }}" name="return_date" class="form-control">
+                            <input type="date" id="return_date" min="{{ now()->addDay()->toDateString() }}" name="return_date" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label for="car_model">Модель автомобиля</label>
-                            <select name="car_model" class="form-control">
-                                <option value="Эконом">MINI Cooper</option>
-                                <option value="Бизнес">Mercedes Benz E-class</option>
-                                <option value="Внедорожник">Porsche Cayenne Hybrid</option>
+                            <select id="car_model" name="car_model" class="form-control" required>
+                                <option value="">Выберите модель</option>
+                                <option value="mini_cooper">MINI Cooper</option>
+                                <option value="mercedes_e_class">Mercedes Benz E-class</option>
+                                <option value="porsche_cayenne">Porsche Cayenne Hybrid</option>
                             </select>
                         </div>
-                        <button type="submit" class="btn sbmt-bttn">Бронируйте мгновенно</button>
+                        <button type="button" class="btn sbmt-bttn" onclick="redirectToCarDetails()">Бронируйте мгновенно</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 </section>
+
+<script>
+function redirectToCarDetails() {
+    // Получаем значения полей формы
+    const pickupLocation = document.getElementById('pickup_location').value;
+    const returnLocation = document.getElementById('return_location').value;
+    const pickupDate = document.getElementById('pickup_date').value;
+    const returnDate = document.getElementById('return_date').value;
+    const carModel = document.getElementById('car_model').value;
+
+    if (!pickupLocation || !returnLocation || !pickupDate || !returnDate || !carModel) {
+        alert("Пожалуйста, заполните все поля.");
+        return;
+    }
+
+    // Формируем URL с параметрами
+    const url = `/cars/${carModel}?pickup_location=${encodeURIComponent(pickupLocation)}&return_location=${encodeURIComponent(returnLocation)}&pickup_date=${pickupDate}&return_date=${returnDate}`;
+
+    // Переход на детальную страницу автомобиля
+    window.location.href = url;
+}
+</script>
 
 
 

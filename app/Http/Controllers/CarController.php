@@ -30,4 +30,16 @@ public function show($id)
     $car = Car::findOrFail($id);
     return view('cars.show', compact('car'));
 }
+
+public function shows(Request $request, $car_model) {
+    $pickupLocation = $request->query('pickup_location');
+    $returnLocation = $request->query('return_location');
+    $pickupDate = $request->query('pickup_date');
+    $returnDate = $request->query('return_date');
+
+    // Найти автомобиль по модели и отобразить страницу
+    $car = Car::where('model', $car_model)->first();
+
+    return view('car_details', compact('car', 'pickupLocation', 'returnLocation', 'pickupDate', 'returnDate'));
+}
 }
