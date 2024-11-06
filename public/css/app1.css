@@ -411,14 +411,17 @@ div {
 
 
 .cars_section {
-    position: relative;
+
+   position: relative;
     width: 100%;
-    margin: 0 auto;
+    margin: 0 auto;   
+
 }
 
 .car-image {
     width: 100%;
     height: auto;
+    
 }
 
 .carousel-caption {
