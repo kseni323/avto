@@ -72,7 +72,7 @@
         <div class="container">
           <div class="carousel-caption text-start">
             <h1>Example headline.</h1> 
-            <p><a class="btn btn-lg btn-primary" href="#">ПОСМОТРЕТЬ ВСЕ</a></p>
+            <p><a class="btn btn-lg btn-primary" href="/cars">ПОСМОТРЕТЬ ВСЕ</a></p>
           </div>
         </div>
       </div>
@@ -81,7 +81,7 @@
         <div class="container">
           <div class="carousel-caption">
             <h1>Another example headline.</h1>
-            <p><a class="btn btn-lg btn-primary" href="#">ПОСМОТРЕТЬ ВСЕ</a></p>
+            <p><a class="btn btn-lg btn-primary" href="/cars">ПОСМОТРЕТЬ ВСЕ</a></p>
           </div>
         </div>
       </div>
@@ -90,7 +90,7 @@
         <div class="container">
           <div class="carousel-caption text-end">
             <h1>One more for good measure.</h1>
-            <p><a class="btn btn-lg btn-primary" href="#">ПОСМОТРЕТЬ ВСЕ</a></p>
+            <p><a class="btn btn-lg btn-primary" href="/cars">ПОСМОТРЕТЬ ВСЕ</a></p>
           </div>
         </div>
       </div>
