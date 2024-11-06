@@ -139,7 +139,7 @@
                                 <option value="porsche_cayenne">Porsche Cayenne Hybrid</option>
                             </select>
                         </div>
-                        <button type="submit" class="btn sbmt-bttn">Бронируйте мгновенно</button>
+                        <a href="/cars" class="btn sbmt-bttn">Бронируйте мгновенно</a>
                 </form>
             </div>
         </div>
