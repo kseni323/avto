@@ -43,7 +43,8 @@ Route::post('/reservation', [ReservationController::class, 'store'])->name('rese
 
 Route::post('/confirm-reservation', [ReservationController::class, 'confirm']);
 
-Route::get('/cars/{car_model}', [CarController::class, 'shows'])->name('car.details');
+Route::post('/booking/redirect', [ReservationController::class, 'redirectWithBookingData'])->name('booking.redirect');
+
 
 require __DIR__.'/auth.php';
 

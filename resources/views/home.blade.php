@@ -102,7 +102,8 @@
         <div class="row">
             <div class="col-md-5"></div>
             <div class="col-md-7">
-                <form id="reservation_form" class="car-reservation-form">
+            <form method="POST" action="{{ route('booking.redirect') }}" id="reservation_form" class="car-reservation-form">
+            @csrf
                     <div class="text_header"><span>Найдите свой автомобиль</span></div>
                     <div>
                         <div class="form-group">
@@ -121,17 +122,17 @@
                             <label for="return_date">Дата возврата</label>
                             <input type="date" id="return_date" min="{{ now()->addDay()->toDateString() }}" name="return_date" class="form-control" required>
                         </div>
+                    </div>
                         <div class="form-group">
                             <label for="car_model">Модель автомобиля</label>
-                            <select id="car_model" name="car_model" class="form-control" required>
+                            <select name="car_model" class="form-control" required>
                                 <option value="">Выберите модель</option>
                                 <option value="mini_cooper">MINI Cooper</option>
                                 <option value="mercedes_e_class">Mercedes Benz E-class</option>
                                 <option value="porsche_cayenne">Porsche Cayenne Hybrid</option>
                             </select>
                         </div>
-                        <button type="button" class="btn sbmt-bttn" onclick="redirectToCarDetails()">Бронируйте мгновенно</button>
-                    </div>
+                        <button type="submit" class="btn sbmt-bttn">Бронируйте мгновенно</button>
                 </form>
             </div>
         </div>

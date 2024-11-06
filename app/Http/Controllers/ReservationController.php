@@ -47,17 +47,20 @@ class ReservationController extends Controller
         return redirect()->route('cars.show', ['car' => $car->id])
             ->with('reservation_id', $reservation->id); // Передача ID резервации
     }
-
-    public function confirm(Request $request)
-{
-    $reservation = Reservation::find($request->reservation_id);
-    $reservation->name = $request->name;
-    $reservation->email = $request->email;
-    $reservation->save();
-
-    // Отправка письма с подтверждением бронирования
-    Mail::to($reservation->email)->send(new ReservationConfirmed($reservation));
-
-    return redirect()->back()->with('message', 'Бронирование успешно подтверждено. Все детали будут отправлены на вашу почту.');
-}
+    public function redirectWithBookingData(Request $request)
+    {
+        $data = $request->validate([
+            'pickup_location' => 'required|string',
+            'return_location' => 'required|string',
+            'pickup_date' => 'required|date',
+            'return_date' => 'required|date',
+            'car_model' => 'required|string',
+        ]);
+    
+        // Ищем модель автомобиля по имени
+        $car = Car::where('name', $data['car_model'])->firstOrFail();
+    
+        // Перенаправляем на страницу с моделью и передаем данные через параметры
+        return redirect()->route('cars.show', $car->id)->with('reservation_data', $data);
+    }
 }
