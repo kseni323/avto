@@ -109,7 +109,8 @@
         <div class="row">
             <div class="col-md-5"></div>
             <div class="col-md-7">
-            <form>
+            <form method="POST" action="{{ route('booking.redirect') }}" id="reservation_form" class="car-reservation-form">
+            @csrf
                     <div class="text_header"><span>Найдите свой автомобиль</span></div>
                     <div>
                         <div class="form-group">
@@ -140,42 +141,9 @@
                         </div>
                         <a href="/cars" class="btn sbmt-bttn">Бронируйте мгновенно</a>
                 </form>
-
-                <div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="bookingModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="bookingModalLabel">Введите свои данные</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
-            </div>
-            <div class="modal-body">
-                <form id="modalForm">
-                    <div class="form-group mb-3">
-                        <label for="user_name">Имя</label>
-                        <input type="text" id="user_name" name="user_name" class="form-control" required>
-                    </div>
-                    <div class="form-group mb-3">
-                        <label for="user_email">Электронная почта</label>
-                        <input type="email" id="user_email" name="user_email" class="form-control" required>
-                    </div>
-                    <div class="form-check mb-3">
-                        <input type="checkbox" class="form-check-input" id="create_account">
-                        <label class="form-check-label" for="create_account">Хотите создать личный кабинет?</label>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Отправить</button>
-                </form>
             </div>
         </div>
-    </div>
-</div>
-
-<!-- Уведомление о подтверждении -->
-<div id="confirmationMessage" class="alert alert-success text-center" style="display: none; position: fixed; top: 20px; left: 50%; transform: translateX(-50%); z-index: 1050;">
-    Сообщение с дальнейшими деталями отправлено на вашу почту.
-</div>
-            </div>
-        </div>
-</div>
+    iv>
 </section>
 
 <script>
