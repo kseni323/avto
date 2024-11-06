@@ -123,11 +123,11 @@
                             <input type="date" min="{{ now()->addDay()->toDateString() }}" name="return_date" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label for="car_type">Тип автомобиля</label>
-                            <select name="car_type" class="form-control">
-                                <option value="Эконом">Эконом</option>
-                                <option value="Бизнес">Бизнес</option>
-                                <option value="Внедорожник">Внедорожник</option>
+                            <label for="car_model">Модель автомобиля</label>
+                            <select name="car_model" class="form-control">
+                                <option value="Эконом">MINI Cooper</option>
+                                <option value="Бизнес">Mercedes Benz E-class</option>
+                                <option value="Внедорожник">Porsche Cayenne Hybrid</option>
                             </select>
                         </div>
                         <button type="submit" class="btn sbmt-bttn">Бронируйте мгновенно</button>
