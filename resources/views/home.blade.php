@@ -58,41 +58,29 @@
 </section>
 
 <section class="cars_section" id="cars">
-  <div class="container my-4">
+    <div class="container my-4">
         <h3 class="text-center">НАШИ АВТОМОБИЛИ</h3>
-    <div id="carCarousel" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="images/car1.jpg" class="d-block w-100 car-image" alt="car 1">
-                <div class="carousel-caption text-left">
-                    <h8>MINI</h8>
-                    <a href="/cars" class="btn btn-success">ПОСМОТРЕТЬ ВСЕ</a>
-                </div>
+        <div id="carCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                @foreach ($carouselItems as $index => $item)
+                    <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
+                        <img src="{{ $item->image }}" class="d-block w-100 car-image" alt="car image">
+                        <div class="carousel-caption text-left">
+                            <h8>{{ $item->caption }}</h8>
+                            <a href="/cars" class="btn btn-success">ПОСМОТРЕТЬ ВСЕ</a>
+                        </div>
+                    </div>
+                @endforeach
             </div>
-            <div class="carousel-item">
-                <img src="images/car2.jpg" class="d-block w-100 car-image" alt="car 2">
-                <div class="carousel-caption text-left">
-                    <h8>Mercedes Benz</h8>
-                    <a href="/cars" class="btn btn-success">ПОСМОТРЕТЬ ВСЕ</a>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img src="images/car3.jpg" class="d-block w-100 car-image" alt="car 3">
-                <div class="carousel-caption text-left">
-                    <h8>Porshe</h8>
-                    <a href="/cars" class="btn btn-success">ПОСМОТРЕТЬ ВСЕ</a>
-                </div>
-            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carCarousel" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carCarousel" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
-    </div>
     </div>
 </section>
        

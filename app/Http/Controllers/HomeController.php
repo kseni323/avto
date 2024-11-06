@@ -23,6 +23,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $carouselItems = CarouselItem::all();
+        return view('home', compact('carouselItems'));
     }
+
+    use App\Models\CarouselItem;
+
 }
