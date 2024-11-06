@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use TCG\Voyager\Facades\Voyager;
 use App\Http\Controllers\CarController;
 use App\Http\Controllers\ReservationController;
+use App\Http\Controllers\HomeController;
 
 
 
@@ -37,7 +38,7 @@ Route::get('/show', function () {
 
 Route::get('/cars', [CarController::class, 'index'])->name('cars.index');
 
-Route::get('/#cars', [CarController::class, 'index'])->name('home.index');
+Route::get('/#cars', [HomeController::class, 'index'])->name('home.index');
 
 Route::post('/filter-cars', [CarController::class, 'filterCars']);
 
