@@ -33,4 +33,13 @@ public function show($id)
     return view('show', compact('car', 'reservationData'));
 }
 
+public function show2($id)
+{
+    $car = Car::findOrFail($id);
+    $reservationData = session('reservationData', []);
+
+    return view('show2', compact('car', 'reservationData'));
+}
+
+
 }
