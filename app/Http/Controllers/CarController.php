@@ -30,7 +30,7 @@ public function show($id)
     $car = Car::findOrFail($id);
     $reservationData = session('reservationData', []);
 
-    return view('cars.show', compact('car', 'reservationData'));
+    return view('show', compact('car', 'reservationData'));
 }
 
 }
