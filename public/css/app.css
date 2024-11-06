@@ -1,0 +1,125 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.hero-section {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.hero-section .content h1 {
+    font-size: 2em;
+}
+
+.hero-section .content p {
+    font-size: 1.2em;
+}
+
+/* Адаптация секций */
+.services_section, .widget_section {
+    padding: 20px;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 1.5em;
+    padding: 10px 0;
+}
+
+.container.marketing .col-lg-4 {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+/* Адаптация кнопок */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #04DBC0;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.btn:hover {
+    background-color: #039b8f;
+}
+
+/* Стили для подписки */
+.subscribe_form input.form_input {
+    width: 70%;
+    padding: 10px;
+}
+
+.subscribe_form button.submit {
+    width: 25%;
+    padding: 10px;
+    background-color: #04DBC0;
+    border: none;
+    color: white;
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+/* Медиа-запросы для мобильных устройств */
+@media (max-width: 768px) {
+    .hero-section .content h1 {
+        font-size: 1.5em;
+    }
+    
+    .hero-section .content p {
+        font-size: 1em;
+    }
+
+    .container.marketing .col-lg-4 {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    .footer_widget h3 {
+        font-size: 1.2em;
+    }
+
+    .footer_widget p, .footer_widget .contact_info li {
+        font-size: 0.9em;
+    }
+    
+    /* Стиль подписки для мобильных */
+    .subscribe_form input.form_input, 
+    .subscribe_form button.submit {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-section {
+        padding: 30px 10px;
+    }
+
+    .hero-section .content h1 {
+        font-size: 1.2em;
+    }
+
+    .services_section .section-title {
+        font-size: 1.2em;
+    }
+
+    .footer_widget .contact_info li i {
+        font-size: 1em;
+    }
+
+    /* Уменьшить иконки в блоке услуг */
+    .container.marketing svg {
+        width: 60px;
+        height: 60px;
+    }
+}
