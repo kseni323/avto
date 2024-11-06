@@ -60,9 +60,8 @@
 
 @yield('avto_content')
 
-@yield('cars_content')
+@yield('show_content')
 
 
-@yield('res_content')
 </body>
 </html>

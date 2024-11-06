@@ -1,6 +1,6 @@
 @extends('header')
 
-@section('cars_content')
+@section('show_content')
 
 <head>
     <meta charset="UTF-8">
@@ -34,10 +34,6 @@
                 <div class="booking-box p-4">
                     <h5><strong>Параметры аренды</strong></h5>
                     <form>
-                        <div class="form-group">
-                            <input type="checkbox" id="sameLocation">
-                            <label for="sameLocation">Возврат в том же месте</label>
-                        </div>
                         <div class="form-group">
                             <label for="pickupLocation">Место получения автомобиля</label>
                             <input type="text" id="pickupLocation" class="form-control" placeholder="Введите место получения">
