@@ -57,6 +57,9 @@
 </div>
 </section>
 
+
+
+
 <div id="cars" class="carousel slide mb-6" data-bs-ride="carousel">
     <div class="carousel-indicators">
       <button type="button" data-bs-target="#cars" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -109,7 +112,7 @@
         <div class="row">
             <div class="col-md-5"></div>
             <div class="col-md-7">
-            <form>
+            <form method="POST" action="{{ route('booking.redirect') }}" id="reservation_form" class="car-reservation-form">
             @csrf
                     <div class="text_header"><span>Найдите свой автомобиль</span></div>
                     <div>
@@ -139,7 +142,7 @@
                                 <option value="porsche_cayenne">Porsche Cayenne Hybrid</option>
                             </select>
                         </div>
-                        <a href="/cars" class="btn sbmt-bttn">Бронируйте мгновенно</a>
+                        <button type="submit" class="btn sbmt-bttn">Бронируйте мгновенно</button>
                 </form>
             </div>
         </div>
