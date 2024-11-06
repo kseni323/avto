@@ -132,7 +132,7 @@
                                 <option value="porsche_cayenne">Porsche Cayenne Hybrid</option>
                             </select>
                         </div>
-                        <button type="submit" class="btn sbmt-bttn">Бронируйте мгновенно</button>
+                        <a href="{{ route('cars.show', $car->id) }}" class="btn btn-outline-primary">Бронируйте мгновенно</a>
                 </form>
             </div>
         </div>
