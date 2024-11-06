@@ -7,6 +7,7 @@ use App\Http\Controllers\CarController;
 use App\Http\Controllers\ReservationController;
 
 
+
 Route::get('/', function () {
     return view('home');
 });

@@ -132,11 +132,8 @@
                                 <option value="porsche_cayenne">Porsche Cayenne Hybrid</option>
                             </select>
                         </div>
-                        @foreach ($cars as $car)
-                        <a href="{{ route('cars.show', $car->id) }}" class="btn btn-outline-primary">Бронируйте мгновенно</a>
-                        @endforeach
-                    </form>
-
+                        <button type="submit" class="btn sbmt-bttn">Бронируйте мгновенно</button>
+                </form>
             </div>
         </div>
     </div>
