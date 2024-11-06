@@ -11,32 +11,59 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
-<form action="/confirm-reservation" method="POST">
-    @csrf
-    <input type="hidden" name="car_id" value="{{ $car->id }}">
-    
-    <div class="form-group">
-        <label for="pickup_location">Место получения</label>
-        <input type="text" name="pickup_location" class="form-control" value="{{ $reservationData['pickup_location'] ?? '' }}" readonly>
+<body>
+    <div class="container my-5">
+        <div class="row">
+            <!-- Car Image and Details -->
+            <div class="col-md-8">
+                <h2 class="car-title">Аренда {{ $car->title }}</h2>
+                <img src="{{ $car->image_url }}" class="img-fluid car-detail-image" alt="{{ $car->title }}">
+
+                <div class="car-features mt-4">
+                    <h5><strong>Характеристики автомобиля</strong></h5>
+                    <p><strong>Общая информация:</strong> {{ $car->description }}</p>
+                    <p><strong>Трансмиссия:</strong> {{ $car->transmission }}</p>
+                    <p><strong>Привод:</strong> {{ $car->drive_type }}</p>
+                    <p><strong>Класс:</strong> {{ $car->class }}</p>
+                    <p><strong>Кондиционер:</strong> {{ $car->air_conditioning ? 'Есть' : 'Нет' }}</p>
+                </div>
+            </div>
+
+            <!-- Booking Parameters -->
+            <div class="col-md-4">
+                <div class="booking-box p-4">
+                    <h5><strong>Параметры аренды</strong></h5>
+                    <form>
+                        <div class="form-group">
+                            <input type="checkbox" id="sameLocation">
+                            <label for="sameLocation">Возврат в том же месте</label>
+                        </div>
+                        <div class="form-group">
+                            <label for="pickupLocation">Место получения автомобиля</label>
+                            <input type="text" id="pickupLocation" class="form-control" placeholder="Введите место получения">
+                        </div>
+                        <div class="form-group">
+                            <label for="returnLocation">Место возврата автомобиля</label>
+                            <input type="text" id="returnLocation" class="form-control" placeholder="Введите место возврата">
+                        </div>
+                        <div class="form-group">
+                            <label>Дата аренды</label>
+                            <input type="date" class="form-control" name="pickup_date">
+                        </div>
+                        <div class="form-group">
+                            <label>Дата возврата</label>
+                            <input type="date" class="form-control" name="return_date">
+                        </div>
+                        <div class="price mt-3">
+                            <p>{{ $car->price }} ₽ в сутки</p>
+                            <p><small>депозит {{ $car->deposit }}₽</small></p>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Забронировать</button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
-
-    <div class="form-group">
-        <label for="return_location">Место возврата</label>
-        <input type="text" name="return_location" class="form-control" value="{{ $reservationData['return_location'] ?? '' }}" readonly>
-    </div>
-
-    <div class="form-group">
-        <label for="pickup_date">Дата аренды</label>
-        <input type="text" name="pickup_date" class="form-control" value="{{ $reservationData['pickup_date'] ?? '' }}" readonly>
-    </div>
-
-    <div class="form-group">
-        <label for="return_date">Дата возврата</label>
-        <input type="text" name="return_date" class="form-control" value="{{ $reservationData['return_date'] ?? '' }}" readonly>
-    </div>
-
-    <button type="submit" class="btn btn-primary">Подтвердить бронирование</button>
-</form>
-
+</body>
 
 @endsection
