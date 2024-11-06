@@ -1,13 +1,22 @@
 @extends('header')
 
 @section('show_content')
+
+<head>
+    <meta charset="UTF-8">
+    <title>Автомобили</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/app1.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
 <body>
     <div class="container my-5">
         <div class="row">
             <!-- Car Image and Details -->
             <div class="col-md-8">
-                <h2 class="car-title">Аренда {{ $car->title }}</h2>
-                <img src="{{ $car->image_url }}" class="img-fluid car-detail-image" alt="{{ $car->title }}">
+                <h2 class="car-title">Аренда {{ $car->name }}</h2>
+                <img src="{{ $car->image }}" class="img-fluid car-detail-image" alt="{{ $car->name}}">
 
                 <div class="car-features mt-4">
                     <h5><strong>Характеристики автомобиля</strong></h5>
