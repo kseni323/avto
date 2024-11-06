@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\CarouselItem;
 
 class HomeController extends Controller
 {
@@ -27,6 +28,6 @@ class HomeController extends Controller
         return view('home', compact('carouselItems'));
     }
 
-    use App\Models\CarouselItem;
+  
 
 }
