@@ -109,7 +109,7 @@
         <div class="row">
             <div class="col-md-5"></div>
             <div class="col-md-7">
-            <form method="POST" action="{{ route('booking.redirect') }}" id="reservation_form" class="car-reservation-form">
+            <form>
             @csrf
                     <div class="text_header"><span>Найдите свой автомобиль</span></div>
                     <div>
