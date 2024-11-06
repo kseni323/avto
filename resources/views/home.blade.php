@@ -62,7 +62,7 @@
         <h3 class="text-center">НАШИ АВТОМОБИЛИ</h3>
         <div id="carCarousel" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
-                @foreach ($carouselItems as $index => $item)
+                @foreach ($carouselItems as $item)
                     <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
                         <img src="{{ $item->image }}" class="d-block w-100 car-image" alt="car image">
                         <div class="carousel-caption text-left">
