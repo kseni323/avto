@@ -22,12 +22,11 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
-    {
-        $carouselItems = CarouselItem::all();
-        return view('home', compact('carouselItems'));
-    }
 
-  
 
+public function index()
+{
+    $carouselItems = CarouselItem::all();
+    return view('home', compact('carouselItems'));
+}
 }
