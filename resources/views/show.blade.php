@@ -6,7 +6,6 @@
     <meta charset="UTF-8">
     <title>Автомобили</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
@@ -265,41 +264,6 @@ element.style {
                         </div>
                         <button type="submit" class="btn btn-primary btn-block">Забронировать</button>
                     </form>
-
-                    <!-- Уведомление о подписке -->
-<div id="subscribeConfirmation" class="alert text-center" 
-     style="display: none; position: fixed; top: 20px; left: 50%; transform: translateX(-50%); z-index: 1060; background-color: #28a745; color: #fff; border-radius: 8px; padding: 15px 30px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); border: none; max-width: 500px; width: 90%;">
-  Спасибо за подписку! Подтверждение отправлено на вашу почту.
-</div>
-
-<script>
-  // Функция для показа уведомления
-  function subscribeUser() {
-    const emailField = document.getElementById("subs-email");
-    const confirmationMessage = document.getElementById("subscribeConfirmation");
-
-    // Проверяем, заполнен ли email
-    if (emailField.checkValidity()) {
-      // Показываем уведомление
-      confirmationMessage.style.display = "block";
-
-      // Скрываем уведомление через 3 секунды
-      setTimeout(() => {
-        confirmationMessage.style.display = "none";
-      }, 3000);
-
-      // Очищаем поле ввода
-      emailField.value = "";
-    } else {
-      // Показываем сообщение об ошибке, если email некорректен
-      emailField.reportValidity();
-    }
-  }
-
-  // Добавляем обработчик события для кнопки
-  document.getElementById("subscribeButton").addEventListener("click", subscribeUser);
-</script>
-</section>
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
