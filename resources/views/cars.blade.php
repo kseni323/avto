@@ -44,10 +44,25 @@
             </select>
         </div>
         <div class="col-md-12 mt-3">
-            <button type="submit" class="btn btn-primary">Фильтровать</button>
-        </div>
+    <button type="button" id="filterButton" class="btn btn-primary">Фильтровать</button>
+</div>
     </form>
     
+    <script>
+document.getElementById('filterButton').addEventListener('click', function() {
+    let classFilter = document.getElementById('classFilter').value;
+    let transmissionFilter = document.getElementById('transmissionFilter').value;
+    let driveTypeFilter = document.getElementById('driveTypeFilter').value;
+
+    fetch("{{ route('cars.filter') }}?class=" + classFilter + "&transmission=" + transmissionFilter + "&drive_type=" + driveTypeFilter)
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('car-results').innerHTML = data.html;
+        })
+        .catch(error => console.error('Error:', error));
+});
+    </script>
+
     <div class="row mt-4" id="car-results">
         @foreach ($cars as $car)
             <div class="col-md-4">
@@ -61,8 +76,6 @@
                     </div>
                 </div>
             </div>
-            @empty
-        <p class="text-center">Нет автомобилей, соответствующих вашему запросу.</p>
         @endforeach
     </div>
 </section>
