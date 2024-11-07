@@ -8,6 +8,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="css/app1.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  
     <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/a4b8bdf2119927647b8e8f0f8/a1f403e3da1fb14c1ea674d4b.js");</script>
      <style>
         .nav-link:hover {
@@ -20,41 +23,46 @@
     </style>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light">
-        <div class="container">
-            <a class="navbar-brand" href="#">
-        <span class="drive-text">drive</span><span style="color:#04DBC0">Go</span>&nbsp;
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mobileNavbar" aria-controls="mobileNavbar" aria-expanded="false" aria-label="Toggle navigation">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <span class="drive-text">drive</span><span style="color:#04DBC0">Go</span>&nbsp;
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mobileNavbar" aria-controls="mobileNavbar" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-            <div class="collapse navbar-collapse" id="yahyaNavbar">
-                <ul class="navbar-nav" style="margin-left: auto!important;">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="./">Главная</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="./#services">Услуги</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="./#cars">Автомобили</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="./#reserve">Бронирование</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="./#contact-us">Контакты</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="./login">Вход</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="./register">Регистрация</a>
-                    </li>
-                </ul>
-            </div>
+        
+        <div class="collapse navbar-collapse" id="mobileNavbar">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="./">Главная</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./#services">Услуги</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./#cars">Автомобили</a>
+                </li>
+                <!-- Выпадающее меню -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Дополнительно
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="./#reserve">Бронирование</a></li>
+                        <li><a class="dropdown-item" href="./#contact-us">Контакты</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./login">Вход</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./register">Регистрация</a>
+                </li>
+            </ul>
         </div>
-    </nav>
+    </div>
+</nav>
 
 @yield('main_content')
 
