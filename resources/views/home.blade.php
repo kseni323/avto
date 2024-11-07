@@ -16,7 +16,80 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 </head>
+<style>
+  @media (max-width: 768px) {
+    .hero-section .content h1 {
+        font-size: 1.5em;
+        margin-bottom: 10px; /* Уменьшение отступов */
+    }
+    
+    .hero-section .content p {
+        font-size: 1em;
+        margin-bottom: 15px; /* Уменьшение отступов */
+    }
 
+    .btn {
+        width: 80%; /* Сохранение ширины кнопки */
+        position: fixed;
+        bottom: 15px;
+        right: 15px;
+        text-align: center;
+        z-index: 1100; /* Поверх других элементов */
+    }
+
+    .container.marketing .col-lg-4 {
+        width: 100%;
+        margin-bottom: 15px; /* Уменьшение отступа между услугами */
+    }
+
+    .footer_widget h3 {
+        font-size: 1.2em;
+    }
+
+    .footer_widget p, .footer_widget .contact_info li {
+        font-size: 0.9em;
+    }
+
+    .subscribe_form input.form_input, 
+    .subscribe_form button.submit {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
+
+/* Специальные стили для очень маленьких экранов */
+@media (max-width: 480px) {
+    .hero-section {
+        padding: 20px 10px; /* Сокращение внутренних отступов */
+    }
+
+    .hero-section .content h1 {
+        font-size: 1.2em;
+    }
+
+    .services_section .section-title {
+        font-size: 1.2em;
+    }
+
+    .services_section .service-item {
+        margin-bottom: 10px; /* Уменьшение отступов между элементами услуг */
+    }
+
+    .footer_widget .contact_info li i {
+        font-size: 1em;
+    }
+
+    .carousel-img {
+        height: 300px; /* Уменьшение высоты изображения */
+    }
+
+    /* Карусель */
+    .carousel-caption {
+        font-size: 0.9em;
+        bottom: 10px; /* Снижение текста вниз */
+    }
+}
+</style>
 <body>
     <div class="hero-section">
         <div class="content"> 
