@@ -30,16 +30,12 @@
         font-size: 1.2em;
     }
 
-    .services_section .service-item {
-        margin-bottom: 1px; /* Уменьшение отступов между элементами услуг */
-    }
-
     .footer_widget .contact_info li i {
         font-size: 1em;
     }
 
     .carousel-img {
-        height: 350px; /* Уменьшение высоты изображения */
+        height: 400px; /* Уменьшение высоты изображения */
     }
 
     /* Карусель */
