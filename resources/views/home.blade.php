@@ -36,25 +36,6 @@
     font-family: "Montserrat";
     padding-left: 152px;
 }
-.content h1 {
-    font-size: 3em;
-    margin-bottom: 10px;
-}
-
-.content p {
-    font-size: 2em;
-    margin-bottom: 20px;
-}
-
-.btn {
-    display: inline-block;
-    padding: 10px 20px;
-    background: #04DBC0;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    font-size: 1.1em;
-}
     .services_section .section-title {
         font-size: 1.2em;
     }
