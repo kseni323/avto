@@ -70,7 +70,7 @@
     <div class="carousel-inner">
       <div class="carousel-item active">
       <div class="overlay-darken"></div>
-        <img src="images/car1.jpg" class="d-block w-100 carousel-img" alt="First slide">
+        <img src="images/porshe.jpg" class="d-block w-100 carousel-img" alt="First slide">
         <div class="container">
           <div class="carousel-caption text-end">
             <h1>Porsche</h1> 
@@ -80,7 +80,7 @@
       </div>
       <div class="carousel-item">
       <div class="overlay-darken"></div>
-        <img src="images/car2.jpg" class="d-block w-100 carousel-img" alt="Second slide">
+        <img src="images/minicooper.jpg" class="d-block w-100 carousel-img" alt="Second slide">
         <div class="container">
           <div class="carousel-caption text-end">
             <h1>MINI Cooper</h1>
@@ -90,7 +90,7 @@
       </div>
       <div class="carousel-item">
       <div class="overlay-darken"></div>
-        <img src="images/car3.jpg" class="d-block w-100 carousel-img" alt="Third slide">
+        <img src="images/bmw.jpg" class="d-block w-100 carousel-img" alt="Third slide">
         <div class="container">
           <div class="carousel-caption text-end">
             <h1>BMW</h1>
