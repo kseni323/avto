@@ -19,7 +19,7 @@
 <style>
 @media (max-width: 480px) {
     .hero-section {
-        padding: 20px 10px; /* Сокращение внутренних отступов */
+        padding: 2px 1px; /* Сокращение внутренних отступов */
     }
 
     .hero-section .content h1 {
@@ -31,7 +31,7 @@
     }
 
     .services_section .service-item {
-        margin-bottom: 10px; /* Уменьшение отступов между элементами услуг */
+        margin-bottom: 1px; /* Уменьшение отступов между элементами услуг */
     }
 
     .footer_widget .contact_info li i {
@@ -39,7 +39,7 @@
     }
 
     .carousel-img {
-        height: 300px; /* Уменьшение высоты изображения */
+        height: 350px; /* Уменьшение высоты изображения */
     }
 
     /* Карусель */
