@@ -70,8 +70,8 @@
       <div class="carousel-item active">
         <img src="images/car1.jpg" class="d-block w-100" style="height: 600px; object-fit: cover; margin-bottom: 25px;" alt="First slide">
         <div class="container">
-          <div class="carousel-caption text-start">
-            <h1>Example headline.</h1> 
+          <div class="carousel-caption text-end">
+            <h1>Porsche</h1> 
             <p><a class="btn btn-lg btn-primary" href="/cars">ПОСМОТРЕТЬ ВСЕ</a></p>
           </div>
         </div>
@@ -79,8 +79,8 @@
       <div class="carousel-item">
         <img src="images/car2.jpg" class="d-block w-100" style="height: 600px; object-fit: cover; margin-bottom: 25px;" alt="Second slide">
         <div class="container">
-          <div class="carousel-caption">
-            <h1>Another example headline.</h1>
+          <div class="carousel-caption text-end">
+            <h1>MINI Cooper</h1>
             <p><a class="btn btn-lg btn-primary" href="/cars">ПОСМОТРЕТЬ ВСЕ</a></p>
           </div>
         </div>
@@ -89,7 +89,7 @@
         <img src="images/car3.jpg" class="d-block w-100" style="height: 600px; object-fit: cover; margin-bottom: 25px;" alt="Third slide">
         <div class="container">
           <div class="carousel-caption text-end">
-            <h1>One more for good measure.</h1>
+            <h1>BMW</h1>
             <p><a class="btn btn-lg btn-primary" href="/cars">ПОСМОТРЕТЬ ВСЕ</a></p>
           </div>
         </div>
