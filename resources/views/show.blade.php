@@ -265,6 +265,58 @@ element.style {
                         <button type="submit" class="btn btn-primary btn-block">Забронировать</button>
                     </form>
 
+                    <!-- Уведомление о подписке -->
+<div id="subscribeConfirmation" class="alert text-center" 
+     style="display: none; position: fixed; top: 20px; left: 50%; transform: translateX(-50%); z-index: 1060; background-color: #28a745; color: #fff; border-radius: 8px; padding: 15px 30px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); border: none; max-width: 500px; width: 90%;">
+  Спасибо за подписку! Подтверждение отправлено на вашу почту.
+</div>
+
+<script>
+  // Функция для показа уведомления
+  function subscribeUser() {
+    const emailField = document.getElementById("subs-email");
+    const confirmationMessage = document.getElementById("subscribeConfirmation");
+
+    // Проверяем, заполнен ли email
+    if (emailField.checkValidity()) {
+      // Показываем уведомление
+      confirmationMessage.style.display = "block";
+
+      // Скрываем уведомление через 3 секунды
+      setTimeout(() => {
+        confirmationMessage.style.display = "none";
+      }, 3000);
+
+      // Очищаем поле ввода
+      emailField.value = "";
+    } else {
+      // Показываем сообщение об ошибке, если email некорректен
+      emailField.reportValidity();
+    }
+  }
+
+  // Добавляем обработчик события для кнопки
+  document.getElementById("subscribeButton").addEventListener("click", subscribeUser);
+</script>
+</section>
+
+<footer class="footer_section">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-6">
+						<div class="copyright">
+							driveGo© 
+							<script type="text/javascript"> 
+								document.write(new Date().getFullYear())
+							</script>
+							Все правы защищены
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+
+
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         const dailyPrice = {{ $car->price }};
