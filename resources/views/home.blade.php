@@ -68,7 +68,7 @@
     </div>
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <img src="images/car1.jpg" class="d-block w-100" style="height: 600px; object-fit: cover; margin-bottom: 25px;" alt="First slide">
+        <img src="images/sa.jpg" class="d-block w-100" style="height: 600px; object-fit: cover; margin-bottom: 25px;" alt="First slide">
         <div class="container">
           <div class="carousel-caption text-end">
             <h1>Porsche</h1> 
