@@ -61,6 +61,8 @@
                     </div>
                 </div>
             </div>
+            @empty
+        <p class="text-center">Нет автомобилей, соответствующих вашему запросу.</p>
         @endforeach
     </div>
 </section>

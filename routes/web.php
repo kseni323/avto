@@ -40,7 +40,6 @@ Route::get('/cars', [CarController::class, 'index'])->name('cars.index');
 
 Route::get('/', [HomeController::class, 'index']);
 
-Route::post('/filter-cars', [CarController::class, 'filterCars']);
 
 Route::get('/cars/{id}', [CarController::class, 'show'])->name('cars.show');
 
