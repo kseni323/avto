@@ -16,7 +16,7 @@
     <!-- Фильтры для поиска автомобилей -->
     <section class="container my-4">
     <h2 class="text-center">АВТОМОБИЛИ</h2>
-    <form method="GET" action="{{ route('cars.index') }}" class="row g-3">
+    <form id="filterForm" method="GET" action="{{ route('cars.filter') }}" class="row g-3">
         <div class="col-md-4">
             <label for="classFilter" class="form-label">Класс</label>
             <select id="classFilter" name="class" class="form-select">
@@ -44,25 +44,9 @@
             </select>
         </div>
         <div class="col-md-12 mt-3">
-    <button type="button" id="filterButton" class="btn btn-primary">Фильтровать</button>
-</div>
+        <button type="button" id="filterButton" class="btn btn-primary">Фильтровать</button>
+    </div>
     </form>
-    
-    <script>
-document.getElementById('filterButton').addEventListener('click', function() {
-    let classFilter = document.getElementById('classFilter').value;
-    let transmissionFilter = document.getElementById('transmissionFilter').value;
-    let driveTypeFilter = document.getElementById('driveTypeFilter').value;
-
-    fetch("{{ route('cars.filter') }}?class=" + classFilter + "&transmission=" + transmissionFilter + "&drive_type=" + driveTypeFilter)
-        .then(response => response.json())
-        .then(data => {
-            document.getElementById('car-results').innerHTML = data.html;
-        })
-        .catch(error => console.error('Error:', error));
-});
-    </script>
-
     <div class="row mt-4" id="car-results">
         @foreach ($cars as $car)
             <div class="col-md-4">
@@ -81,6 +65,21 @@ document.getElementById('filterButton').addEventListener('click', function() {
 </section>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+document.getElementById('filterButton').addEventListener('click', function() {
+    let classFilter = document.getElementById('classFilter').value;
+    let transmissionFilter = document.getElementById('transmissionFilter').value;
+    let driveTypeFilter = document.getElementById('driveTypeFilter').value;
+
+    fetch("{{ route('cars.filter') }}?class=" + classFilter + "&transmission=" + transmissionFilter + "&drive_type=" + driveTypeFilter)
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('car-results').innerHTML = data.html;
+        })
+        .catch(error => console.error('Error:', error));
+});
+    </script>
 </body>
 
 @endsection

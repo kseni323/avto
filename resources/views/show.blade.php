@@ -7,7 +7,10 @@
     <title>Автомобили</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 </head>
 <style>
     /* Обнуляем отступы и размеры */
@@ -262,8 +265,60 @@ element.style {
                             <p>{{ $car->price }} ₽ в сутки</p>
                             <p><small>депозит {{ $car->deposit }}₽</small></p>
                         </div>
-                        <button type="submit" class="btn btn-primary btn-block">Забронировать</button>
+                        <button type="button" class="btn btn-primary btn-block" data-bs-toggle="modal" data-bs-target="#bookingModal">Забронировать</button>
                     </form>
+
+                    <div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="bookingModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="bookingModalLabel">Введите свои данные</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+            </div>
+            <div class="modal-body">
+                <form id="modalForm">
+                    <div class="form-group mb-3">
+                        <label for="user_name">Имя</label>
+                        <input type="text" id="user_name" name="user_name" class="form-control" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="user_email">Электронная почта</label>
+                        <input type="email" id="user_email" name="user_email" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Отправить</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Уведомление о подтверждении -->
+<div id="confirmationMessage" class="alert text-center" 
+     style="display: none; position: fixed; top: 20px; left: 50%; transform: translateX(-50%); 
+            background-color: #04DBC0; color: black; border: 2px solid black; 
+            border-radius: 8px; padding: 15px; z-index: 1060;">
+    Сообщение с дальнейшими деталями отправлено на вашу почту.
+</div>
+
+<!-- JavaScript для показа и скрытия уведомления -->
+<script>
+    document.getElementById('modalForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // предотвращаем отправку формы
+        
+        // Закрываем модальное окно
+        var bookingModal = new bootstrap.Modal(document.getElementById('bookingModal'));
+        bookingModal.hide();
+
+        // Показываем уведомление
+        var confirmationMessage = document.getElementById('confirmationMessage');
+        confirmationMessage.style.display = 'block';
+
+        // Убираем уведомление через 3 секунды
+        setTimeout(function() {
+            confirmationMessage.style.display = 'none';
+        }, 3000);
+    });
+</script>
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
