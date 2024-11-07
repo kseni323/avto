@@ -51,6 +51,15 @@
         font-size: 0.9em;
         bottom: 10px; /* Снижение текста вниз */
     }
+    .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #04DBC0;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+}
 }
 
 </style>
