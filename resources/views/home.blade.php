@@ -35,9 +35,17 @@
     }
 
     .carousel-img {
-        height: 400px; /* Уменьшение высоты изображения */
+        height: 300px; /* Уменьшение высоты изображения */
     }
-
+    .overlay-darken {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 300px;
+    background-color: rgba(0, 0, 0, 0.4); /* Полупрозрачный черный фон */
+    z-index: 1;
+  }
     /* Карусель */
     .carousel-caption {
         font-size: 0.9em;
