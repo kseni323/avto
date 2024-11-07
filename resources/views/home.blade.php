@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/app1.css">
     <link rel="stylesheet" href="css/app3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/forms.js" defer></script>
@@ -68,7 +69,8 @@
     </div>
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <img src="images/car1.jpg" class="d-block w-100" style="height: 600px; object-fit: cover; margin-bottom: 25px;" alt="First slide">
+      <div class="overlay-darken"></div>
+        <img src="images/car1.jpg" class="d-block w-100 carousel-img" alt="First slide">
         <div class="container">
           <div class="carousel-caption text-end">
             <h1>Porsche</h1> 
@@ -77,7 +79,8 @@
         </div>
       </div>
       <div class="carousel-item">
-        <img src="images/car2.jpg" class="d-block w-100" style="height: 600px; object-fit: cover; margin-bottom: 25px;" alt="Second slide">
+      <div class="overlay-darken"></div>
+        <img src="images/car2.jpg" class="d-block w-100 carousel-img" alt="Second slide">
         <div class="container">
           <div class="carousel-caption text-end">
             <h1>MINI Cooper</h1>
@@ -86,7 +89,8 @@
         </div>
       </div>
       <div class="carousel-item">
-        <img src="images/car3.jpg" class="d-block w-100" style="height: 600px; object-fit: cover; margin-bottom: 25px;" alt="Third slide">
+      <div class="overlay-darken"></div>
+        <img src="images/car3.jpg" class="d-block w-100 carousel-img" alt="Third slide">
         <div class="container">
           <div class="carousel-caption text-end">
             <h1>BMW</h1>
@@ -112,7 +116,7 @@
         <div class="row">
             <div class="col-md-5"></div>
             <div class="col-md-7">
-            <form method="POST" action="{{ route('booking.redirect') }}" id="reservation_form" class="car-reservation-form">
+            <form method="POST" action="{{ route('booking.store') }}" id="reservation_form" class="car-reservation-form">
             @csrf
                     <div class="text_header"><span>Найдите свой автомобиль</span></div>
                     <div>
@@ -170,16 +174,33 @@
 </div>
 
 <!-- Уведомление о подтверждении -->
-<div id="confirmationMessage" class="alert alert-success text-center" style="display: none; position: fixed; top: 20px; left: 50%; transform: translateX(-50%); z-index: 1050;">
+<div id="confirmationMessage" class="alert text-center" 
+     style="display: none; position: fixed; top: 20px; left: 50%; transform: translateX(-50%); 
+            background-color: #04DBC0; color: black; border: 2px solid black; 
+            border-radius: 8px; padding: 15px; z-index: 1060;">
     Сообщение с дальнейшими деталями отправлено на вашу почту.
 </div>
-            </div>
-        </div>
-    iv>
+
+<!-- JavaScript для показа и скрытия уведомления -->
+<script>
+    document.getElementById('modalForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // предотвращаем отправку формы
+        
+        // Закрываем модальное окно
+        var bookingModal = new bootstrap.Modal(document.getElementById('bookingModal'));
+        bookingModal.hide();
+
+        // Показываем уведомление
+        var confirmationMessage = document.getElementById('confirmationMessage');
+        confirmationMessage.style.display = 'block';
+
+        // Убираем уведомление через 3 секунды
+        setTimeout(function() {
+            confirmationMessage.style.display = 'none';
+        }, 3000);
+    });
+</script>
 </section>
-
-
-
 
 
 <section class="widget_section" id="contact-us">
@@ -188,38 +209,75 @@
             <div class="col-lg-4 col-md-6">
                 <div class="footer_widget">
                     <a class="navbar-brand" href=""><ya-tr-span data-index="123-0" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="drive" data-translation="drive" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">drive</ya-tr-span><span style="color:#04DBC0"><ya-tr-span data-index="123-1" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Go" data-translation="Вперед" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">Go</ya-tr-span></span><ya-tr-span data-index="123-2" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="" data-translation="" data-ch="0" data-type="trSpan" style="visibility: inherit !important;"> </ya-tr-span></a>
-                    <p><ya-tr-span data-index="113-0" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Путешествие с хорошими друзьями подарит вам незабываемые впечатления. " data-translation="Путешествие с хорошими друзьями подарит вам незабываемые впечатления. " data-ch="0" data-type="trSpan" style="visibility: inherit !important;">Путешествие с хорошими друзьями подарит вам незабываемые впечатления. </ya-tr-span></p>
+                    <p>Путешествие с хорошими друзьями подарит<br>вам незабываемые впечатления.</p>
                 </div>
             </div>
             <div class="col-lg-4 col-md-6">
-                <div class="footer_widget">
-                    <h3><ya-tr-span data-index="102-0" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Контактная информация" data-translation="Контактная информация" data-ch="0" data-type="trSpan" style="visibility: inherit !important;" data-selected="false">Контактная информация</ya-tr-span></h3>
-                    <ul class="contact_info">
-                        <li>
-                            <i class="fas fa-map-marker-alt"></i><ya-tr-span data-index="103-0" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="962 Fifth Avenue, 3rd Floor New York, NY10022 " data-translation="962 Пятая авеню, 3 этаж, Нью-Йорк, NY10022 " data-ch="0" data-type="trSpan" style="visibility: inherit !important;">Воронеж, ул.Колесниченко,15</ya-tr-span></li>
-                        <li>
-                            <i class="far fa-envelope"></i><ya-tr-span data-index="104-0" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="contact@barbershop.com " data-translation="contact@barbershop.com " data-ch="0" data-type="trSpan" style="visibility: inherit !important;">contact@carrental.com </ya-tr-span></li>
-                        <li>
-                            <i class="fas fa-mobile-alt"></i>+7 (654) 128-09-87
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="footer_widget">
-                    <h3><ya-tr-span data-index="105-0" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Расслыка" data-translation="Рассылка" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">Расслыка</ya-tr-span></h3>
-                    <p style="margin-bottom:0px"><ya-tr-span data-index="106-0" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Don't miss a thing! " data-translation="Не пропустите ни одной детали! " data-ch="0" data-type="trSpan" style="visibility: inherit !important;">Ничего не пропустите!</ya-tr-span><ya-tr-span data-index="106-1" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Sign up to receive daily deals" data-translation="Подпишитесь, чтобы получать ежедневные предложения" data-ch="0" data-type="trSpan" style="visibility: inherit !important;"> Подпишитесь, чтобы получать ежедневные предложения</ya-tr-span></p>
-                    <div class="subscribe_form">
-    <form method="POST" action="subscribe.php" class="subscribe_form" novalidate="true">
-        <input type="email" name="EMAIL" id="subs-email" class="form_input" placeholder="Почта..." required>
-        <button type="button" class="submit" onclick="subscribeUser()">ПОДПИСАТЬСЯ</button>
-        <div class="clearfix"></div>
-    </form>
-</div>
-                </div>
-            </div>
-        </div>
+    <div class="footer_widget">
+        <h3>Контактная информация</h3>
+        <ul class="contact_info">
+            <li>
+                <i class="fas fa-map-marker-alt"></i> Воронеж, ул.Колесниченко, 15
+            </li>
+            <li>
+                <i class="far fa-envelope"></i> contact@carrental.com
+            </li>
+            <li>
+                <i class="fas fa-phone-alt"></i> +7 (654) 128-09-87
+            </li>
+        </ul>
     </div>
+</div>
+
+            <div class="col-lg-4 col-md-6">
+  <div class="footer_widget">
+    <h3>Рассылка</h3>
+    <p style="margin-bottom:0px">Ничего не пропустите! Подпишитесь, чтобы получать ежедневные предложения</p>
+    
+    <div class="subscribe_form">
+      <!-- Форма с полем для email и кнопкой -->
+      <form id="subscribeForm" class="subscribe_form" novalidate>
+        <input type="email" name="EMAIL" id="subs-email" class="form_input" placeholder="Почта..." required>
+        <button type="button" id="subscribeButton" class="btn btn-primaary">ПОДПИСАТЬСЯ</button>
+        <div class="clearfix"></div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Уведомление о подписке -->
+<div id="subscribeConfirmation" class="alert text-center" 
+     style="display: none; position: fixed; top: 20px; left: 50%; transform: translateX(-50%); z-index: 1060; background-color: #28a745; color: #fff; border-radius: 8px; padding: 15px 30px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); border: none; max-width: 500px; width: 90%;">
+  Спасибо за подписку! Подтверждение отправлено на вашу почту.
+</div>
+
+<script>
+  // Функция для показа уведомления
+  function subscribeUser() {
+    const emailField = document.getElementById("subs-email");
+    const confirmationMessage = document.getElementById("subscribeConfirmation");
+
+    // Проверяем, заполнен ли email
+    if (emailField.checkValidity()) {
+      // Показываем уведомление
+      confirmationMessage.style.display = "block";
+
+      // Скрываем уведомление через 3 секунды
+      setTimeout(() => {
+        confirmationMessage.style.display = "none";
+      }, 3000);
+
+      // Очищаем поле ввода
+      emailField.value = "";
+    } else {
+      // Показываем сообщение об ошибке, если email некорректен
+      emailField.reportValidity();
+    }
+  }
+
+  // Добавляем обработчик события для кнопки
+  document.getElementById("subscribeButton").addEventListener("click", subscribeUser);
+</script>
 </section>
 
 <footer class="footer_section">
@@ -237,7 +295,6 @@
 				</div>
 			</div>
 		</footer>
-
 
 </body>
 
