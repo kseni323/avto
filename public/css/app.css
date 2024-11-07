@@ -1,21 +1,26 @@
-/* Медиа-запросы для мобильных устройств */
 @media (max-width: 768px) {
     .hero-section .content h1 {
         font-size: 1.5em;
+        margin-bottom: 10px; /* Уменьшение отступов */
     }
     
     .hero-section .content p {
         font-size: 1em;
+        margin-bottom: 15px; /* Уменьшение отступов */
+    }
+
+    .btn {
+        width: 80%; /* Сохранение ширины кнопки */
+        position: fixed;
+        bottom: 15px;
+        right: 15px;
+        text-align: center;
+        z-index: 1100; /* Поверх других элементов */
     }
 
     .container.marketing .col-lg-4 {
         width: 100%;
-        margin-bottom: 20px;
-    }
-
-    .btn {
-        width: 100%;
-        text-align: center;
+        margin-bottom: 15px; /* Уменьшение отступа между услугами */
     }
 
     .footer_widget h3 {
@@ -25,8 +30,7 @@
     .footer_widget p, .footer_widget .contact_info li {
         font-size: 0.9em;
     }
-    
-    /* Стиль подписки для мобильных */
+
     .subscribe_form input.form_input, 
     .subscribe_form button.submit {
         width: 100%;
@@ -34,9 +38,10 @@
     }
 }
 
+/* Специальные стили для очень маленьких экранов */
 @media (max-width: 480px) {
     .hero-section {
-        padding: 30px 10px;
+        padding: 20px 10px; /* Сокращение внутренних отступов */
     }
 
     .hero-section .content h1 {
@@ -47,13 +52,21 @@
         font-size: 1.2em;
     }
 
+    .services_section .service-item {
+        margin-bottom: 10px; /* Уменьшение отступов между элементами услуг */
+    }
+
     .footer_widget .contact_info li i {
         font-size: 1em;
     }
 
-    /* Уменьшить иконки в блоке услуг */
-    .container.marketing svg {
-        width: 60px;
-        height: 60px;
+    .carousel-img {
+        height: 300px; /* Уменьшение высоты изображения */
+    }
+
+    /* Карусель */
+    .carousel-caption {
+        font-size: 0.9em;
+        bottom: 10px; /* Снижение текста вниз */
     }
 }
