@@ -223,42 +223,6 @@ element.style {
 
 </style>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light">
-        <div class="container">
-            <a class="navbar-brand" href="#">
-        <span class="drive-text">drive</span><span style="color:#04DBC0">Go</span>&nbsp;
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mobileNavbar" aria-controls="mobileNavbar" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-            <div class="collapse navbar-collapse" id="yahyaNavbar">
-                <ul class="navbar-nav" style="margin-left: auto!important;">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="./">Главная</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="./#services">Услуги</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="./#cars">Автомобили</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="./#reserve">Бронирование</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="./#contact-us">Контакты</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="./login">Вход</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="./register">Регистрация</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
     <div class="container my-5">
         <div class="row">
             <!-- Car Image and Details -->
