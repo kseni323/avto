@@ -30,12 +30,9 @@
     }
 
     .content {
-    position: relative;
-    z-index: 1; 
     text-align: left;
     color: #fff; 
     font-family: "Montserrat";
-    margin-top: 15px;
 }
     .services_section .section-title {
         font-size: 1.2em;
