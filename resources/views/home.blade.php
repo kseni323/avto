@@ -39,10 +39,10 @@
 }
 
 .col-lg-4 {
-  padding-top: 55px;
-    font-size: 40px;
-    line-height: 48px;
-    font-weight: 400;
+  padding-top: 15x;
+    font-size: 10px;
+    line-height: 10px;
+    font-weight: 100;
     letter-spacing: 0;
     font-family: "Montserrat";
 }
