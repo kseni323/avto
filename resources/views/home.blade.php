@@ -18,6 +18,7 @@
 </head>
 <style>
 @media (max-width: 480px) {
+
   * {
     margin: 0;
     padding: 0;
@@ -34,7 +35,7 @@
     text-align: left;
     color: #fff; 
     font-family: "Montserrat";
-    padding-left: 152px;
+    margin-top: 15px;
 }
     .services_section .section-title {
         font-size: 1.2em;
