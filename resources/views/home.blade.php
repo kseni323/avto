@@ -30,14 +30,22 @@
     }
 
     .content {
+    position: relative;
+    z-index: 1; 
     text-align: left;
     color: #fff; 
     font-family: "Montserrat";
+    padding-left: 152px;
 }
-    .services_section .section-title {
-        font-size: 1.2em;
-    }
 
+.col-lg-4 {
+  padding-top: 55px;
+    font-size: 40px;
+    line-height: 48px;
+    font-weight: 400;
+    letter-spacing: 0;
+    font-family: "Montserrat";
+}
     .footer_widget .contact_info li i {
         font-size: 1em;
     }
