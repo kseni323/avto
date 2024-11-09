@@ -38,14 +38,6 @@
     padding-left: 152px;
 }
 
-.col-lg-4 {
-  padding-top: 15x;
-    font-size: 10px;
-    line-height: 10px;
-    font-weight: 100;
-    letter-spacing: 0;
-    font-family: "Montserrat";
-}
     .footer_widget .contact_info li i {
         font-size: 1em;
     }
