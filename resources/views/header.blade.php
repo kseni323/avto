@@ -25,10 +25,10 @@
         <a class="navbar-brand" href="#">
             <span class="drive-text">drive</span><span style="color:#04DBC0">Go</span>&nbsp;
         </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mobileNavbar" aria-controls="mobileNavbar" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        
+                <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target=".main-menu-collapse" aria-controls="navbarMenuContent" aria-expanded="false" aria-label="Toggle navigation"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+                <span class="navbar-toggler-icon"></span>
+
+
         <div class="collapse navbar-collapse" id="mobileNavbar">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item active">
