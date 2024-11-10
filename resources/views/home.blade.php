@@ -46,9 +46,16 @@
     margin: 5px 0;
 }
 
-.hero-section .content .btn {
-  padding: 5px 10px;
+.btn {
+    display: inline-block;
+    padding: 5px 10px;
+    background: #04DBC0;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1.1em;
 }
+
 
     .footer_widget .contact_info li i {
         font-size: 1em;
