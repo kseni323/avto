@@ -88,7 +88,7 @@
     line-height: 50px;
     padding: 0 10px;
     float: left;
-    width: 50%;
+    width: 10%;
     margin-bottom: 10px;
     transition: all 0.5s ease-in-out;
 }
@@ -101,7 +101,7 @@
     line-height: 50px;
     display: inline-block;
     padding: 0 10px;
-    width: 10%;
+    width: 50%;
     cursor: pointer;
     border: none;
     transition: all 0.5s ease-in-out;
