@@ -83,6 +83,13 @@
   width: 70%;
 }
 
+.sbmt-bttn {
+    background: #04DBC0;
+    color: white;
+    /* padding: 10px 25px; */
+    width: 100%;
+}
+
 
 }
 </style>
