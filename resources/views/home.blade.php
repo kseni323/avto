@@ -92,7 +92,6 @@
 }
 
 .btn{
-  padding-top: 15px;
   width: 70%;
 }
 
@@ -111,7 +110,6 @@
 }
 }
 </style>
-
 
 <body>
     <div class="hero-section">
