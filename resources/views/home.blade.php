@@ -92,7 +92,7 @@
 }
 
 .btn{
-  top: 10px;
+  padding-top: 15px;
   width: 70%;
 }
 
