@@ -92,6 +92,7 @@
 }
 
 .btn{
+  top: 10px;
   width: 70%;
 }
 
@@ -109,10 +110,9 @@
     transition: all 0.5s ease-in-out;
 }
 }
-
-
-
 </style>
+
+
 <body>
     <div class="hero-section">
         <div class="content"> 
