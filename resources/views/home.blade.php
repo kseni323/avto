@@ -53,7 +53,7 @@
     padding-top: 25px;
     font-weight: 200;
     font-family: "Montserrat";
-    padding: 5px 0px;
+    padding: 19px 0px;
     color:#a2aab1;
 }
 
@@ -101,7 +101,7 @@
     line-height: 50px;
     display: inline-block;
     padding: 0 10px;
-    width: 50%;
+    width: 10%;
     cursor: pointer;
     border: none;
     transition: all 0.5s ease-in-out;
