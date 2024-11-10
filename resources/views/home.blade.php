@@ -34,7 +34,7 @@
     position: relative;
     bottom: 10px;
     left: 10px;
-    top: 45px;
+    top: 55x;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
