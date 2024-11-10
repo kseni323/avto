@@ -27,6 +27,7 @@
 
 .hero-section {
     position: relative;
+    text-align: left;
 }
 
 .hero-section .content {
@@ -43,6 +44,7 @@
 .hero-section .content p,
 .hero-section .content .btn {
     margin: 5px 0;
+    text-align: left;
 }
 
     .footer_widget .contact_info li i {
