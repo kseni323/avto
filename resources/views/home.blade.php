@@ -36,6 +36,7 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    text-align: left;
 }
 
 .hero-section .content h1,
