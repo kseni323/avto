@@ -46,6 +46,10 @@
     margin: 5px 0;
 }
 
+.hero-section .content .btn {
+  padding: 5px 10px;
+}
+
     .footer_widget .contact_info li i {
         font-size: 1em;
     }
