@@ -37,7 +37,7 @@
     flex-direction: column;
     align-items: flex-start;
     padding-left: 10px;
-    padding: 30px 60px;
+    padding: 60x 10px;
 }
 
 .hero-section .content h1,
