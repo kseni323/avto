@@ -90,6 +90,10 @@
     transition: all 0.5s ease-in-out;
 }
 
+.btn{
+  width: 50%;
+}
+
 .btn-primaary {
     background-color: #04DBC0;
     font-family: "Work Sans", sans-serif;
