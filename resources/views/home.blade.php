@@ -42,7 +42,7 @@
 .hero-section .content h1,
 .hero-section .content p,
 .hero-section .content .btn {
-    margin: 5px 0;
+    margin: 30px 0;
 }
 
     .footer_widget .contact_info li i {
