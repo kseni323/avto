@@ -27,7 +27,7 @@
 
 .hero-section {
     position: relative;
-    height: 300px;
+    height: 400px;
 }
 
 .hero-section .content {
