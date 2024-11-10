@@ -31,14 +31,13 @@
 }
 
 .hero-section .content {
-    position: absolute;
+    position: relative;
     bottom: 10px;
     left: 10px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     padding-left: 10px;
-    padding: 10px 20px;
 }
 
 .hero-section .content h1,
