@@ -37,12 +37,13 @@
     flex-direction: column;
     align-items: flex-start;
     padding-left: 10px;
+    padding-top: 10px;
 }
 
 .hero-section .content h1,
 .hero-section .content p,
 .hero-section .content .btn {
-    margin: 30px 0;
+    margin: 5px 0;
 }
 
     .footer_widget .contact_info li i {
