@@ -79,18 +79,6 @@
         bottom: 10px; /* Снижение текста вниз */
     }
 
-    .subscribe_form .form_input {
-    display: block;
-    border: none;
-    font-size: 14px;
-    line-height: 50px;
-    padding: 0 10px;
-    float: left;
-    width: 50%;
-    margin-bottom: 10px;
-    transition: all 0.5s ease-in-out;
-}
-
 .btn{
   width: 70%;
 }
