@@ -34,7 +34,7 @@
     position: relative;
     bottom: 10px;
     left: 10px;
-    top: 35px;
+    top: 40px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -78,6 +78,7 @@
         font-size: 0.9em;
         bottom: 10px; /* Снижение текста вниз */
     }
+
     .subscribe_form .form_input {
     display: block;
     border: none;
