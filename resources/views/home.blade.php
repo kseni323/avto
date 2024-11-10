@@ -79,19 +79,21 @@
         bottom: 10px; /* Снижение текста вниз */
     }
     .subscribe_form .form_input {
-    display: block;
-    border: none;
-    font-size: 14px;
-    line-height: 50px;
-    padding: 0 10px;
-    float: left;
-    width: 50%;
-    margin-bottom: 10px;
-    transition: all 0.5s ease-in-out;
+    width: 10%;
 }
 
 .btn-primaary {
-    width: 10%;
+    background-color: #04DBC0;
+    font-family: "Work Sans", sans-serif;
+    font-size: 15px;
+    font-weight: 100;
+    line-height: 50px;
+    display: inline-block;
+    padding: 0 10px;
+    width: 50%;
+    cursor: pointer;
+    border: none;
+    transition: all 0.5s ease-in-out;
 }
 }
 
