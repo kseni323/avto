@@ -32,7 +32,7 @@
 
 .hero-section .content {
     position: relative;
-    bottom: 10px;
+    bottom: 50px;
     left: 10px;
     display: flex;
     flex-direction: column;
@@ -44,16 +44,6 @@
 .hero-section .content p,
 .hero-section .content .btn {
     margin: 5px 0;
-}
-
-.btn {
-    display: inline-block;
-    padding: 5px 10px;
-    background: #04DBC0;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    font-size: 1.1em;
 }
 
 
