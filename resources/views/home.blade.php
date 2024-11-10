@@ -53,7 +53,7 @@
     padding-top: 25px;
     font-weight: 200;
     font-family: "Montserrat";
-    padding: 0px 0px;
+    padding: 5px 0px;
     color:#a2aab1;
 }
 
@@ -79,6 +79,32 @@
         bottom: 10px; /* Снижение текста вниз */
     }
     
+}
+
+.subscribe_form .form_input {
+    display: block;
+    border: none;
+    font-size: 14px;
+    line-height: 50px;
+    padding: 0 10px;
+    float: left;
+    width: 50%;
+    margin-bottom: 10px;
+    transition: all 0.5s ease-in-out;
+}
+
+.btn-primaary {
+    background-color: #04DBC0;
+    font-family: "Work Sans", sans-serif;
+    font-size: 15px;
+    font-weight: 100;
+    line-height: 50px;
+    display: inline-block;
+    padding: 0 10px;
+    width: 50%;
+    cursor: pointer;
+    border: none;
+    transition: all 0.5s ease-in-out;
 }
 
 </style>
