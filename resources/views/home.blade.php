@@ -50,6 +50,9 @@
     margin-bottom: 10px;
 }
 
+.section-title {
+    font-size: 20px;
+}
 
 .col-lg-4{
     position: relative;
@@ -83,7 +86,7 @@
     }
 
 .btn{
-  width: 60%;
+  width: 85%;
   font-size: 15px;
 }
 
@@ -95,7 +98,7 @@
 }
 
 .subscribe_form .form_input {
-    width: 60%;
+    width: 85%;
 }
 
 
