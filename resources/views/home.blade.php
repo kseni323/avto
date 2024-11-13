@@ -141,8 +141,8 @@
     <label for="car_model">Модель автомобиля</label>
     <select name="car_model" class="form-control" required>
         <option value="">Выберите модель</option>
-        @foreach($carModels as $model)
-            <option value="{{ $model->id }}">{{ $model->name }}</option> 
+        @foreach ($carModels as $car)
+            <option value="{{ $car->model }}">{{ $car->model }}</option>
         @endforeach
     </select>
 </div>
