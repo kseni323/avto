@@ -148,7 +148,7 @@
                                 <option value="mimi_countryman">MINI Countryman</option>
                                 <option value="hyundai_solaris">Hyundai Solaris</option>
                                 <option value="bmw_5_series">BMW 5 Series Sedan G30</option>
-                                <option value="toyota_land">Toyota Land Cruiser Prado/option>
+                                <option value="toyota_land">Toyota Land Cruiser Prado</option>
                                 <option value="skoda_octavia">Skoda Octavia</option>
                                 <option value="ford_explorer">Ford Explorer</option>
                             </select>
