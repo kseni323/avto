@@ -86,7 +86,7 @@
     }
 
 .btn{
-  width: 85%;
+  width: 60%;
   font-size: 15px;
 }
 
