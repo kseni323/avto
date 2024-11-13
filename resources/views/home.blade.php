@@ -187,30 +187,6 @@
     Сообщение с дальнейшими деталями отправлено на вашу почту.
 </div>
 
-<script>
-  document.querySelector('.sbmt-bttn').addEventListener('click', function(event) {
-    // Получаем форму, которую необходимо проверить
-    const form = document.querySelector('form');
-
-    // Проверяем все обязательные поля
-    let isFormValid = true;
-    form.querySelectorAll('input[required]').forEach(function(input) {
-        if (!input.value) {
-            isFormValid = false;
-            input.classList.add('is-invalid'); // Добавляем класс для визуального выделения незаполненных полей
-        } else {
-            input.classList.remove('is-invalid'); // Убираем класс, если поле заполнено
-        }
-    });
-
-    // Если форма невалидна, останавливаем выполнение и предупреждаем пользователя
-    if (!isFormValid) {
-        alert('Пожалуйста, заполните все обязательные поля!');
-        event.preventDefault();
-    }
-});
-</script>
-
 <!-- JavaScript для показа и скрытия уведомления -->
 <script>
     document.getElementById('modalForm').addEventListener('submit', function(event) {
