@@ -72,25 +72,27 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     
     <script>
-document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('filterForm').addEventListener('submit', function(event) {
-        event.preventDefault(); // Предотвращаем стандартное поведение отправки формы
+document.getElementById('filterButton').addEventListener('click', function() {
+    // Собираем параметры фильтрации
+    const classFilter = document.querySelector('select[name="class"]').value;
+    const transmissionFilter = document.querySelector('select[name="transmission"]').value;
+    const driveTypeFilter = document.querySelector('select[name="drive_type"]').value;
 
-        // Получаем данные формы
-        const formData = new FormData(this);
-        const queryString = new URLSearchParams(formData).toString();
+    // Формируем URL с параметрами
+    const url = /filter?class=${classFilter}&transmission=${transmissionFilter}&drive_type=${driveTypeFilter};
 
-        // Выполняем AJAX-запрос с использованием fetch API
-        fetch(/cars/filter?${queryString})
-            .then(response => response.json())
-            .then(data => {
-                // Обновляем содержимое контейнера с результатами
-                document.getElementById('carResults').innerHTML = data.html;
-            })
-            .catch(error => {
-                console.error('Ошибка при фильтрации:', error);
-            });
-    });
+    fetch(url, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    })
+    .then(response => response.json())
+    .then(data => {
+        // Вставляем полученный HTML в контейнер на странице
+        document.getElementById('carResults').innerHTML = data.html;
+    })
+    .catch(error => console.error('Ошибка:', error));
 });
     </script>
 
