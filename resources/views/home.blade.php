@@ -17,7 +17,7 @@
 </head>
 </head>
 <style>
-@media (max-width: 480px) {
+@media (max-width: 490px) {
 
   * {
     margin: 0;
@@ -34,7 +34,7 @@
     position: relative;
     bottom: 10px;
     left: 10px;
-    top: 80px;
+    top: 30px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -42,13 +42,13 @@
 }
 
   .content h1 {
-    font-size: 1em;
-    margin-bottom: 5px;
+    font-size: 2em;
+    margin-bottom: 10px;
 }
 
 .content p {
-    font-size: 1em;
-    margin-bottom: 5px;
+    font-size: 2em;
+    margin-bottom: 10px;
 }
 
 
