@@ -350,6 +350,23 @@ element.style {
             </div>
         </div>
     </div>
+
+<footer class="footer_section">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-6">
+						<div class="copyright">
+							driveGo© 
+							<script type="text/javascript"> 
+								document.write(new Date().getFullYear())
+							</script>
+							Все правы защищены
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+
 </body>
 
 @endsection
