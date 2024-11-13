@@ -48,7 +48,6 @@
         </div>
     </form>
 
-    <!-- Отображение автомобилей -->
 
     <div class="row mt-4">
         @foreach($cars as $car)
