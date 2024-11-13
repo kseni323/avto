@@ -11,9 +11,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-    <link rel="stylesheet" href="css/app1.css">
-    <link rel="stylesheet" href="css/app232.css">
-    <link rel="stylesheet" href="css/app.css">
     <script src="js/forms.js" defer></script>
 </head>
 <style>
@@ -223,6 +220,121 @@ body {
 
 element.style {
     padding: 50px 0px;
+}
+
+#subscribeConfirmation {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #04DBC0;
+    color: #000;
+    border: 1px solid #000;
+    padding: 15px;
+    border-radius: 5px;
+    font-size: 16px;
+    z-index: 1060;
+    display: none; /* Скрыто по умолчанию */
+  }
+
+  .btn-primaary{
+    background-color: #04DBC0;
+    font-family: "Work Sans", sans-serif;
+    font-size: 15px;
+    font-weight: 100;
+    line-height: 50px;
+    display: inline-block;
+    padding: 0 10px;
+    width: 100%;
+    cursor: pointer;
+    border: none;
+    transition: all 0.5s ease-in-out;
+}
+
+.footer_container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    color: #e0e0e0; /* Цвет текста */
+}
+
+.footer_widget {
+    margin-left: 20px;
+}
+
+.footer_widget h3 {
+    margin-bottom: 15px;
+    font-size: 1.5em;
+    color: #fff; /* Цвет заголовка */
+}
+
+.contact_info {
+    list-style: none;
+    padding: 0;
+}
+
+.contact_info li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 1.1em;
+}
+
+.contact_info i {
+    margin-right: 10px;
+    color: #04DBC0; /* Цвет иконок */
+}
+.contact-form {
+    background-color: #fff;
+    padding: 50px 40px;
+    -webkit-box-shadow: 0px 50px 100px 0px rgba(64, 1, 4, 0.1), 0px -6px 0px 0px rgba(248, 99, 107, 0.004);
+    box-shadow: 0px 50px 100px 0px rgba(64, 1, 4, 0.1), 0px -6px 0px 0px rgba(248, 99, 107, 0.004);
+    border-radius: 3px;
+}
+*, ::after, ::before {
+    box-sizing: border-box;
+}
+
+user agent stylesheet
+div {
+    display: block;
+    unicode-bidi: isolate;
+}
+
+[type=button]:not(:disabled), [type=reset]:not(:disabled), [type=submit]:not(:disabled), button:not(:disabled) {
+    cursor: pointer;
+}
+
+.contact_send_btn {
+    background-color: #04DBC0;
+    color: #fff;
+    font-family: "Work Sans", sans-serif;
+    font-size: 15px;
+    font-weight: 100;
+    line-height: 50px;
+    display: inline-block;
+    padding: 0 10px;
+    width: 100%;
+    cursor: pointer;
+    border: none;
+    transition: all 0.5s ease-in-out;
+}
+
+.contact-form {
+    background-color: #fff;
+    padding: 50px 40px;
+    -webkit-box-shadow: 0px 50px 100px 0px rgba(64, 1, 4, 0.1), 0px -6px 0px 0px rgba(248, 99, 107, 0.004);
+    box-shadow: 0px 50px 100px 0px rgba(64, 1, 4, 0.1), 0px -6px 0px 0px rgba(248, 99, 107, 0.004);
+    border-radius: 3px;
+    
+}
+*, ::after, ::before {
+    box-sizing: border-box;
+}
+user agent stylesheet
+div {
+    display: block;
+    unicode-bidi: isolate;
 }
 
 
