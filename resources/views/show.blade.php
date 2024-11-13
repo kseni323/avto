@@ -264,10 +264,29 @@ element.style {
                         </div>
                         <div class="price mt-3">
                             <p>{{ $car->price }} ₽ в сутки</p>
-                            <p><small>депозит {{ $car->deposit }}₽</small></p>
                         </div>
-                        <button type="button" class="btn btn-primary btn-block" data-bs-toggle="modal" data-bs-target="#bookingModal">Забронировать</button>
-                    </form>
+                        <div class="rental-info mt-3">
+        <p id="rentalSummary"></p>
+    </div>
+    <button type="button" class="btn btn-primary btn-block" data-bs-toggle="modal" data-bs-target="#bookingModal" onclick="calculateRental()">Забронировать</button>
+</form>
+
+<script>
+    function calculateRental() {
+        const pickupDate = new Date(document.getElementById('pickupDate').value);
+        const returnDate = new Date(document.getElementById('returnDate').value);
+        const pricePerDay = {{ $car->price }};
+
+        if (pickupDate && returnDate && returnDate >= pickupDate) {
+            const days = Math.ceil((returnDate - pickupDate) / (1000 * 60 * 60 * 24));
+            const totalCost = days * pricePerDay;
+            
+            document.getElementById('rentalSummary').textContent = `Аренда ${days} суток, ${totalCost} ₽`;
+        } else {
+            document.getElementById('rentalSummary').textContent = 'Пожалуйста, выберите корректные даты.';
+        }
+    }
+</script>
 
                     <div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="bookingModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
