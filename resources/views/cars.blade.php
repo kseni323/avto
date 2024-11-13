@@ -48,19 +48,18 @@
         </div>
     </form>
 
+    <!-- Отображение автомобилей -->
 
-    <div class="row mt-4">
-        @foreach($cars as $car)
-            <div class="col-md-4 mb-3">
+    <div class="row mt-4" id="car-results">
+        @foreach ($cars as $car)
+            <div class="col-md-4">
                 <div class="card">
-                    <img src="{{ $car->image_url }}" class="card-img-top" alt="{{ $car->model }}">
+                    <h5 class="card-name text-center">{{ $car->name }}</h5> <!-- Название автомобиля над картинкой -->
+                    <img src="{{ $car->image }}" class="card-img-top" alt="{{ $car->name }}">
                     <div class="card-body">
-                        <h5 class="card-title">{{ $car->model }}</h5>
-                        <p class="card-text">
-                            Класс: {{ $car->class }}<br>
-                            Трансмиссия: {{ $car->transmission }}<br>
-                            Привод: {{ $car->drive_type }}
-                        </p>
+                        <p class="card-text">{{ $car->description }}</p>
+                        <p class="card-text"><strong>{{ $car->price }} ₽</strong></p>
+                        <a href="{{ route('cars.show', $car->id) }}" class="btn btn-outline-primary">Подробнее</a>
                     </div>
                 </div>
             </div>
@@ -73,20 +72,26 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     
     <script>
-document.getElementById('filterButton').addEventListener('click', function() {
-    fetch('/path/to/filter', {
+document.getElementById('filterForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Предотвращаем стандартное поведение формы
+
+    // Собираем параметры фильтрации
+    const formData = new FormData(this);
+    const params = new URLSearchParams(formData).toString();
+
+    fetch(/filter?${params}, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
         },
     })
-    .then(response => response.text()) // получаем текст вместо JSON
-    .then(html => {
-        document.getElementById('carResults').innerHTML = html; // вставляем в DOM
+    .then(response => response.json())
+    .then(data => {
+        // Проверяем и вставляем полученный HTML
+        document.getElementById('car-results').innerHTML = data.html;
     })
     .catch(error => console.error('Ошибка:', error));
 });
-
     </script>
 
 <footer class="footer_section">
