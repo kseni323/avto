@@ -270,7 +270,6 @@ element.style {
                     </form>
 
                     <script>
-                        <script>
     document.addEventListener('DOMContentLoaded', function () {
         const pickupDateInput = document.querySelector('input[name="pickup_date"]');
         const returnDateInput = document.querySelector('input[name="return_date"]');
@@ -303,7 +302,6 @@ element.style {
         returnDateInput.addEventListener('change', calculateDaysAndPrice);
     });
 </script>
-                    </script>
                     <div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="bookingModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
