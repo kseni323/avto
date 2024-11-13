@@ -45,12 +45,28 @@
                     <li class="nav-item">
                         <a class="nav-link" href="./#contact-us">Контакты</a>
                     </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="./login">Вход</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="./register">Регистрация</a>
-                </li>
+                    <ul class="nav">
+    @auth
+        <li class="nav-item">
+            <a href="{{ route('profile.edit') }}" class="nav-link rounded-md px-3 py-2 text-black">Профиль</a>
+        </li>
+        <li class="nav-item">
+            <form method="POST" action="{{ route('logout') }}" style="display: inline;">
+                @csrf
+                <button type="submit" class="nav-link rounded-md px-3 py-2 text-black border-0 bg-transparent">Выйти</button>
+            </form>
+        </li>
+    @else
+        <li class="nav-item">
+            <a href="{{ route('login') }}" class="nav-link rounded-md px-3 py-2 text-black">Вход</a>
+        </li>
+        @if (Route::has('register'))
+            <li class="nav-item">
+                <a href="{{ route('register') }}" class="nav-link rounded-md px-3 py-2 text-black">Регистрация</a>
+            </li>
+        @endif
+    @endauth
+</ul>
             </ul>
         </div>
     </div>

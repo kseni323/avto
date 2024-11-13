@@ -18,10 +18,11 @@
 </head>
 <style>
 @media (max-width: 480px) {
+  body {
+    overflow-x: hidden;
+}
 
   * {
-    margin: 0;
-    padding: 0;
     box-sizing: border-box;
 }
 
