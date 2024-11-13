@@ -35,7 +35,7 @@ Route::get('/show', function () {
     return view('show');
 });
 
-Route::get('/home', [HomeController::class, 'index'])->name('home.index');;
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 
 Route::get('/cars', [CarController::class, 'index'])->name('cars.index');
