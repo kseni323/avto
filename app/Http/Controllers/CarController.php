@@ -23,6 +23,7 @@ class CarController extends Controller
     public function filter(Request $request) {
         $query = Car::query();
     
+        // Применение фильтров
         if ($request->has('class') && $request->class) {
             $query->where('class', $request->class);
         }
@@ -41,7 +42,8 @@ class CarController extends Controller
             return response()->json(['html' => '<div class="col-12 text-center mt-4"><p>По выбранным фильтрам ничего не найдено.</p></div>']);
         }
     
-        $html = view('partials.cars', compact('cars'))->render();
+        // Рендеринг вьюшки с результатами
+        $html = view('car_results', compact('cars'))->render();
         return response()->json(['html' => $html]);
     }
 

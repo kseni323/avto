@@ -75,20 +75,23 @@ document.getElementById('filterForm').addEventListener('submit', function(event)
     const formData = new FormData(this);
     const params = new URLSearchParams(formData).toString();
 
-    fetch(/filter?${params}, {
+    
+    fetch(`/cars/filter?${params}`, {
         method: 'GET',
         headers: {
-            'Content-Type': 'application/json',
+            'X-Requested-With': 'XMLHttpRequest', // Для обозначения Ajax-запроса
         },
     })
     .then(response => response.json())
     .then(data => {
-        // Проверяем и вставляем полученный HTML
         document.getElementById('car-results').innerHTML = data.html;
     })
     .catch(error => console.error('Ошибка:', error));
 });
+
     </script>
+
+
 
 <footer class="footer_section">
 			<div class="container">
