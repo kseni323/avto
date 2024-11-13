@@ -144,7 +144,6 @@
                                 <option value="mini_cooper">MINI Cooper</option>
                                 <option value="mercedes_e_class">Mercedes Benz E-class</option>
                                 <option value="porsche_cayenne">Porsche Cayenne Hybrid</option>
-                                <option value="porsche_cayenne">Porsche Cayenne Hybrid</option>
                                 <option value="mimi_countryman">MINI Countryman</option>
                                 <option value="hyundai_solaris">Hyundai Solaris</option>
                                 <option value="bmw_5_series">BMW 5 Series Sedan G30</option>
