@@ -29,6 +29,30 @@
     box-sizing: border-box;
 }
 
+.hero-section {
+    position: relative;
+    height: 360px;
+}
+
+.hero-section .content {
+    position: relative;
+    bottom: 10px;
+    left: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 10px;
+}
+
+.content h1 {
+    font-size: 30px;
+    margin-bottom: 9px;
+}
+
+.content p {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
 
 
 }
