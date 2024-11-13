@@ -221,6 +221,30 @@ element.style {
     padding: 50px 0px;
 }
 
+.footer_widget h3 {
+    color: #fff;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0px;
+    margin-bottom: 25px;
+}
+
+.footer_widget ul.contact_info li {
+    padding: 0.5rem 0;
+}
+ul > li {
+    list-style: none;
+}
+*, ::after, ::before {
+    box-sizing: border-box;
+}
+user agent stylesheet
+li {
+    display: list-item;
+    text-align: -webkit-match-parent;
+    unicode-bidi: isolate;
+}
+
 </style>
 <body>
     <div class="container my-5">
