@@ -37,7 +37,7 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 150px 10px;
+    padding: 0px 0px;
     padding-left: 10px;
 }
 
