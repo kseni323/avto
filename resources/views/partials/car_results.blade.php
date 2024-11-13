@@ -4,7 +4,7 @@
     </div>
 @else
     @foreach ($cars as $car)
-        <div class="col-md-4" id="carResults">
+        <div class="col-md-4">
             <div class="card">
                 <h5 class="card-name text-center">{{ $car->name }}</h5>
                 <img src="{{ $car->image }}" class="card-img-top" alt="{{ $car->name }}">

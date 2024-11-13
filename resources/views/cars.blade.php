@@ -72,16 +72,14 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     
     <script>
-document.getElementById('filterButton').addEventListener('click', function() {
+document.getElementById('filterForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Предотвращаем стандартное поведение формы
+
     // Собираем параметры фильтрации
-    const classFilter = document.querySelector('select[name="class"]').value;
-    const transmissionFilter = document.querySelector('select[name="transmission"]').value;
-    const driveTypeFilter = document.querySelector('select[name="drive_type"]').value;
+    const formData = new FormData(this);
+    const params = new URLSearchParams(formData).toString();
 
-    // Формируем URL с параметрами
-    const url = /filter?class=${classFilter}&transmission=${transmissionFilter}&drive_type=${driveTypeFilter};
-
-    fetch(url, {
+    fetch(/filter?${params}, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -89,8 +87,8 @@ document.getElementById('filterButton').addEventListener('click', function() {
     })
     .then(response => response.json())
     .then(data => {
-        // Вставляем полученный HTML в контейнер на странице
-        document.getElementById('carResults').innerHTML = data.html;
+        // Проверяем и вставляем полученный HTML
+        document.getElementById('car-results').innerHTML = data.html;
     })
     .catch(error => console.error('Ошибка:', error));
 });
