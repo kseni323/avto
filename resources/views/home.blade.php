@@ -41,7 +41,7 @@
 }
 
 .content h1 {
-    font-size: 20px;
+    font-size: 30px;
     margin-bottom: 9px;
 }
 
@@ -83,7 +83,7 @@
     }
 
 .btn{
-  width: 40%;
+  width: 60%;
 }
 
 .sbmt-bttn {
