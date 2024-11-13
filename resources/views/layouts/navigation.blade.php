@@ -86,7 +86,6 @@
             <x-responsive-nav-link :href="route('home')">
                             {{ __('Главная') }}
                         </x-responsive-nav-link>
-                        
                 <x-responsive-nav-link :href="route('profile.edit')">
                     {{ __('Профиль') }}
                 </x-responsive-nav-link>
