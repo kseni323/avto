@@ -12,35 +12,13 @@ class CarController extends Controller
         return view('cars', compact('cars'));
     }
 
-    public function filter(Request $request)
+    public function showCars()
     {
-        $cars = Car::query()
-            ->when($request->class, function($query) use ($request) {
-                return $query->where('class', $request->class);
-            })
-            ->when($request->transmission, function($query) use ($request) {
-                return $query->where('transmission', $request->transmission);
-            })
-            ->when($request->drive_type, function($query) use ($request) {
-                return $query->where('drive_type', $request->drive_type);
-            })
-            ->get();
+        $classes = Car::select('class')->distinct()->pluck('class')->filter();
+        $transmissions = Car::select('transmission')->distinct()->pluck('transmission')->filter();
+        $driveTypes = Car::select('drive_type')->distinct()->pluck('drive_type')->filter();
     
-        $html = view('partials.car_results', compact('cars'))->render();
-    
-        return response()->json(['html' => $html]);
-    }
-
-    public function showFilterForm()
-    {
-        $classes = App\Models\Car::select('class')->distinct()->pluck('class')->filter();
-        $transmissions = App\Models\Car::select('transmission')->distinct()->pluck('transmission')->filter();
-        $driveTypes = App\Models\Car::select('drive_type')->distinct()->pluck('drive_type')->filter();
-    
-        // Проверка данных: убедитесь, что все переменные — это коллекции, а не строки
-        dd($classes, $transmissions, $driveTypes);
-    
-        return view('filter_form', compact('classes', 'transmissions', 'driveTypes'));
+        return view('cars', compact('classes', 'transmissions', 'driveTypes'));
     }
 
 public function show($id)

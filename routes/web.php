@@ -40,11 +40,9 @@ Route::get('/cars', [CarController::class, 'index'])->name('cars.index');
 
 Route::get('/', [HomeController::class, 'index']);
 
-Route::get('/cars/filter', [CarController::class, 'filter'])->name('cars.filter');
-
 Route::get('/cars/{id}', [CarController::class, 'show'])->name('cars.show');
 
-Route::get('/filter-form', [CarController::class, 'showFilterForm'])->name('filter.form');
+Route::get('/cars', [CarController::class, 'showCars'])->name('cars.showCars');
 
 Route::post('/subscribe', [SubscriptionController::class, 'subscribe']);
 

@@ -19,12 +19,6 @@
     <form id="filterForm" method="GET" action="{{ route('cars.filter') }}" class="row g-3">
     <div class="col-md-4">
         <label for="classFilter" class="form-label">Класс</label>
-        <select id="classFilter" name="class" class="form-select">
-            <option value="">Все классы</option>
-            @foreach($classes as $class)
-                <option value="{{ $class }}">{{ $class }}</option>
-            @endforeach
-        </select>
     </div>
     <div class="col-md-4">
         <label for="transmissionFilter" class="form-label">Трансмиссия</label>
