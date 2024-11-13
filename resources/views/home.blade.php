@@ -46,7 +46,7 @@
 }
 
 .content p {
-    font-size: 16px;
+    font-size: 18px;
     margin-bottom: 10px;
 }
 
@@ -84,6 +84,7 @@
 
 .btn{
   width: 60%;
+  font-size: 15px;
 }
 
 .sbmt-bttn {
