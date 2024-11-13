@@ -73,26 +73,27 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     
     <script>
-document.getElementById('filterForm').addEventListener('submit', function(event) {
-    event.preventDefault(); // Предотвращаем стандартное поведение формы
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('filterForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Предотвращаем стандартное поведение отправки формы
 
-    // Собираем параметры фильтрации
-    const formData = new FormData(this);
-    const params = new URLSearchParams(formData).toString();
+        // Получаем данные формы
+        const formData = new FormData(this);
+        const queryString = new URLSearchParams(formData).toString();
 
-    fetch(/filter?${params}, {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-    })
-    .then(response => response.json())
-    .then(data => {
-        // Проверяем и вставляем полученный HTML
-        document.getElementById('car-results').innerHTML = data.html;
-    })
-    .catch(error => console.error('Ошибка:', error));
+        // Выполняем AJAX-запрос с использованием fetch API
+        fetch(`/cars/filter?${queryString}`)
+            .then(response => response.json())
+            .then(data => {
+                // Обновляем содержимое контейнера с результатами
+                document.getElementById('carResults').innerHTML = data.html;
+            })
+            .catch(error => {
+                console.error('Ошибка при фильтрации:', error);
+            });
+    });
 });
+
     </script>
 
 <footer class="footer_section">
