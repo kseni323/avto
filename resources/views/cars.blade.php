@@ -38,8 +38,8 @@
             <label for="driveTypeFilter" class="form-label">Привод</label>
             <select id="driveTypeFilter" name="drive_type" class="form-select">
                 <option value="">Все приводы</option>
-                @foreach($driveTypes as $driveType)
-                    <option value="{{ $driveType }}">{{ $driveType }}</option>
+                @foreach($drive_types as $drive_type)
+                    <option value="{{ $drive_type }}">{{ $drive_type }}</option>
                 @endforeach
             </select>
         </div>
