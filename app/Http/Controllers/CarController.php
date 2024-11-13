@@ -31,6 +31,18 @@ class CarController extends Controller
         return response()->json(['html' => $html]);
     }
 
+    public function showFilterForm()
+    {
+        $classes = App\Models\Car::select('class')->distinct()->pluck('class')->filter();
+        $transmissions = App\Models\Car::select('transmission')->distinct()->pluck('transmission')->filter();
+        $driveTypes = App\Models\Car::select('drive_type')->distinct()->pluck('drive_type')->filter();
+    
+        // Проверка данных: убедитесь, что все переменные — это коллекции, а не строки
+        dd($classes, $transmissions, $driveTypes);
+    
+        return view('filter_form', compact('classes', 'transmissions', 'driveTypes'));
+    }
+
 public function show($id)
 {
     $car = Car::findOrFail($id);
