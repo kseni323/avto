@@ -27,7 +27,7 @@
 
 .hero-section {
     position: relative;
-    height: 330px;
+    height: 360px;
 }
 
 .hero-section .content {
@@ -37,7 +37,6 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 0px 0px;
     padding-left: 10px;
 }
 
