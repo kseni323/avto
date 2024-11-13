@@ -34,7 +34,6 @@
     position: relative;
     bottom: 10px;
     left: 10px;
-    top: 80px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -84,7 +83,7 @@
     }
 
 .btn{
-  width: 70%;
+  width: 40%;
 }
 
 .sbmt-bttn {
