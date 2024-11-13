@@ -41,11 +41,16 @@
     padding-left: 10px;
 }
 
-.hero-section .content h1,
-.hero-section .content p,
-.hero-section .content .btn {
-    margin: 5px 0;
+  .content h1 {
+    font-size: 1em;
+    margin-bottom: 5px;
 }
+
+.content p {
+    font-size: 1em;
+    margin-bottom: 5px;
+}
+
 
 
 .col-lg-4{
