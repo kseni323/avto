@@ -50,9 +50,7 @@
     margin-bottom: 10px;
 }
 
-.section-title {
-    font-size: 20px;
-}
+
 
 .col-lg-4{
     position: relative;
