@@ -34,9 +34,10 @@
 }
 
 .hero-section .content {
-    bottom: 10px;
-    left: 10px;
-    padding-left: 10px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 .content h1 {
