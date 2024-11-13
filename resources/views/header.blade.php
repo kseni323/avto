@@ -38,7 +38,7 @@
                     <a class="nav-link" href="./#services">Услуги</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="./#cars">Автомобили</a>
+                    <a class="nav-link" href="./cars">Автомобили</a>
                 </li>
                 <li class="nav-item">
                         <a class="nav-link" href="./#reserve">Бронирование</a>
