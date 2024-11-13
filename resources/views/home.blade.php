@@ -101,6 +101,10 @@
     width: 85%;
 }
 
+.btn-primaary{
+  width: 85%;
+  font-size: 15px;
+}
 
 }
 </style>
