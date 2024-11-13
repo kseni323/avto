@@ -22,7 +22,7 @@
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-lignt">
     <div class="container">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="./">
             <span class="drive-text">drive</span><span style="color:#04DBC0">Go</span>&nbsp;
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mobileNavbar" aria-controls="mobileNavbar" aria-expanded="false" aria-label="Toggle navigation">
