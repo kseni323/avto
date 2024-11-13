@@ -13,35 +13,43 @@
 </head>
 
 <body>
-    <!-- Фильтры для поиска автомобилей -->
-    <section class="container my-4">
+<section class="container my-4">
     <h2 class="text-center">АВТОМОБИЛИ</h2>
     <form id="filterForm" method="GET" action="{{ route('cars.filter') }}" class="row g-3">
-    <div class="col-md-4">
-        <label for="classFilter" class="form-label">Класс</label>
-    </div>
-    <div class="col-md-4">
-        <label for="transmissionFilter" class="form-label">Трансмиссия</label>
-        <select id="transmissionFilter" name="transmission" class="form-select">
-            <option value="">Все трансмиссии</option>
-            @foreach($transmissions as $transmission)
-                <option value="{{ $transmission }}">{{ $transmission }}</option>
-            @endforeach
-        </select>
-    </div>
-    <div class="col-md-4">
-        <label for="driveTypeFilter" class="form-label">Привод</label>
-        <select id="driveTypeFilter" name="drive_type" class="form-select">
-            <option value="">Все приводы</option>
-            @foreach($driveTypes as $driveType)
-                <option value="{{ $driveType }}">{{ $driveType }}</option>
-            @endforeach
-        </select>
-    </div>
-    <div class="col-md-12 mt-3">
-        <button type="button" id="filterButton" class="btn btn-primary">Фильтровать</button>
-    </div>
-</form>
+        <div class="col-md-4">
+            <label for="classFilter" class="form-label">Класс</label>
+            <select id="classFilter" name="class" class="form-select">
+                <option value="">Все классы</option>
+                @foreach($classes as $class)
+                    <option value="{{ $class }}">{{ $class }}</option>
+                @endforeach
+            </select>
+        </div>
+        <div class="col-md-4">
+            <label for="transmissionFilter" class="form-label">Трансмиссия</label>
+            <select id="transmissionFilter" name="transmission" class="form-select">
+                <option value="">Все трансмиссии</option>
+                @foreach($transmissions as $transmission)
+                    <option value="{{ $transmission }}">{{ $transmission }}</option>
+                @endforeach
+            </select>
+        </div>
+        <div class="col-md-4">
+            <label for="driveTypeFilter" class="form-label">Привод</label>
+            <select id="driveTypeFilter" name="drive_type" class="form-select">
+                <option value="">Все приводы</option>
+                @foreach($driveTypes as $driveType)
+                    <option value="{{ $driveType }}">{{ $driveType }}</option>
+                @endforeach
+            </select>
+        </div>
+        <div class="col-md-12 mt-3">
+            <button type="submit" class="btn btn-primary">Фильтровать</button>
+        </div>
+    </form>
+
+    <!-- Отображение автомобилей -->
+
     <div class="row mt-4" id="car-results">
         @foreach ($cars as $car)
             <div class="col-md-4">
@@ -59,20 +67,30 @@
     </div>
 </section>
 
+</section>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     
     <script>
-document.getElementById('filterButton').addEventListener('click', function() {
-    let classFilter = document.getElementById('classFilter').value;
-    let transmissionFilter = document.getElementById('transmissionFilter').value;
-    let driveTypeFilter = document.getElementById('driveTypeFilter').value;
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('filterForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Предотвращаем стандартное поведение отправки формы
 
-    fetch("{{ route('cars.filter') }}?class=" + classFilter + "&transmission=" + transmissionFilter + "&drive_type=" + driveTypeFilter)
-        .then(response => response.json())
-        .then(data => {
-            document.getElementById('car-results').innerHTML = data.html;
-        })
-        .catch(error => console.error('Error:', error));
+        // Получаем данные формы
+        const formData = new FormData(this);
+        const queryString = new URLSearchParams(formData).toString();
+
+        // Выполняем AJAX-запрос с использованием fetch API
+        fetch(/cars/filter?${queryString})
+            .then(response => response.json())
+            .then(data => {
+                // Обновляем содержимое контейнера с результатами
+                document.getElementById('carResults').innerHTML = data.html;
+            })
+            .catch(error => {
+                console.error('Ошибка при фильтрации:', error);
+            });
+    });
 });
     </script>
 
