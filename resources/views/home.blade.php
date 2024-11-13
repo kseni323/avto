@@ -51,9 +51,6 @@
     margin-bottom: 10px;
 }
 
-.hero-section .content .btn {
-    margin: 5px 0;
-}
 
 .col-lg-4{
     position: relative;
