@@ -17,7 +17,7 @@
 </head>
 </head>
 <style>
-@media (max-width: 500px) {
+@media (max-width: 480px) {
 
   * {
     margin: 0;
@@ -42,11 +42,11 @@
 
   .content h1 {
     font-size: 15px;
-    margin-bottom: 10px;
+    margin-bottom: 9px;
 }
 
 .content p {
-    font-size: 20px;
+    font-size: 16px;
     margin-bottom: 10px;
 }
 
