@@ -34,14 +34,15 @@
     position: relative;
     bottom: 10px;
     left: 10px;
+    top: 80px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     padding-left: 10px;
 }
 
-  .content h1 {
-    font-size: 15px;
+.content h1 {
+    font-size: 20px;
     margin-bottom: 9px;
 }
 
@@ -50,7 +51,9 @@
     margin-bottom: 10px;
 }
 
-
+.hero-section .content .btn {
+    margin: 5px 0;
+}
 
 .col-lg-4{
     position: relative;
