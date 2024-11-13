@@ -243,7 +243,7 @@ element.style {
 
             <!-- Booking Parameters -->
             <div class="col-md-4">
-                <div class="booking-box p-4">
+                < class="booking-box p-4">
                     <h5><strong>Параметры аренды</strong></h5>
                     <form>
                         <div class="form-group">
@@ -268,6 +268,42 @@ element.style {
                         </div>
                         <button type="button" class="btn btn-primary btn-block" data-bs-toggle="modal" data-bs-target="#bookingModal">Забронировать</button>
                     </form>
+
+                    <script>
+                        <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const pickupDateInput = document.querySelector('input[name="pickup_date"]');
+        const returnDateInput = document.querySelector('input[name="return_date"]');
+        const pricePerDay = {{ $car->price }};
+        const totalDaysElement = document.createElement('p');
+        const totalPriceElement = document.createElement('p');
+
+        // Добавляем элементы для отображения количества дней и общей стоимости
+        document.querySelector('.price').appendChild(totalDaysElement);
+        document.querySelector('.price').appendChild(totalPriceElement);
+
+        function calculateDaysAndPrice() {
+            const pickupDate = new Date(pickupDateInput.value);
+            const returnDate = new Date(returnDateInput.value);
+
+            if (pickupDate && returnDate && returnDate > pickupDate) {
+                const timeDiff = returnDate.getTime() - pickupDate.getTime();
+                const days = Math.ceil(timeDiff / (1000 * 3600 * 24));
+
+                // Обновляем отображение количества дней и стоимости
+                totalDaysElement.textContent = `Количество суток: ${days}`;
+                totalPriceElement.textContent = `Общая стоимость: ${days * pricePerDay} ₽`;
+            } else {
+                totalDaysElement.textContent = '';
+                totalPriceElement.textContent = '';
+            }
+        }
+
+        pickupDateInput.addEventListener('change', calculateDaysAndPrice);
+        returnDateInput.addEventListener('change', calculateDaysAndPrice);
+    });
+</script>
+                    </script>
 
                     <div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="bookingModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
