@@ -67,10 +67,6 @@
     </div>
 </section>
 
-</section>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    
     <script>
 document.getElementById('filterForm').addEventListener('submit', function(event) {
     event.preventDefault(); // Предотвращаем стандартное поведение формы
