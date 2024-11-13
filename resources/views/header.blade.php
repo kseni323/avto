@@ -22,7 +22,7 @@
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-lignt">
     <div class="container">
-        <a class="navbar-brand" href="./">
+        <a class="navbar-brand" href="{{ url('/') }}">
             <span class="drive-text">drive</span><span style="color:#04DBC0">Go</span>&nbsp;
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mobileNavbar" aria-controls="mobileNavbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -30,21 +30,21 @@
         </button>      
         <div class="collapse navbar-collapse" id="mobileNavbar">
             <ul class="navbar-nav ms-auto">
-            <li class="nav-item active">
-    <a class="nav-link" href="{{ url('/') }}">Главная</a>
-</li>
-<li class="nav-item">
-    <a class="nav-link" href="{{ url('/#services') }}">Услуги</a>
-</li>
-<li class="nav-item">
-    <a class="nav-link" href="{{ route('cars.index') }}">Автомобили</a>
-</li>
-<li class="nav-item">
-    <a class="nav-link" href="{{ url('/#reserve') }}">Бронирование</a>
-</li>
-<li class="nav-item">
-    <a class="nav-link" href="{{ url('/#contact-us') }}">Контакты</a>
-</li>
+        <li class="nav-item active">
+            <a class="nav-link" href="{{ url('/') }}">Главная</a>
+       </li>
+       <li class="nav-item">
+           <a class="nav-link" href="{{ url('/#services') }}">Услуги</a>
+     </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('cars.index') }}">Автомобили</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{ url('/#reserve') }}">Бронирование</a>
+    </li>
+    <li class="nav-item">
+         <a class="nav-link" href="{{ url('/#contact-us') }}">Контакты</a>
+    </li>
     @auth
         <li class="nav-item">
             <a href="{{ route('profile.edit') }}" class="nav-link ">Профиль</a>
