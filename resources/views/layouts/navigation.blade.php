@@ -83,7 +83,7 @@
             </div>
 
             <div class="mt-3 space-y-1">
-            <x-dropdown-link :href="route('home')">
+            <x-dropdown-link :href="route('/')">
                             {{ __('Главная') }}
                         </x-dropdown-link>
                 <x-responsive-nav-link :href="route('profile.edit')">
