@@ -73,25 +73,18 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     
     <script>
-document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('filterForm').addEventListener('submit', function(event) {
-        event.preventDefault(); // Предотвращаем стандартное поведение отправки формы
-
-        // Получаем данные формы
-        const formData = new FormData(this);
-        const queryString = new URLSearchParams(formData).toString();
-
-        // Выполняем AJAX-запрос с использованием fetch API
-        fetch(`/cars/filter?${queryString}`)
-            .then(response => response.json())
-            .then(data => {
-                // Обновляем содержимое контейнера с результатами
-                document.getElementById('carResults').innerHTML = data.html;
-            })
-            .catch(error => {
-                console.error('Ошибка при фильтрации:', error);
-            });
-    });
+document.getElementById('filterButton').addEventListener('click', function() {
+    fetch('/path/to/filter', {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    })
+    .then(response => response.text()) // получаем текст вместо JSON
+    .then(html => {
+        document.getElementById('carResults').innerHTML = html; // вставляем в DOM
+    })
+    .catch(error => console.error('Ошибка:', error));
 });
 
     </script>
