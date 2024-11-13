@@ -9,107 +9,13 @@
     <link rel="stylesheet" href="css/app1.css">
     <link rel="stylesheet" href="css/app232.css">
     <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="css/phone.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/forms.js" defer></script>
 </head>
 </head>
-<style>
-
-@media (max-width: 480px) {
-  body {
-    overflow-x: hidden;
-}
-
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-.hero-section {
-    position: relative;
-    height: 360px;
-}
-
-.hero-section .content {
-    position: relative;
-    bottom: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding-left: 10px;
-}
-
-.content h1 {
-    font-size: 30px;
-    margin-bottom: 9px;
-}
-
-.content p {
-    font-size: 18px;
-    margin-bottom: 10px;
-}
-
-.section-title {
-    font-size: 20px;
-}
-
-.col-lg-4{
-    position: relative;
-    padding-top: 25px;
-    font-weight: 200;
-    font-family: "Montserrat";
-    padding: 19px 0px;
-    color:#a2aab1;
-}
-
-    .footer_widget .contact_info li i {
-        font-size: 1em;
-    }
-
-    .carousel-img {
-        height: 300px; /* Уменьшение высоты изображения */
-    }
-    .overlay-darken {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 300px;
-    background-color: rgba(0, 0, 0, 0.4); /* Полупрозрачный черный фон */
-    z-index: 1;
-  }
-    /* Карусель */
-    .carousel-caption {
-        font-size: 0.9em;
-        bottom: 10px; /* Снижение текста вниз */
-    }
-
-.btn{
-  width: 60%;
-  font-size: 15px;
-}
-
-.sbmt-bttn {
-    background: #04DBC0;
-    color: white;
-    /* padding: 10px 25px; */
-    width: 100%;
-}
-
-.subscribe_form .form_input {
-    width: 85%;
-}
-
-.btn-primaary{
-  width: 85%;
-  font-size: 15px;
-}
-
-}
-</style>
 
 <body>
     <div class="hero-section">
