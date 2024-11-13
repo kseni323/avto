@@ -50,16 +50,18 @@
 
     <!-- Отображение автомобилей -->
 
-    <div class="row mt-4" id="car-results">
-        @foreach ($cars as $car)
-            <div class="col-md-4">
+    <div class="row mt-4">
+        @foreach($cars as $car)
+            <div class="col-md-4 mb-3">
                 <div class="card">
-                    <h5 class="card-name text-center">{{ $car->name }}</h5> <!-- Название автомобиля над картинкой -->
-                    <img src="{{ $car->image }}" class="card-img-top" alt="{{ $car->name }}">
+                    <img src="{{ $car->image_url }}" class="card-img-top" alt="{{ $car->model }}">
                     <div class="card-body">
-                        <p class="card-text">{{ $car->description }}</p>
-                        <p class="card-text"><strong>{{ $car->price }} ₽</strong></p>
-                        <a href="{{ route('cars.show', $car->id) }}" class="btn btn-outline-primary">Подробнее</a>
+                        <h5 class="card-title">{{ $car->model }}</h5>
+                        <p class="card-text">
+                            Класс: {{ $car->class }}<br>
+                            Трансмиссия: {{ $car->transmission }}<br>
+                            Привод: {{ $car->drive_type }}
+                        </p>
                     </div>
                 </div>
             </div>
