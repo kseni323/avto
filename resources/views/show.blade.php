@@ -243,7 +243,7 @@ element.style {
 
             <!-- Booking Parameters -->
             <div class="col-md-4">
-                < class="booking-box p-4">
+                <div class="booking-box p-4">
                     <h5><strong>Параметры аренды</strong></h5>
                     <form>
                         <div class="form-group">
@@ -304,7 +304,6 @@ element.style {
     });
 </script>
                     </script>
-
                     <div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="bookingModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
