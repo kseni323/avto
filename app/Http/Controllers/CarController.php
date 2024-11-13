@@ -52,10 +52,4 @@ class CarController extends Controller
         $car = Car::findOrFail($id);
         return view('show', compact('car'));
     }
-
-    public function showForm()
-{
-    $carModels = Car::all(); // Fetch all car records
-    return view('home', compact('carModels'));
-}
 }

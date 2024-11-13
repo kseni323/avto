@@ -137,15 +137,15 @@
                             <input type="date" id="return_date" min="{{ now()->addDay()->toDateString() }}" name="return_date" class="form-control" required>
                         </div>
                     </div>
-                    <div class="form-group">
-    <label for="car_model">Модель автомобиля</label>
-    <select name="car_model" class="form-control" required>
-        <option value="">Выберите модель</option>
-        @foreach ($carModels as $car)
-            <option value="{{ $car->model }}">{{ $car->model }}</option>
-        @endforeach
-    </select>
-</div>
+                        <div class="form-group">
+                            <label for="car_model">Модель автомобиля</label>
+                            <select name="car_model" class="form-control" required>
+                                <option value="">Выберите модель</option>
+                                <option value="mini_cooper">MINI Cooper</option>
+                                <option value="mercedes_e_class">Mercedes Benz E-class</option>
+                                <option value="porsche_cayenne">Porsche Cayenne Hybrid</option>
+                            </select>
+                        </div>
                         <a href="#" class="btn sbmt-bttn" data-bs-toggle="modal" data-bs-target="#bookingModal">Бронируйте мгновенно</a>
                 </form>
 
