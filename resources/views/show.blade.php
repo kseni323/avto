@@ -268,22 +268,108 @@ element.style {
     color: #fff; /* Цвет заголовка */
 }
 
-.contact_info {
-    list-style: none;
-    padding: 0;
+section {
+    display: block;
+    unicode-bidi: isolate;
 }
 
-.contact_info li {
-    display: flex;
-    align-items: center;
+.widget_section {
+    background-color: #222227;
+    padding: 20px 0;
+    color: #fff; 
+}
+
+
+
+.subscribe_form .submit {
+    background-color: #04DBC0;
+    font-family: "Work Sans", sans-serif;
+    font-size: 15px;
+    font-weight: 100;
+    line-height: 50px;
+    display: inline-block;
+    padding: 0 10px;
+    width: 100%;
+    cursor: pointer;
+    border: none;
+    transition: all 0.5s ease-in-out;
+}
+
+.subscribe_form .form_input {
+    display: block;
+    border: none;
+    font-size: 14px;
+    line-height: 50px;
+    padding: 0 10px;
+    float: left;
+    width: 100%;
     margin-bottom: 10px;
-    font-size: 1.1em;
+    transition: all 0.5s ease-in-out;
 }
 
-.contact_info i {
-    margin-right: 10px;
-    color: #04DBC0; /* Цвет иконок */
+.footer_widget h3 {
+    color: #fff;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0px;
+    margin-bottom: 25px;
 }
+
+.footer_widget ul.contact_info li {
+    padding: 0.5rem 0;
+}
+ul > li {
+    list-style: none;
+}
+*, ::after, ::before {
+    box-sizing: border-box;
+}
+user agent stylesheet
+li {
+    display: list-item;
+    text-align: -webkit-match-parent;
+    unicode-bidi: isolate;
+}
+
+
+article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
+    display: block;
+}
+
+*, ::after, ::before {
+    box-sizing: border-box;
+}
+
+user agent stylesheet
+section {
+    display: block;
+    unicode-bidi: isolate;
+}
+
+
+.btn:not(:disabled):not(.disabled) {
+    cursor: pointer;
+}
+
+[type=button]:not(:disabled), [type=reset]:not(:disabled), [type=submit]:not(:disabled), button:not(:disabled) {
+    cursor: pointer;
+}
+
+.sbmt-bttn {
+    background: #04DBC0;
+    color: white;
+    padding: 10px 25px;
+    width: 100%;
+}
+
+.car-reservation-form .text_header {
+    font-size: 25px;
+    font-weight: bold;
+    line-height: 1.5;
+    margin: 20px 0px;
+    text-transform: uppercase;
+}
+
 .contact-form {
     background-color: #fff;
     padding: 50px 40px;
@@ -337,6 +423,14 @@ div {
     unicode-bidi: isolate;
 }
 
+.footer_section {
+    display: block;
+    background-color: #222227;
+    border-top: 1px solid #333;
+    padding: 15px 0;
+    font-size: 14px;
+    color: #ddd;
+}
 
 </style>
 <body>
