@@ -264,7 +264,6 @@ element.style {
                         </div>
                         <div class="price mt-3">
                             <p>{{ $car->price }} ₽ в сутки</p>
-                            <p><small>Аренда 1 суток {{ $car->deposit }}₽</small></p>
                         </div>
                         <button type="button" class="btn btn-primary btn-block" data-bs-toggle="modal" data-bs-target="#bookingModal">Забронировать</button>
                     </form>
@@ -290,8 +289,8 @@ element.style {
                 const days = Math.ceil(timeDiff / (1000 * 3600 * 24));
 
                 // Обновляем отображение количества дней и стоимости
-                totalDaysElement.textContent = `Количество суток: ${days}`;
-                totalPriceElement.textContent = `Общая стоимость: ${days * pricePerDay} ₽`;
+                totalDaysElement.textContent = `Аренда: ${days}`;
+                totalPriceElement.textContent = `${days * pricePerDay} ₽`;
             } else {
                 totalDaysElement.textContent = '';
                 totalPriceElement.textContent = '';
