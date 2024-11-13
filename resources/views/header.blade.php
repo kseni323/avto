@@ -45,7 +45,6 @@
                     <li class="nav-item">
                         <a class="nav-link" href="./#contact-us">Контакты</a>
                     </li>
-                    <ul class="nav">
     @auth
         <li class="nav-item">
             <a href="{{ route('profile.edit') }}" class="nav-link ">Профиль</a>
