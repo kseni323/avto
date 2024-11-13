@@ -26,12 +26,12 @@
         <div class="block mt-4">
             <label for="remember_me" class="inline-flex items-center">
                 <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
-                <span class="ms-2 text-sm text-white text-gray-600">{{ ('Запомнить меня') }}</span>
+                <span class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">{{ ('Запомнить меня') }}</span>
             </label>
         </div>
 
         <div class="flex items-center justify-between mt-4">
-            <a href="/" class="text-sm text-white hover:text-gray-300 underline">
+            <a href="/" class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                 {{ ('На главную') }}
             </a>
             

@@ -34,7 +34,7 @@
             <a class="underline text-sm text-white hover:text-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 mr-4" href="{{ route('login') }}">
                 {{ ('Вы уже зарегистрированы?') }}
             </a>
-            <a href="/" class="text-sm text-white hover:text-gray-300 underline ms-4">
+            <a href="/" class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                 {{ ('На главную') }}
             </a>
             <x-primary-button class="ms-4">
