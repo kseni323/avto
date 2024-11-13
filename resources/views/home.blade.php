@@ -28,15 +28,12 @@
     box-sizing: border-box;
 }
 
-.hero-section .content {
+.hero-section {
     position: relative;
-    bottom: 10px;
-    left: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding-left: 10px;
+    height: 360px;
 }
+
+
 
 .content h1 {
     font-size: 30px;
