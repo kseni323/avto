@@ -94,6 +94,10 @@
     width: 100%;
 }
 
+.subscribe_form .form_input {
+    width: 60%;
+}
+
 
 }
 </style>
