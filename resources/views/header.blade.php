@@ -77,6 +77,7 @@
 
 @yield('show_content')
 
+@yield('regi_content')
 
 </body>
 </html>
