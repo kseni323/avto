@@ -289,8 +289,7 @@ element.style {
                 const days = Math.ceil(timeDiff / (1000 * 3600 * 24));
 
                 // Обновляем отображение количества дней и стоимости
-                totalDaysElement.textContent = `Аренда: ${days}`;
-                totalPriceElement.textContent = `${days * pricePerDay} ₽`;
+                totalDaysElement.textContent = `Аренда ${days} суток` + totalPriceElement.textContent = `${days * pricePerDay} ₽`;
             } else {
                 totalDaysElement.textContent = '';
                 totalPriceElement.textContent = '';
