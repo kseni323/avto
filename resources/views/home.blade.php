@@ -33,7 +33,11 @@
     height: 360px;
 }
 
-
+.hero-section .content {
+    bottom: 10px;
+    left: 10px;
+    padding-left: 10px;
+}
 
 .content h1 {
     font-size: 30px;
