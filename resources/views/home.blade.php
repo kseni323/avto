@@ -32,7 +32,6 @@
 
 .hero-section .content {
     position: relative;
-    top: 0px;
     bottom: 10px;
     left: 10px;
     display: flex;
