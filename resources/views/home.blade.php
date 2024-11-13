@@ -35,7 +35,8 @@
 
 .hero-section .content {
     position: relative;
-    left: 10px;
+    bottom: 10px;
+    left: 5px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
