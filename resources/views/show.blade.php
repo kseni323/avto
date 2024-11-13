@@ -256,11 +256,11 @@ element.style {
                         </div>
                         <div class="form-group">
                             <label>Дата аренды</label>
-                            <input type="date"  name="pickup_date" class="form-control" required>
+                            <input type="date"  name="pickup_date" class="form-control" required min="{{ date('Y-m-d') }}">
                         </div>
                         <div class="form-group">
                             <label>Дата возврата</label>
-                            <input type="date" name="return_date" class="form-control" required>
+                            <input type="date" name="return_date" class="form-control" required min="{{ date('Y-m-d') }}">
                         </div>
                         <div class="price mt-3">
                             <p>{{ $car->price }} ₽ в сутки</p>
@@ -269,36 +269,51 @@ element.style {
                     </form>
 
                     <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const pickupDateInput = document.querySelector('input[name="pickup_date"]');
-        const returnDateInput = document.querySelector('input[name="return_date"]');
-        const pricePerDay = {{ $car->price }};
-        const totalDaysElement = document.createElement('p');
-        const totalPriceElement = document.createElement('p');
+ document.addEventListener('DOMContentLoaded', function () {
+    const pickupDateInput = document.querySelector('input[name="pickup_date"]');
+    const returnDateInput = document.querySelector('input[name="return_date"]');
+    const pricePerDay = {{ $car->price }};
+    const rentalDetailsElement = document.createElement('p');
 
-        // Добавляем элементы для отображения количества дней и общей стоимости
-        document.querySelector('.price').appendChild(totalDaysElement);
-        document.querySelector('.price').appendChild(totalPriceElement);
+    // Добавляем элемент для отображения аренды и общей стоимости
+    document.querySelector('.price').appendChild(rentalDetailsElement);
 
-        function calculateDaysAndPrice() {
-            const pickupDate = new Date(pickupDateInput.value);
-            const returnDate = new Date(returnDateInput.value);
+    function validateDate(input) {
+        const today = new Date();
+        today.setHours(0, 0, 0, 0); // Устанавливаем время на начало дня
+        const selectedDate = new Date(input.value);
 
-            if (pickupDate && returnDate && returnDate > pickupDate) {
-                const timeDiff = returnDate.getTime() - pickupDate.getTime();
-                const days = Math.ceil(timeDiff / (1000 * 3600 * 24));
-
-                // Обновляем отображение количества дней и стоимости
-                totalDaysElement.textContent = `Аренда ${days} суток`; totalPriceElement.textContent = `${days * pricePerDay} ₽`;
-            } else {
-                totalDaysElement.textContent = '';
-                totalPriceElement.textContent = '';
-            }
+        if (selectedDate < today) {
+            alert('Пожалуйста, выберите корректные даты.');
+            input.value = ''; // Сбрасываем значение
         }
+    }
 
-        pickupDateInput.addEventListener('change', calculateDaysAndPrice);
-        returnDateInput.addEventListener('change', calculateDaysAndPrice);
+    function calculateDaysAndPrice() {
+        const pickupDate = new Date(pickupDateInput.value);
+        const returnDate = new Date(returnDateInput.value);
+
+        if (pickupDate && returnDate && returnDate > pickupDate) {
+            const timeDiff = returnDate.getTime() - pickupDate.getTime();
+            const days = Math.ceil(timeDiff / (1000 * 3600 * 24));
+
+            // Обновляем отображение аренды и общей стоимости на одной строке
+            rentalDetailsElement.textContent = `Аренда ${days} суток: ${days * pricePerDay} ₽`;
+        } else {
+            rentalDetailsElement.textContent = '';
+        }
+    }
+
+    // Добавляем проверку на выбор даты из прошлого
+    pickupDateInput.addEventListener('change', function () {
+        validateDate(pickupDateInput);
+        calculateDaysAndPrice();
     });
+    returnDateInput.addEventListener('change', function () {
+        validateDate(returnDateInput);
+        calculateDaysAndPrice();
+    });
+});
 </script>
                     <div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="bookingModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
