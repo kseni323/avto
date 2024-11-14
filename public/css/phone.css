@@ -10,11 +10,13 @@
   }
   
   .hero-section {
+
       position: relative;
       height: 360px;
   }
   
   .hero-section .content {
+      margin-top: 5px;
       position: relative;
       bottom: 10px;
       display: flex;
