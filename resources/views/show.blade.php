@@ -245,23 +245,41 @@ element.style {
             <div class="col-md-4">
                 <div class="booking-box p-4">
                     <h5><strong>Параметры аренды</strong></h5>
-                    <form>
+                    <form method="POST" action="{{ route('booking.store') }}" id="reservation_form" class="car-reservation-form">
+                    @csrf
+                    <div class="text_header"><span>Найдите свой автомобиль</span></div>
+                    <div>
                         <div class="form-group">
-                            <label for="pickupLocation">Место получения автомобиля</label>
-                            <input type="text" id="pickupLocation" placeholder="Введите место получения" class="form-control" required>
+                            <label for="pickup_location">Место получения</label>
+                            <input type="text" id="pickup_location" name="pickup_location" placeholder="Кольцовская, 54" class="form-control" required>
                         </div>
                         <div class="form-group">
-                            <label for="returnLocation">Место возврата автомобиля</label>
-                            <input type="text" id="returnLocation" placeholder="Введите место возврата" class="form-control" required>
+                            <label for="return_location">Место возврата</label>
+                            <input type="text" id="return_location" name="return_location" placeholder="Кольцовская, 54" class="form-control" required>
                         </div>
                         <div class="form-group">
-                            <label>Дата аренды</label>
-                            <input type="date"  name="pickup_date" class="form-control" required min="{{ date('Y-m-d') }}">
+                            <label for="pickup_date">Дата аренды</label>
+                            <input type="date" id="pickup_date" min="{{ now()->toDateString() }}" name="pickup_date" class="form-control" required>
                         </div>
                         <div class="form-group">
-                            <label>Дата возврата</label>
-                            <input type="date" name="return_date" class="form-control" required min="{{ date('Y-m-d') }}">
+                            <label for="return_date">Дата возврата</label>
+                            <input type="date" id="return_date" min="{{ now()->addDay()->toDateString() }}" name="return_date" class="form-control" required>
                         </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="car_model">Модель автомобиля</label>
+                        <select name="car_id" class="form-control" required>
+                            <option value="">Выберите модель</option>
+                            @foreach($cars as $id => $name)
+                                <option value="{{ $id }}">{{ $name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="user_email">Электронная почта</label>
+                        <input type="email" id="user_email" name="user_email" placeholder="your@mail.com" class="form-control" required>
+                    </div>
                         <div class="price mt-3">
                             <p>{{ $car->price }} ₽ в сутки</p>
                         </div>
