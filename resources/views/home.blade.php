@@ -282,11 +282,7 @@
   window.popupForSubscriptionsForm("https://apig.unisender.com");
 </script>
 
-<div id="unisender-subscribe-form" data-url="https://cp.unisender.com/ru/v5/subscribe-form/view/6tknymemmmwrmy3kze1r97sqn5ywfdx9n1zzk5fe" data-settings="6gpgck38nyzfb56ipwqom1hsuahxcct3zkrxz1o7uri9hppdtmaho"></div>
-<script src="https://sf2df4j6wzf.s3.eu-central-1.amazonaws.com/popups/popup.js"></script>
-<script>
-  window.popupForSubscriptionsForm("https://apig.unisender.com");
-</script>
+
 </section>
 
 <footer class="footer_section">
