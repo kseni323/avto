@@ -139,18 +139,12 @@
                     </div>
                         <div class="form-group">
                             <label for="car_model">Модель автомобиля</label>
-                            <select name="car_model" class="form-control" required>
-                                <option value="">Выберите модель</option>
-                                <option value="mini_cooper">MINI Cooper</option>
-                                <option value="mercedes_e_class">Mercedes Benz E-class</option>
-                                <option value="porsche_cayenne">Porsche Cayenne Hybrid</option>
-                                <option value="mimi_countryman">MINI Countryman</option>
-                                <option value="hyundai_solaris">Hyundai Solaris</option>
-                                <option value="bmw_5_series">BMW 5 Series Sedan G30</option>
-                                <option value="toyota_land">Toyota Land Cruiser Prado</option>
-                                <option value="skoda_octavia">Skoda Octavia</option>
-                                <option value="ford_explorer">Ford Explorer</option>
-                            </select>
+                            <select name="car_id" class="form-control" required>
+    <option value="">Выберите модель</option>
+    @foreach($cars as $id => $name)
+        <option value="{{ $id }}">{{ $name }}</option>
+    @endforeach
+</select>
                         </div>
                         <a href="#" class="btn sbmt-bttn" data-bs-toggle="modal" data-bs-target="#bookingModal">Бронируйте мгновенно</a>
                 </form>
@@ -206,6 +200,14 @@
         }, 3000);
     });
 </script>
+
+<script>
+    document.getElementById('pickup_date').addEventListener('change', function () {
+        const pickupDate = this.value;
+        document.getElementById('return_date').setAttribute('min', pickupDate);
+    });
+</script>
+
 </section>
 
 

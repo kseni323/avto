@@ -52,4 +52,10 @@ class CarController extends Controller
         $car = Car::findOrFail($id);
         return view('show', compact('car'));
     }
+
+    public function showReservationForm()
+{
+    $cars = Car::pluck('name', 'id'); // Получаем список автомобилей (id и name)
+    return view('reservation_form', compact('cars'));
+}
 }
