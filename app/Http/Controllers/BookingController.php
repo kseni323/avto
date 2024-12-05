@@ -14,12 +14,11 @@ class BookingController extends Controller
         \Log::info('StoreBooking Called', $request->all()); // Логирование входящих данных
         // Валидация данных
         $request->validate([
-            'car_id' => 'required|exists:cars,id',
+           'car_id' => 'required|exists:cars,id',
             'pickup_location' => 'required|string|max:255',
             'return_location' => 'required|string|max:255',
             'pickup_date' => 'required|date|after_or_equal:today',
             'return_date' => 'required|date|after:pickup_date',
-            'user_name' => 'required|string|max:255',
             'user_email' => 'required|email',
         ]);
 
@@ -35,8 +34,8 @@ class BookingController extends Controller
             'return_location' => $request->return_location,
             'pickup_date' => $request->pickup_date,
             'return_date' => $request->return_date,
-            'user_name' => $request->user_name,
             'user_email' => $request->user_email,
+            
             'status' => 'не оплачен', // Статус по умолчанию
         ]);
 
