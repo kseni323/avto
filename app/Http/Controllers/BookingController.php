@@ -10,6 +10,8 @@ class BookingController extends Controller
 {
     public function storeBooking(Request $request)
     {
+
+        \Log::info('StoreBooking Called', $request->all()); // Логирование входящих данных
         // Валидация данных
         $request->validate([
             'car_id' => 'required|exists:cars,id',

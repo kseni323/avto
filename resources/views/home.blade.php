@@ -164,7 +164,7 @@
                     </div>
                     <div class="form-group">
                         <label for="user_email">Электронная почта</label>
-                        <input type="email" id="user_email" name="user_email" placeholder="example@mail.com" class="form-control" required>
+                        <input type="email" id="user_email" name="user_email" placeholder="your@mail.com" class="form-control" required>
                     </div>
                     <button type="submit" class="btn sbmt-bttn">Бронируйте мгновенно</button>
                 </form>

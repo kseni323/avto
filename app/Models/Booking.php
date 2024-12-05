@@ -11,10 +11,12 @@ class Booking extends Model
 
     protected $fillable = [
         'car_id',
-        'user_name',
-        'user_email',
+        'pickup_location',
+        'return_location',
         'pickup_date',
         'return_date',
+        'user_name',
+        'user_email',
         'status',
     ];
 
