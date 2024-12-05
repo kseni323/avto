@@ -251,15 +251,10 @@
 
             <div class="col-lg-4 col-md-6">
 
-            <div id="static-form-container" data-url="https://cp.unisender.com/ru/v5/subscribe-form/view/6tknymemmmwrmy3kze1r97sqn5ywfdx9n1zzk5fe" data-settings="6gpgck38nyzfb56ipwqom1hsuahxcct3zkrxz1o7uri9hppdtmaho" style="display: none">
-              <form method="POST" action="https://cp.unisender.com/ru/subscribe?hash=6d4rrrmezwji386ipwqom1hsua6ruotoyyp7woaonige4a63pm15o" name="subscribtion_form" us_mode="embed">
   <div class="footer_widget section-padding">
     <h3>Рассылка</h3>
     <p style="margin-bottom:0px">Ничего не пропустите! Подпишитесь, чтобы получать ежедневные предложения</p>
-   </div> 
-   </form>
-   </div>
-
+    
 
 </section>
 
