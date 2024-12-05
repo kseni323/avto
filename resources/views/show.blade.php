@@ -282,8 +282,12 @@ element.style {
                             border-radius: 8px; padding: 15px; z-index: 1060;">
                     Сообщение с дальнейшими деталями отправлено на вашу почту.
                 </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-                    <script>
+    <script>
         // Устанавливаем минимальную дату возврата на основе даты аренды
         document.getElementById('pickup_date').addEventListener('change', function () {
             const pickupDate = this.value;
@@ -324,25 +328,14 @@ element.style {
             .catch(error => console.error('Ошибка:', error));
         });
     </script>
-                </div>
-            </div>
-        </div>
-    </div>
-
-</body>
-
-@endsection
-
-
-
-<script>
+    
+    <script>
  document.addEventListener('DOMContentLoaded', function () {
     const pricePerDay = {{ $car->price }};
     const rentalDetailsElement = document.createElement('p');
 
     // Добавляем элемент для отображения аренды и общей стоимости
     document.querySelector('.price').appendChild(rentalDetailsElement);
-
 
     function calculateDaysAndPrice() {
         const pickupDate = new Date(pickupDateInput.value);
@@ -358,6 +351,7 @@ element.style {
             rentalDetailsElement.textContent = '';
         }
     }
+});
 </script>
 
 <script>
@@ -386,3 +380,10 @@ element.style {
         returnDateInput.addEventListener('change', calculateTotalPrice);
     });
 </script>
+
+</body>
+
+@endsection
+
+
+
