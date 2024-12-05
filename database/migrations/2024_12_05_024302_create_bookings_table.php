@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('return_location');
             $table->date('pickup_date');
             $table->date('return_date');
-            $table->string('user_name');
             $table->string('user_email');
             $table->string('status')->default('не оплачен');
             $table->timestamps();
