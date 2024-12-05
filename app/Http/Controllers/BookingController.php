@@ -39,4 +39,11 @@ class BookingController extends Controller
     
         return redirect()->back()->with('success', 'Бронирование успешно создано!');
     }
+
+    public function showReservationForm()
+    {
+        $cars = Car::pluck('name', 'id'); // Получаем список автомобилей (id и name)
+        return view('home', compact('cars'));
+    }
+    
 }

@@ -46,6 +46,8 @@ Route::post('/subscribe', [SubscriptionController::class, 'subscribe']);
 
 Route::get('/', [BookingController::class, 'showReservationForm'])->name('home');
 
+Route::post('/booking/store', [BookingController::class, 'storeBooking'])->name('booking.store');
+
 require __DIR__.'/auth.php';
 
 Route::group(['prefix' => 'admin'], function () {
