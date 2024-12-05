@@ -245,97 +245,53 @@ element.style {
             <div class="col-md-4">
                 <div class="booking-box p-4">
                     <h5><strong>Параметры аренды</strong></h5>
-                    <form id="bookingForm" action="{{ route('booking.store') }}" method="POST">
-                    @csrf
-                    <div>
+                    <form>
                         <div class="form-group">
-                            <label for="pickup_location">Место получения</label>
-                            <input type="text" id="pickup_location" name="pickup_location" placeholder="Кольцовская, 54" class="form-control" required>
+                            <label for="pickupLocation">Место получения автомобиля</label>
+                            <input type="text" id="pickupLocation" placeholder="Введите место получения" class="form-control" required>
                         </div>
                         <div class="form-group">
-                            <label for="return_location">Место возврата</label>
-                            <input type="text" id="return_location" name="return_location" placeholder="Кольцовская, 54" class="form-control" required>
+                            <label for="returnLocation">Место возврата автомобиля</label>
+                            <input type="text" id="returnLocation" placeholder="Введите место возврата" class="form-control" required>
                         </div>
                         <div class="form-group">
-                            <label for="pickup_date">Дата аренды</label>
-                            <input type="date" id="pickup_date" min="{{ now()->toDateString() }}" name="pickup_date" class="form-control" required>
+                            <label>Дата аренды</label>
+                            <input type="date"  name="pickup_date" class="form-control" required min="{{ date('Y-m-d') }}">
                         </div>
                         <div class="form-group">
-                            <label for="return_date">Дата возврата</label>
-                            <input type="date" id="return_date" min="{{ now()->addDay()->toDateString() }}" name="return_date" class="form-control" required>
+                            <label>Дата возврата</label>
+                            <input type="date" name="return_date" class="form-control" required min="{{ date('Y-m-d') }}">
                         </div>
                         <div class="form-group">
                             <label for="userEmail">Электронная почта</label>
                             <input type="email" name="user_email" id="userEmail" placeholder="your@mail.com" class="form-control" required>
                         </div>
-                    </div>
                         <div class="price mt-3">
                             <p>{{ $car->price }} ₽ в сутки</p>
                         </div>
                         <button type="button" class="btn btn-primary btn-block" data-bs-toggle="modal" data-bs-target="#bookingModal">Забронировать</button>
                     </form>
 
-               <!-- Уведомление о подтверждении -->
-               <div id="confirmationMessage" class="alert text-center" 
-                     style="display: none; position: fixed; top: 20px; left: 50%; transform: translateX(-50%); 
-                            background-color: #04DBC0; color: black; border: 2px solid black; 
-                            border-radius: 8px; padding: 15px; z-index: 1060;">
-                    Сообщение с дальнейшими деталями отправлено на вашу почту.
-                </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        // Устанавливаем минимальную дату возврата на основе даты аренды
-        document.getElementById('pickup_date').addEventListener('change', function () {
-            const pickupDate = this.value;
-            document.getElementById('return_date').setAttribute('min', pickupDate);
-        });
-
-        // Обработка формы бронирования
-        document.getElementById('reservation_form').addEventListener('submit', function(event) {
-            event.preventDefault(); // Останавливаем стандартное поведение формы
-            
-            const form = this;
-
-            // Отправка данных через AJAX
-            fetch(form.action, {
-                method: 'POST',
-                body: new FormData(form),
-                headers: {
-                    'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value,
-                },
-            })
-            .then(response => {
-                if (response.ok) {
-                    // Уведомление об успешной отправке
-                    const confirmationMessage = document.getElementById('confirmationMessage');
-                    confirmationMessage.style.display = 'block';
-
-                    // Скрыть уведомление через 3 секунды
-                    setTimeout(() => {
-                        confirmationMessage.style.display = 'none';
-                    }, 3000);
-
-                    // Очистить форму
-                    form.reset();
-                } else {
-                    alert('Произошла ошибка, попробуйте снова.');
-                }
-            })
-            .catch(error => console.error('Ошибка:', error));
-        });
-    </script>
-    
-    <script>
+                    <script>
  document.addEventListener('DOMContentLoaded', function () {
+    const pickupDateInput = document.querySelector('input[name="pickup_date"]');
+    const returnDateInput = document.querySelector('input[name="return_date"]');
     const pricePerDay = {{ $car->price }};
     const rentalDetailsElement = document.createElement('p');
 
     // Добавляем элемент для отображения аренды и общей стоимости
     document.querySelector('.price').appendChild(rentalDetailsElement);
+
+    function validateDate(input) {
+        const today = new Date();
+        today.setHours(0, 0, 0, 0); // Устанавливаем время на начало дня
+        const selectedDate = new Date(input.value);
+
+        if (selectedDate < today) {
+            alert('Пожалуйста, выберите корректные даты.');
+            input.value = ''; // Сбрасываем значение
+        }
+    }
 
     function calculateDaysAndPrice() {
         const pickupDate = new Date(pickupDateInput.value);
@@ -351,7 +307,45 @@ element.style {
             rentalDetailsElement.textContent = '';
         }
     }
+
+    // Добавляем проверку на выбор даты из прошлого
+    pickupDateInput.addEventListener('change', function () {
+        validateDate(pickupDateInput);
+        calculateDaysAndPrice();
+    });
+    returnDateInput.addEventListener('change', function () {
+        validateDate(returnDateInput);
+        calculateDaysAndPrice();
+    });
 });
+</script>
+
+<!-- Уведомление о подтверждении -->
+<div id="confirmationMessage" class="alert text-center" 
+     style="display: none; position: fixed; top: 20px; left: 50%; transform: translateX(-50%); 
+            background-color: #04DBC0; color: black; border: 2px solid black; 
+            border-radius: 8px; padding: 15px; z-index: 1060;">
+    Сообщение с дальнейшими деталями отправлено на вашу почту.
+</div>
+
+<!-- JavaScript для показа и скрытия уведомления -->
+<script>
+    document.getElementById('modalForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // предотвращаем отправку формы
+        
+        // Закрываем модальное окно
+        var bookingModal = new bootstrap.Modal(document.getElementById('bookingModal'));
+        bookingModal.hide();
+
+        // Показываем уведомление
+        var confirmationMessage = document.getElementById('confirmationMessage');
+        confirmationMessage.style.display = 'block';
+
+        // Убираем уведомление через 3 секунды
+        setTimeout(function() {
+            confirmationMessage.style.display = 'none';
+        }, 3000);
+    });
 </script>
 
 <script>
@@ -380,10 +374,11 @@ element.style {
         returnDateInput.addEventListener('change', calculateTotalPrice);
     });
 </script>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </body>
 
 @endsection
-
-
-
