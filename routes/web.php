@@ -4,7 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use TCG\Voyager\Facades\Voyager;
 use App\Http\Controllers\CarController;
-use App\Http\Controllers\ReservationController;
+use App\Http\Controllers\BookingController;
 use App\Http\Controllers\HomeController;
 
 
