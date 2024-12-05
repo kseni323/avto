@@ -56,6 +56,6 @@ class CarController extends Controller
     public function showReservationForm()
 {
     $cars = Car::pluck('name', 'id'); // Получаем список автомобилей (id и name)
-    return view('reservation_form', compact('cars'));
+    return view('home', compact('cars'));
 }
 }
