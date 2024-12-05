@@ -262,7 +262,7 @@ element.style {
                             <label>Дата возврата</label>
                             <input type="date" name="return_date" class="form-control" required min="{{ date('Y-m-d') }}">
                         </div>
-                        <div class="form-group">
+                                            <div class="form-group">
                         <label for="user_email">Электронная почта</label>
                         <input type="email" id="user_email" name="user_email" placeholder="your@mail.com" class="form-control" required>
                     </div>
@@ -319,6 +319,29 @@ element.style {
     });
 });
 </script>
+                    <div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="bookingModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="bookingModalLabel">Введите свои данные</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+            </div>
+            <div class="modal-body">
+                <form id="modalForm">
+                    <div class="form-group mb-3">
+                        <label for="user_name">Имя</label>
+                        <input type="text" id="user_name" name="user_name" class="form-control" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="user_email">Электронная почта</label>
+                        <input type="email" id="user_email" name="user_email" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Отправить</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- Уведомление о подтверждении -->
 <div id="confirmationMessage" class="alert text-center" 
