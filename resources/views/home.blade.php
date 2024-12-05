@@ -251,54 +251,16 @@
 
             <div class="col-lg-4 col-md-6">
 
+            <div id="static-form-container" data-url="https://cp.unisender.com/ru/v5/subscribe-form/view/6tknymemmmwrmy3kze1r97sqn5ywfdx9n1zzk5fe" data-settings="6gpgck38nyzfb56ipwqom1hsuahxcct3zkrxz1o7uri9hppdtmaho" style="display: none">
+              <form method="POST" action="https://cp.unisender.com/ru/subscribe?hash=6d4rrrmezwji386ipwqom1hsua6ruotoyyp7woaonige4a63pm15o" name="subscribtion_form" us_mode="embed">
   <div class="footer_widget section-padding">
     <h3>Рассылка</h3>
     <p style="margin-bottom:0px">Ничего не пропустите! Подпишитесь, чтобы получать ежедневные предложения</p>
-    
-    <div class="subscribe_form">
-      <!-- Форма с полем для email и кнопкой -->
-      <form id="subscribeForm" class="subscribe_form" novalidate>
-        <input type="email" name="EMAIL" id="subs-email" class="form_input" placeholder="Почта..." required>
-        <button type="button" id="subscribeButton" class="btn btn-primaary">ПОДПИСАТЬСЯ</button>
-        <div class="clearfix"></div>
-      </form>
-    </div>
-  </div>
-</div>
+   </div> 
+   </form>
+   </div>
 
-<!-- Уведомление о подписке -->
-<div id="subscribeConfirmation" class="alert text-center" 
-     style="display: none; position: fixed; top: 20px; left: 50%; transform: translateX(-50%); z-index: 1060; background-color: #28a745; color: #fff; border-radius: 8px; padding: 15px 30px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); border: none; max-width: 500px; width: 90%;">
-  Спасибо за подписку! Подтверждение отправлено на вашу почту.
-</div>
 
-<script>
-  // Функция для показа уведомления
-  function subscribeUser() {
-    const emailField = document.getElementById("subs-email");
-    const confirmationMessage = document.getElementById("subscribeConfirmation");
-
-    // Проверяем, заполнен ли email
-    if (emailField.checkValidity()) {
-      // Показываем уведомление
-      confirmationMessage.style.display = "block";
-
-      // Скрываем уведомление через 3 секунды
-      setTimeout(() => {
-        confirmationMessage.style.display = "none";
-      }, 3000);
-
-      // Очищаем поле ввода
-      emailField.value = "";
-    } else {
-      // Показываем сообщение об ошибке, если email некорректен
-      emailField.reportValidity();
-    }
-  }
-
-  // Добавляем обработчик события для кнопки
-  document.getElementById("subscribeButton").addEventListener("click", subscribeUser);
-</script>
 </section>
 
 <footer class="footer_section">
