@@ -246,6 +246,7 @@ element.style {
                 <div class="booking-box p-4">
                     <h5><strong>Параметры аренды</strong></h5>
                     <form id="bookingForm" action="{{ route('booking.store') }}" method="POST">
+                    @csrf
                         <div class="form-group">
                             <label for="pickupLocation">Место получения автомобиля</label>
                             <input type="text" id="pickupLocation" placeholder="Введите место получения" class="form-control" required>
@@ -272,43 +273,15 @@ element.style {
                         <button type="button" class="btn btn-primary btn-block" data-bs-toggle="modal" data-bs-target="#bookingModal">Забронировать</button>
                     </form>
 
+               <!-- Уведомление о подтверждении -->
+               <div id="confirmationMessage" class="alert text-center" 
+                     style="display: none; position: fixed; top: 20px; left: 50%; transform: translateX(-50%); 
+                            background-color: #04DBC0; color: black; border: 2px solid black; 
+                            border-radius: 8px; padding: 15px; z-index: 1060;">
+                    Сообщение с дальнейшими деталями отправлено на вашу почту.
+                </div>
+
                     <script>
- document.addEventListener('DOMContentLoaded', function () {
-    const pickupDateInput = document.querySelector('input[name="pickup_date"]');
-    const returnDateInput = document.querySelector('input[name="return_date"]');
-    const pricePerDay = {{ $car->price }};
-    const rentalDetailsElement = document.createElement('p');
-
-    // Добавляем элемент для отображения аренды и общей стоимости
-    document.querySelector('.price').appendChild(rentalDetailsElement);
-
-    function validateDate(input) {
-        const today = new Date();
-        today.setHours(0, 0, 0, 0); // Устанавливаем время на начало дня
-        const selectedDate = new Date(input.value);
-
-        if (selectedDate < today) {
-            alert('Пожалуйста, выберите корректные даты.');
-            input.value = ''; // Сбрасываем значение
-        }
-    }
-
-    function calculateDaysAndPrice() {
-        const pickupDate = new Date(pickupDateInput.value);
-        const returnDate = new Date(returnDateInput.value);
-
-        if (pickupDate && returnDate && returnDate > pickupDate) {
-            const timeDiff = returnDate.getTime() - pickupDate.getTime();
-            const days = Math.ceil(timeDiff / (1000 * 3600 * 24));
-
-            // Обновляем отображение аренды и общей стоимости на одной строке
-            rentalDetailsElement.textContent = `Аренда ${days} суток: ${days * pricePerDay} ₽`;
-        } else {
-            rentalDetailsElement.textContent = '';
-        }
-    }
-
-    <script>
         // Устанавливаем минимальную дату возврата на основе даты аренды
         document.getElementById('pickup_date').addEventListener('change', function () {
             const pickupDate = this.value;
@@ -348,63 +321,7 @@ element.style {
             })
             .catch(error => console.error('Ошибка:', error));
         });
-});
-</script>
-
-<!-- Уведомление о подтверждении -->
-<div id="confirmationMessage" class="alert text-center" 
-     style="display: none; position: fixed; top: 20px; left: 50%; transform: translateX(-50%); 
-            background-color: #04DBC0; color: black; border: 2px solid black; 
-            border-radius: 8px; padding: 15px; z-index: 1060;">
-    Сообщение с дальнейшими деталями отправлено на вашу почту.
-</div>
-
-<!-- JavaScript для показа и скрытия уведомления -->
-<script>
-    document.getElementById('modalForm').addEventListener('submit', function(event) {
-        event.preventDefault(); // предотвращаем отправку формы
-        
-        // Закрываем модальное окно
-        var bookingModal = new bootstrap.Modal(document.getElementById('bookingModal'));
-        bookingModal.hide();
-
-        // Показываем уведомление
-        var confirmationMessage = document.getElementById('confirmationMessage');
-        confirmationMessage.style.display = 'block';
-
-        // Убираем уведомление через 3 секунды
-        setTimeout(function() {
-            confirmationMessage.style.display = 'none';
-        }, 3000);
-    });
-</script>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const dailyPrice = {{ $car->price }};
-        const pickupDateInput = document.getElementById('pickup_date');
-        const returnDateInput = document.getElementById('return_date');
-        const totalPriceDisplay = document.getElementById('total-price');
-
-        function calculateTotalPrice() {
-            const pickupDate = new Date(pickupDateInput.value);
-            const returnDate = new Date(returnDateInput.value);
-
-            if (pickupDate && returnDate && returnDate > pickupDate) {
-                const timeDiff = returnDate - pickupDate;
-                const days = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
-                const totalPrice = days * dailyPrice;
-
-                totalPriceDisplay.textContent = `Итоговая цена: ${totalPrice} ₽`;
-            } else {
-                totalPriceDisplay.textContent = '';
-            }
-        }
-
-        pickupDateInput.addEventListener('change', calculateTotalPrice);
-        returnDateInput.addEventListener('change', calculateTotalPrice);
-    });
-</script>
+    </script>
                 </div>
             </div>
         </div>
