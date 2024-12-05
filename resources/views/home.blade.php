@@ -117,39 +117,41 @@
             <div class="col-md-5"></div>
             <div class="col-md-7">
             <form method="POST" action="{{ route('booking.store') }}" id="reservation_form" class="car-reservation-form">
-            @csrf
-                    <div class="text_header"><span>Найдите свой автомобиль</span></div>
-                    <div>
-                        <div class="form-group">
-                            <label for="pickup_location">Место получения</label>
-                            <input type="text" id="pickup_location" name="pickup_location" placeholder="Кольцовская, 54" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="return_location">Место возврата</label>
-                            <input type="text" id="return_location" name="return_location" placeholder="Кольцовская, 54" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="pickup_date">Дата аренды</label>
-                            <input type="date" id="pickup_date" min="{{ now()->toDateString() }}" name="pickup_date" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="return_date">Дата возврата</label>
-                            <input type="date" id="return_date" min="{{ now()->addDay()->toDateString() }}" name="return_date" class="form-control" required>
-                        </div>
-                    </div>
-                    <div class="form-group">
-    <label for="car_model">Модель автомобиля</label>
-    <select name="car_id" class="form-control" required>
-        <option value="">Выберите модель</option>
-        @foreach($cars as $id => $name)
-            <option value="{{ $id }}">{{ $name }}</option>
-        @endforeach
-    </select>
-</div>
-                        <a href="#" class="btn sbmt-bttn" data-bs-toggle="modal" data-bs-target="#bookingModal">Бронируйте мгновенно</a>
-                </form>
+    @csrf
+    <div class="text_header"><span>Найдите свой автомобиль</span></div>
+    <div>
+        <div class="form-group">
+            <label for="pickup_location">Место получения</label>
+            <input type="text" id="pickup_location" name="pickup_location" placeholder="Кольцовская, 54" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="return_location">Место возврата</label>
+            <input type="text" id="return_location" name="return_location" placeholder="Кольцовская, 54" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="pickup_date">Дата аренды</label>
+            <input type="date" id="pickup_date" min="{{ now()->toDateString() }}" name="pickup_date" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="return_date">Дата возврата</label>
+            <input type="date" id="return_date" min="{{ now()->addDay()->toDateString() }}" name="return_date" class="form-control" required>
+        </div>
+    </div>
 
-                <div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="bookingModalLabel" aria-hidden="true">
+    <div class="form-group">
+        <label for="car_model">Модель автомобиля</label>
+        <select name="car_id" class="form-control" required>
+            <option value="">Выберите модель</option>
+            @foreach($cars as $id => $name)
+                <option value="{{ $id }}">{{ $name }}</option>
+            @endforeach
+        </select>
+    </div>
+    <a href="#" class="btn sbmt-bttn" data-bs-toggle="modal" data-bs-target="#bookingModal">Бронируйте мгновенно</a>
+</form>
+
+<!-- Модальное окно для ввода данных пользователя -->
+<div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="bookingModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
@@ -157,7 +159,8 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
             </div>
             <div class="modal-body">
-                <form id="modalForm">
+                <form method="POST" action="{{ route('booking.store') }}" id="modalForm">
+                    @csrf
                     <div class="form-group mb-3">
                         <label for="user_name">Имя</label>
                         <input type="text" id="user_name" name="user_name" class="form-control" required>
