@@ -332,3 +332,57 @@ element.style {
 </body>
 
 @endsection
+
+
+
+<script>
+ document.addEventListener('DOMContentLoaded', function () {
+    const pricePerDay = {{ $car->price }};
+    const rentalDetailsElement = document.createElement('p');
+
+    // Добавляем элемент для отображения аренды и общей стоимости
+    document.querySelector('.price').appendChild(rentalDetailsElement);
+
+
+    function calculateDaysAndPrice() {
+        const pickupDate = new Date(pickupDateInput.value);
+        const returnDate = new Date(returnDateInput.value);
+
+        if (pickupDate && returnDate && returnDate > pickupDate) {
+            const timeDiff = returnDate.getTime() - pickupDate.getTime();
+            const days = Math.ceil(timeDiff / (1000 * 3600 * 24));
+
+            // Обновляем отображение аренды и общей стоимости на одной строке
+            rentalDetailsElement.textContent = `Аренда ${days} суток: ${days * pricePerDay} ₽`;
+        } else {
+            rentalDetailsElement.textContent = '';
+        }
+    }
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const dailyPrice = {{ $car->price }};
+        const pickupDateInput = document.getElementById('pickup_date');
+        const returnDateInput = document.getElementById('return_date');
+        const totalPriceDisplay = document.getElementById('total-price');
+
+        function calculateTotalPrice() {
+            const pickupDate = new Date(pickupDateInput.value);
+            const returnDate = new Date(returnDateInput.value);
+
+            if (pickupDate && returnDate && returnDate > pickupDate) {
+                const timeDiff = returnDate - pickupDate;
+                const days = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
+                const totalPrice = days * dailyPrice;
+
+                totalPriceDisplay.textContent = `Итоговая цена: ${totalPrice} ₽`;
+            } else {
+                totalPriceDisplay.textContent = '';
+            }
+        }
+
+        pickupDateInput.addEventListener('change', calculateTotalPrice);
+        returnDateInput.addEventListener('change', calculateTotalPrice);
+    });
+</script>
