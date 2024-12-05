@@ -21,23 +21,12 @@ class BookingController extends Controller
             'user_email' => 'required|email',
         ]);
 
-        // Проверка, чтобы автомобиль не был забронирован на те же даты
-        $isBooked = Booking::where('car_id', $request->car_id)
-            ->where(function ($query) use ($request) {
-                $query->whereBetween('pickup_date', [$request->pickup_date, $request->return_date])
-                      ->orWhereBetween('return_date', [$request->pickup_date, $request->return_date])
-                      ->orWhere(function ($q) use ($request) {
-                          $q->where('pickup_date', '<=', $request->pickup_date)
-                            ->where('return_date', '>=', $request->return_date);
-                      });
-            })
-            ->exists();
-
-        if ($isBooked) {
-            return redirect()->back()->withErrors(['car_id' => 'Данная модель на выбранные даты уже занята.']);
+        // Проверка доступности автомобиля
+        if ($this->isCarBooked($request->car_id, $request->pickup_date, $request->return_date)) {
+            return redirect()->back()->withErrors(['car_id' => 'Данная модель на выбранные даты уже занята. Выберите другую дату или автомобиль.']);
         }
 
-        // Сохранение бронирования в базе
+        // Сохранение бронирования
         Booking::create([
             'car_id' => $request->car_id,
             'pickup_location' => $request->pickup_location,
@@ -51,9 +40,24 @@ class BookingController extends Controller
 
         return redirect()->back()->with('success', 'Бронирование успешно создано!');
     }
-        public function showReservationForm()
-        {
-            $cars = Car::pluck('name', 'id'); // Получаем список автомобилей (id и name)
-            return view('home', compact('cars'));
-        }
+
+    public function showReservationForm()
+    {
+        $cars = Car::pluck('name', 'id'); // Получаем список автомобилей (id и name)
+        return view('home', compact('cars'));
     }
+
+    private function isCarBooked($carId, $pickupDate, $returnDate)
+    {
+        return Booking::where('car_id', $carId)
+            ->where(function ($query) use ($pickupDate, $returnDate) {
+                $query->whereBetween('pickup_date', [$pickupDate, $returnDate])
+                      ->orWhereBetween('return_date', [$pickupDate, $returnDate])
+                      ->orWhere(function ($q) use ($pickupDate, $returnDate) {
+                          $q->where('pickup_date', '<=', $pickupDate)
+                            ->where('return_date', '>=', $returnDate);
+                      });
+            })
+            ->exists();
+    }
+}
