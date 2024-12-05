@@ -224,103 +224,68 @@ element.style {
 
 </style>
 <body>
-    <div class="container my-5">
-        <div class="row">
-            <!-- Car Image and Details -->
-            <div class="col-md-8">
-                <h2 class="car-title">Аренда {{ $car->name }}</h2>
-                <img src="{{ $car->image }}" class="img-fluid car-detail-image" alt="{{ $car->name}}">
+<div class="container my-5">
+    <div class="row">
+        <!-- Car Image and Details -->
+        <div class="col-md-8">
+            <h2 class="car-title">Аренда {{ $car->name }}</h2>
+            <img src="{{ $car->image }}" class="img-fluid car-detail-image" alt="{{ $car->name }}">
 
-                <div class="car-features mt-4">
-                    <h5><strong>Характеристики автомобиля</strong></h5>
-                    <p><strong>Общая информация:</strong> {{ $car->description }}</p>
-                    <p><strong>Трансмиссия:</strong> {{ $car->transmission }}</p>
-                    <p><strong>Привод:</strong> {{ $car->drive_type }}</p>
-                    <p><strong>Класс:</strong> {{ $car->class }}</p>
-                    <p><strong>Кондиционер:</strong> {{ $car->air_conditioning ? 'Есть' : 'Нет' }}</p>
-                </div>
+            <div class="car-features mt-4">
+                <h5><strong>Характеристики автомобиля</strong></h5>
+                <p><strong>Общая информация:</strong> {{ $car->description }}</p>
+                <p><strong>Трансмиссия:</strong> {{ $car->transmission }}</p>
+                <p><strong>Привод:</strong> {{ $car->drive_type }}</p>
+                <p><strong>Класс:</strong> {{ $car->class }}</p>
+                <p><strong>Кондиционер:</strong> {{ $car->air_conditioning ? 'Есть' : 'Нет' }}</p>
             </div>
+        </div>
 
-            <!-- Booking Parameters -->
-            <div class="col-md-4">
-                <div class="booking-box p-4">
-                    <h5><strong>Параметры аренды</strong></h5>
-                    <form>
-                        <div class="form-group">
-                            <label for="pickupLocation">Место получения автомобиля</label>
-                            <input type="text" id="pickupLocation" placeholder="Введите место получения" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="returnLocation">Место возврата автомобиля</label>
-                            <input type="text" id="returnLocation" placeholder="Введите место возврата" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Дата аренды</label>
-                            <input type="date"  name="pickup_date" class="form-control" required min="{{ date('Y-m-d') }}">
-                        </div>
-                        <div class="form-group">
-                            <label>Дата возврата</label>
-                            <input type="date" name="return_date" class="form-control" required min="{{ date('Y-m-d') }}">
-                        </div>
-                        <div class="form-group">
-                        <label for="user_email">Электронная почта</label>
-                        <input type="email" id="user_email" name="user_email" placeholder="your@mail.com" class="form-control" required>
+        <!-- Booking Form -->
+        <div class="col-md-4">
+            <div class="booking-box p-4">
+                <h5><strong>Параметры аренды</strong></h5>
+                <form id="bookingForm">
+                    @csrf
+                    <input type="hidden" name="car_id" value="{{ $car->id }}">
+
+                    <div class="form-group">
+                        <label for="pickupLocation">Место получения автомобиля</label>
+                        <input type="text" id="pickupLocation" name="pickup_location" class="form-control" required>
                     </div>
-                        <div class="price mt-3">
-                            <p>{{ $car->price }} ₽ в сутки</p>
-                        </div>
-                        <button type="button" class="btn btn-primary btn-block" data-bs-toggle="modal" data-bs-target="#bookingModal">Забронировать</button>
-                    </form>
 
-                    <script>
- document.addEventListener('DOMContentLoaded', function () {
-    const pickupDateInput = document.querySelector('input[name="pickup_date"]');
-    const returnDateInput = document.querySelector('input[name="return_date"]');
-    const pricePerDay = {{ $car->price }};
-    const rentalDetailsElement = document.createElement('p');
+                    <div class="form-group">
+                        <label for="returnLocation">Место возврата автомобиля</label>
+                        <input type="text" id="returnLocation" name="return_location" class="form-control" required>
+                    </div>
 
-    // Добавляем элемент для отображения аренды и общей стоимости
-    document.querySelector('.price').appendChild(rentalDetailsElement);
+                    <div class="form-group">
+                        <label>Дата аренды</label>
+                        <input type="date" id="pickupDate" name="pickup_date" class="form-control" required>
+                    </div>
 
-    function validateDate(input) {
-        const today = new Date();
-        today.setHours(0, 0, 0, 0); // Устанавливаем время на начало дня
-        const selectedDate = new Date(input.value);
+                    <div class="form-group">
+                        <label>Дата возврата</label>
+                        <input type="date" id="returnDate" name="return_date" class="form-control" required>
+                    </div>
 
-        if (selectedDate < today) {
-            alert('Пожалуйста, выберите корректные даты.');
-            input.value = ''; // Сбрасываем значение
-        }
-    }
+                    <div class="form-group">
+                        <label for="userEmail">Электронная почта</label>
+                        <input type="email" id="userEmail" name="user_email" class="form-control" required>
+                    </div>
 
-    function calculateDaysAndPrice() {
-        const pickupDate = new Date(pickupDateInput.value);
-        const returnDate = new Date(returnDateInput.value);
+                    <div class="price mt-3">
+                        <p>{{ $car->price }} ₽ в сутки</p>
+                    </div>
 
-        if (pickupDate && returnDate && returnDate > pickupDate) {
-            const timeDiff = returnDate.getTime() - pickupDate.getTime();
-            const days = Math.ceil(timeDiff / (1000 * 3600 * 24));
+                    <button type="submit" class="btn btn-primary btn-block">Забронировать</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
-            // Обновляем отображение аренды и общей стоимости на одной строке
-            rentalDetailsElement.textContent = `Аренда ${days} суток: ${days * pricePerDay} ₽`;
-        } else {
-            rentalDetailsElement.textContent = '';
-        }
-    }
-
-    // Добавляем проверку на выбор даты из прошлого
-    pickupDateInput.addEventListener('change', function () {
-        validateDate(pickupDateInput);
-        calculateDaysAndPrice();
-    });
-    returnDateInput.addEventListener('change', function () {
-        validateDate(returnDateInput);
-        calculateDaysAndPrice();
-    });
-});
-</script>
-
-<!-- Уведомление о подтверждении -->
+<!-- Уведомление -->
 <div id="confirmationMessage" class="alert text-center" 
      style="display: none; position: fixed; top: 20px; left: 50%; transform: translateX(-50%); 
             background-color: #04DBC0; color: black; border: 2px solid black; 
@@ -328,56 +293,46 @@ element.style {
     Сообщение с дальнейшими деталями отправлено на вашу почту.
 </div>
 
-<!-- JavaScript для показа и скрытия уведомления -->
-<script>
-    document.getElementById('modalForm').addEventListener('submit', function(event) {
-        event.preventDefault(); // предотвращаем отправку формы
-        
-        // Закрываем модальное окно
-        var bookingModal = new bootstrap.Modal(document.getElementById('bookingModal'));
-        bookingModal.hide();
-
-        // Показываем уведомление
-        var confirmationMessage = document.getElementById('confirmationMessage');
-        confirmationMessage.style.display = 'block';
-
-        // Убираем уведомление через 3 секунды
-        setTimeout(function() {
-            confirmationMessage.style.display = 'none';
-        }, 3000);
-    });
-</script>
-
+<!-- Скрипт -->
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        const dailyPrice = {{ $car->price }};
-        const pickupDateInput = document.getElementById('pickup_date');
-        const returnDateInput = document.getElementById('return_date');
-        const totalPriceDisplay = document.getElementById('total-price');
+        const form = document.getElementById('bookingForm');
+        const confirmationMessage = document.getElementById('confirmationMessage');
 
-        function calculateTotalPrice() {
-            const pickupDate = new Date(pickupDateInput.value);
-            const returnDate = new Date(returnDateInput.value);
+        form.addEventListener('submit', function (event) {
+            event.preventDefault(); // Предотвращаем стандартное поведение
 
-            if (pickupDate && returnDate && returnDate > pickupDate) {
-                const timeDiff = returnDate - pickupDate;
-                const days = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
-                const totalPrice = days * dailyPrice;
+            const formData = new FormData(form);
 
-                totalPriceDisplay.textContent = `Итоговая цена: ${totalPrice} ₽`;
-            } else {
-                totalPriceDisplay.textContent = '';
-            }
-        }
+            fetch("{{ route('bookings.store') }}", {
+                method: 'POST',
+                headers: {
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
+                },
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // Показываем уведомление
+                    confirmationMessage.style.display = 'block';
 
-        pickupDateInput.addEventListener('change', calculateTotalPrice);
-        returnDateInput.addEventListener('change', calculateTotalPrice);
+                    // Убираем уведомление через 3 секунды
+                    setTimeout(() => {
+                        confirmationMessage.style.display = 'none';
+                    }, 3000);
+
+                    // Сбрасываем форму
+                    form.reset();
+                }
+            })
+            .catch(error => {
+                alert('Ошибка! Проверьте введённые данные.');
+                console.error(error);
+            });
+        });
     });
 </script>
-                </div>
-            </div>
-        </div>
-    </div>
 
 </body>
 
