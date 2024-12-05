@@ -44,8 +44,7 @@ Route::get('/cars/{id}', [CarController::class, 'show'])->name('cars.show');
 
 Route::post('/subscribe', [SubscriptionController::class, 'subscribe']);
 
-Route::get('/reservation', [BookingController::class, 'create'])->name('reservation.form'); // Форма бронирования
-Route::post('/reservation', [BookingController::class, 'store'])->name('booking.store'); // Обработка бронирования
+Route::get('/', [BookingController::class, 'showReservationForm'])->name('home');
 
 require __DIR__.'/auth.php';
 
