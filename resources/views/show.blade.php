@@ -245,7 +245,7 @@ element.style {
             <div class="col-md-4">
                 <div class="booking-box p-4">
                     <h5><strong>Параметры аренды</strong></h5>
-                    <form>
+                    <form id="bookingForm" action="{{ route('booking.store') }}" method="POST">
                         <div class="form-group">
                             <label for="pickupLocation">Место получения автомобиля</label>
                             <input type="text" id="pickupLocation" placeholder="Введите место получения" class="form-control" required>
@@ -261,6 +261,10 @@ element.style {
                         <div class="form-group">
                             <label>Дата возврата</label>
                             <input type="date" name="return_date" class="form-control" required min="{{ date('Y-m-d') }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="userEmail">Электронная почта</label>
+                            <input type="email" name="user_email" id="userEmail" placeholder="your@mail.com" class="form-control" required>
                         </div>
                         <div class="price mt-3">
                             <p>{{ $car->price }} ₽ в сутки</p>
@@ -304,12 +308,46 @@ element.style {
         }
     }
 
+    <script>
         // Устанавливаем минимальную дату возврата на основе даты аренды
         document.getElementById('pickup_date').addEventListener('change', function () {
             const pickupDate = this.value;
             document.getElementById('return_date').setAttribute('min', pickupDate);
         });
 
+        // Обработка формы бронирования
+        document.getElementById('reservation_form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Останавливаем стандартное поведение формы
+            
+            const form = this;
+
+            // Отправка данных через AJAX
+            fetch(form.action, {
+                method: 'POST',
+                body: new FormData(form),
+                headers: {
+                    'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value,
+                },
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Уведомление об успешной отправке
+                    const confirmationMessage = document.getElementById('confirmationMessage');
+                    confirmationMessage.style.display = 'block';
+
+                    // Скрыть уведомление через 3 секунды
+                    setTimeout(() => {
+                        confirmationMessage.style.display = 'none';
+                    }, 3000);
+
+                    // Очистить форму
+                    form.reset();
+                } else {
+                    alert('Произошла ошибка, попробуйте снова.');
+                }
+            })
+            .catch(error => console.error('Ошибка:', error));
+        });
 });
 </script>
 
