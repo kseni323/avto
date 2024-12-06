@@ -249,22 +249,40 @@
     </div>
 </div>
 
-            <div class="col-lg-4 col-md-6">
 
-            <div class="footer_widget section-padding">
-  <h3>Рассылка</h3>
-  <p style="margin-bottom:0px">Ничего не пропустите! Подпишитесь, чтобы получать ежедневные предложения</p>
 
-  <div class="subscribe_form">
-  <form method="POST" action="{{ url('/subscribe') }}" name="subscribtion_form">
-    @csrf  <!-- Это директива Blade для защиты от CSRF атак -->
-    <input type="email" name="email" class="form_input" placeholder="Почта..." required>
-    <button type="submit" class="btn sbmt-bttn">ПОДПИСАТЬСЯ</button>
+<div id="static-form-container" data-url="https://cp.unisender.com/ru/v5/subscribe-form/view/6tknymemmmwrmy3kze1r97sqn5ywfdx9n1zzk5fe" data-settings="6gpgck38nyzfb56ipwqom1hsuahxcct3zkrxz1o7uri9hppdtmaho" style="display: none">
+<form method="POST" action="https://cp.unisender.com/ru/subscribe?hash=6d4rrrmezwji386ipwqom1hsua6ruotoyyp7woaonige4a63pm15o" name="subscribtion_form" us_mode="embed">
+<div class="container responsive"><table cellpadding="0" cellspacing="0" align="center" style="width: 100%; box-sizing: border-box; background-color: rgb(204, 204, 204); float: left;"><tbody><tr><td>
+<!--[if (gte mso 9)|(IE)]><table cellpadding="0" cellspacing="0" border="0" width="400" align="center"><tr><td><![endif]--><table cellpadding="0" cellspacing="0" align="center" style="background-color: rgb(255, 255, 255); border-radius: 0px; max-width: 450px; width: 100%; border: none; margin: 0px auto; border-spacing: 0px; border-collapse: collapse;"><tbody><tr><td width="100%" style="vertical-align: top; max-width: 450px; font-size: 0px; padding: 25px;">
+<!--[if (gte mso 9)|(IE)]><table cellpadding="0" cellspacing="0" border="0" width="400" align="center"><tr><td><![endif]-->                                    <table width="100%" border="0" cellspacing="0" cellpadding="0" style="width: 100%; table-layout: fixed; height: auto; border-collapse: collapse; border-spacing: 0px; display: inline-table; vertical-align: top; font-size: medium;">                <tbody>
+<tr>                    <td style="width: 100%; padding: 8px; height: 0px;" valign="top">                        <table border="0" cellspacing="0" cellpadding="0" style="height: 100%; width: 100%; table-layout: fixed; border-spacing: 0px; border-collapse: collapse; min-height: 0px;">                            <tbody>
+<tr>                                <td style="width: 100%; font-family: Arial, Helvetica, sans-serif; font-size: 12px; color: rgb(34, 34, 34);">                                            <div style="display:inline-block; width:100%;font-size:0;">            <label style="font-size: 12px; padding: 0px 0px 5px; vertical-align: middle; box-sizing: border-box; width: 32%; display: inline-block; font-family: Arial, Helvetica, sans-serif; color: rgb(34, 34, 34);">                <span>E-mail</span>                <b style="font-size:14px;font-family:Georgia;line-height:10px;"> *</b>            </label>            <div style="display: inline-block; width: 66%;">                <input type="text" name="email" _validator="email" _required="1" style="border-radius: 3px; font: 13px / 1 Arial, Helvetica; padding: 0px 8px; width: 100%; box-sizing: border-box; border: 1px solid rgb(193, 201, 203); background-color: rgb(255, 255, 255); background-image: none; height: 30px;" _label="E-mail" placeholder="">                <div class="error-block" style="display:none;color:#ff592d;font:11px/18px Arial;"></div>            </div>        </div>                                    </td>                            </tr>                        </tbody>
+</table>                    </td>                </tr>            </tbody>
+</table>        <!--[if (gte mso 9)|(IE)]></td></tr></table><![endif]--><!--[if (gte mso 9)|(IE)]><table cellpadding="0" cellspacing="0" border="0" width="400" align="center"><tr><td><![endif]-->                                    <table width="100%" border="0" cellspacing="0" cellpadding="0" style="width: 100%; table-layout: fixed; height: auto; border-collapse: collapse; border-spacing: 0px; display: inline-table; vertical-align: top; font-size: medium;">                <tbody>
+<tr>                    <td style="width: 100%; background-image: none; min-height: 0px; height: 0px;" valign="top">                        <table border="0" cellspacing="0" cellpadding="0" style="height: 100%; width: 100%; table-layout: fixed; border-spacing: 0px; border-collapse: collapse; min-height: 0px;">                            <tbody>
+<tr>                                <td style="width: 100%; text-align: right; font-family: Arial, Helvetica, sans-serif; font-size: 12px; color: rgb(34, 34, 34);">                                            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="display: inline-table; width: auto; border-spacing: 0px; border-collapse: collapse;">            <tbody>
+<tr>                <td align="center" valign="middle" style="border: none; border-radius: 5px; padding: 15px 20px 17px; background-color: rgb(4, 219, 192); height: 18.7969px; width: 150px; min-height: 18.7969px;">                    <button href="javascript:" target="_blank" style="width: 100%; display: inline-block; text-decoration: none; word-break: break-all; font-size: 14px; font-family: Arial, Helvetica, sans-serif; line-height: 16.8px; color: rgb(255, 255, 255); background-color: rgb(4, 219, 192); border: 0px;">Подписаться</button>                </td>            </tr>        </tbody>
+</table>                                    </td>                            </tr>                        </tbody>
+</table>                    </td>                </tr>            </tbody>
+</table>        <!--[if (gte mso 9)|(IE)]></td></tr></table><![endif]--><!--[if (gte mso 9)|(IE)]><table cellpadding="0" cellspacing="0" border="0" width="400" align="center"><tr><td><![endif]-->                                    <table width="100%" border="0" cellspacing="0" cellpadding="0" style="width: 100%; table-layout: fixed; height: auto; border-collapse: collapse; border-spacing: 0px; display: inline-table; vertical-align: top; font-size: medium;">                <tbody>
+<tr>                    <td style="width:100%;" valign="top">                        <table border="0" cellspacing="0" cellpadding="0" style="height: 100%; width: 100%; table-layout: fixed; border-spacing: 0px; border-collapse: collapse;">                            <tbody>
+<tr>                                <td style="width: 100%; font-family: Arial, Helvetica, sans-serif; font-size: 12px; color: rgb(34, 34, 34);">                                            <div style="font-size:medium; word-break:break-word; word-wrap:break-word; line-height:18px; font-family: Times New Roman;">                    </div>                                    </td>                            </tr>                        </tbody>
+</table>                    </td>                </tr>            </tbody>
+</table>        <!--[if (gte mso 9)|(IE)]></td></tr></table><![endif]-->
+</td></tr></tbody></table>
+<!--[if (gte mso 9)|(IE)]></td></tr></table><![endif]-->
+</td></tr></tbody></table></div>
+<input type="hidden" name="charset" value="UTF-8">
+<input type="hidden" name="default_list_id" value="1">
+<input type="hidden" name="overwrite" value="2">
+<input type="hidden" name="is_v5" value="1">
 </form>
-  </div>
 </div>
-</div>
-
+<script src="https://sf2df4j6wzf.s3.eu-central-1.amazonaws.com/popups/popup.js"></script>
+<script>
+  window.popupForSubscriptionsForm("https://apig.unisender.com");
+</script>
 
 
 </section>
