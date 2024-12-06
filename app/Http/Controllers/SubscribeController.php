@@ -29,12 +29,23 @@ class SubscribeController extends Controller
         $response = json_decode($response);
 dd($response);  // Выводит весь ответ
 
-        // Обрабатываем ответ от Unisender
-        if ($response && $response->status === 'OK') {
-            return back()->with('success', 'Вы успешно подписались на рассылку!');
-        } else {
-            return back()->with('error', 'Произошла ошибка. Попробуйте позже.');
-        }
+var_dump($response);  // Проверим тип данных
+
+// Если это строка, декодируем
+if (is_string($response)) {
+    $response = json_decode($response);
+}
+
+// Теперь можно проверять свойства объекта
+if (isset($response->status)) {
+    if ($response->status == 'success') {
+        echo "Подписка успешна!";
+    } else {
+        echo "Ошибка подписки!";
+    }
+} else {
+    echo "Не удалось получить статус";
+}
     }
 
     // Функция для отправки POST-запроса
