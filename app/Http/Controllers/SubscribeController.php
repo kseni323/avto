@@ -9,7 +9,7 @@ class SubscribeController extends Controller
 {
     public function subscribe(Request $request)
     {
-        $apiKey = '6tark6sni3e64ophd3r5fkampmfosuykio5x93mo'; // Замените на ваш ключ UniSender
+        $apiKey = '6ndpzpnzxmu3wc947cduunc5urp1dptuz8a8xany'; // Замените на ваш ключ UniSender
         $listId = '1'; // Укажите ID списка контактов
 
         $email = $request->input('email'); // Получаем email из формы
