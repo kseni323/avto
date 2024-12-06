@@ -4,8 +4,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['EMAIL'])) {
     $apiKey = '6tark6sni3e64ophd3r5fkampmfosuykio5x93mo'; // Ваш API ключ
     $listId = '1'; // ID вашего списка
 
-    // URL для добавления контакта
-    $url = "https://api.unisender.com/ru/api/subscribe?format=json";
+    // URL для добавления контакта   
+     $url = 'https://api.unisender.com/ru/api/subscribe.json';    
 
     // Данные для отправки
     $data = [

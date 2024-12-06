@@ -256,14 +256,13 @@
   <p style="margin-bottom:0px">Ничего не пропустите! Подпишитесь, чтобы получать ежедневные предложения</p>
 
   <div class="subscribe_form">
-    <form method="POST" action="subscribe.php" name="subscribtion_form" us_mode="embed">
+    <form method="POST" action="resources/views/subscribe.php" name="subscribtion_form" us_mode="embed">
       <input type="email" name="email" class="form_input" placeholder="Почта..." required>
       <button type="submit" class="btn sbmt-bttn">ПОДПИСАТЬСЯ</button>
     </form>
   </div>
 </div>
 </div>
-
 
 </section>
 
