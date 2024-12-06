@@ -256,13 +256,16 @@
   <p style="margin-bottom:0px">Ничего не пропустите! Подпишитесь, чтобы получать ежедневные предложения</p>
 
   <div class="subscribe_form">
-    <form method="POST" action="resources/views/subscribe.php" name="subscribtion_form" us_mode="embed">
-      <input type="email" name="email" class="form_input" placeholder="Почта..." required>
-      <button type="submit" class="btn sbmt-bttn">ПОДПИСАТЬСЯ</button>
-    </form>
+  <form method="POST" action="{{ url('/subscribe') }}" name="subscribtion_form">
+    @csrf  <!-- Это директива Blade для защиты от CSRF атак -->
+    <input type="email" name="email" class="form_input" placeholder="Почта..." required>
+    <button type="submit" class="btn sbmt-bttn">ПОДПИСАТЬСЯ</button>
+</form>
   </div>
 </div>
 </div>
+
+
 
 </section>
 

@@ -42,7 +42,8 @@ Route::get('/cars', [CarController::class, 'index'])->name('cars.index');
 Route::get('/cars/filter', [CarController::class, 'filter'])->name('cars.filter');
 Route::get('/cars/{id}', [CarController::class, 'show'])->name('cars.show');
 
-Route::post('/subscribe', [SubscriptionController::class, 'subscribe']);
+
+Route::post('/subscribe', 'SubscribeController@subscribe');
 
 Route::get('/', [BookingController::class, 'showReservationForm'])->name('home');
 
