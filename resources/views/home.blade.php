@@ -256,11 +256,12 @@
   <p style="margin-bottom:0px">Ничего не пропустите! Подпишитесь, чтобы получать ежедневные предложения</p>
 
   <div class="subscribe_form">
-    <form id="subscribeForm" action="subscribe.php" method="POST" novalidate>
-      <input type="email" name="EMAIL" id="subs-email" class="form_input" placeholder="Почта..." required>
-      <button type="submit" class="btn btn-primary">ПОДПИСАТЬСЯ</button>
+    <form method="POST" action="https://cp.unisender.com/ru/subscribe?hash=6d4rrrmezwji386ipwqom1hsua6ruotoyyp7woaonige4a63pm15o" name="subscribtion_form" us_mode="embed">
+      <input type="email" name="email" class="form_input" placeholder="Почта..." required>
+      <button type="submit" class="btn sbmt-bttn">ПОДПИСАТЬСЯ</button>
     </form>
   </div>
+</div>
 </div>
 
 
@@ -272,14 +273,10 @@
                     <tr>
                         <td>
                             <div class="subscribe_form">
-                            <h3>Рассылка</h3>
-  <p style="margin-bottom:0px">Ничего не пропустите! Подпишитесь, чтобы получать ежедневные предложения</p>
-
-  <div class="subscribe_form">
-    <form id="subscribeForm" action="subscribe.php" method="POST" novalidate>
-      <input type="email" name="EMAIL" id="subs-email" class="form_input" placeholder="Почта..." required>
-      <button type="submit" class="btn btn-primary">ПОДПИСАТЬСЯ</button>
-    </form>
+                                <h3>Рассылка</h3>
+                                <p>Ничего не пропустите! Подпишитесь, чтобы получать ежедневные предложения</p>
+                                <input type="text" name="email" class="form_input" placeholder="Почта..." required>
+                                <button type="submit" class="submit">Подписаться</button>
                             </div>
                         </td>
                     </tr>
