@@ -163,8 +163,8 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="user_email">Электронная почта</label>
-                        <input type="email" id="user_email" name="user_email" placeholder="your@mail.com" class="form-control" required>
+                        <label for="user_email">E-mail</label>
+                        <input type="email" id="user_email" name="user_email" placeholder="Почта..." class="form-control" required>
                     </div>
                     <button type="submit" class="btn sbmt-bttn">Бронируйте мгновенно</button>
                 </form>
@@ -254,7 +254,6 @@
             <div class="footer_widget section-padding">
   <h3>Рассылка</h3>
   <p style="margin-bottom: 0px;">Ничего не пропустите! Подпишитесь, чтобы получать ежедневные предложения</p>
-
   <div class="subscribe_form">
     <form method="POST" action="https://cp.unisender.com/ru/subscribe?hash=6d4rrrmezwji386ipwqom1hsua6ruotoyyp7woaonige4a63pm15o" name="subscribtion_form" us_mode="embed">
       <input type="email" name="email" class="form_input" placeholder="Почта..." required>
@@ -266,14 +265,10 @@
     </form>
   </div>
 </div>
-
 <script src="https://sf2df4j6wzf.s3.eu-central-1.amazonaws.com/popups/popup.js"></script>
 <script>
   window.popupForSubscriptionsForm("https://apig.unisender.com");
 </script>
-
-
-
 </section>
 
 <footer class="footer_section">
