@@ -272,12 +272,6 @@
                 <tbody>
                     <tr>
                         <td>
-                            <div class="subscribe_form">
-                                <h3>Рассылка</h3>
-                                <p>Ничего не пропустите! Подпишитесь, чтобы получать ежедневные предложения</p>
-                                <input type="text" name="email" class="form_input" placeholder="Почта..." required>
-                                <button type="submit" class="submit">Подписаться</button>
-                            </div>
                         </td>
                     </tr>
                 </tbody>
