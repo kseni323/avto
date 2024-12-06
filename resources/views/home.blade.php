@@ -265,25 +265,6 @@
 </div>
 
 
-<div id="static-form-container" data-url="https://cp.unisender.com/ru/v5/subscribe-form/view/6tknymemmmwrmy3kze1r97sqn5ywfdx9n1zzk5fe" data-settings="6gpgck38nyzfb56ipwqom1hsuahxcct3zkrxz1o7uri9hppdtmaho" style="display: none;">
-    <form method="POST" action="subscribe.php" name="subscribtion_form" us_mode="embed">
-        <div class="container responsive">
-            <table cellpadding="0" cellspacing="0" align="center" style="width: 100%; box-sizing: border-box; float: left;">
-                <tbody>
-                    <tr>
-                        <td>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <input type="hidden" name="charset" value="UTF-8">
-        <input type="hidden" name="default_list_id" value="1">
-        <input type="hidden" name="overwrite" value="2">
-        <input type="hidden" name="is_v5" value="1">
-    </form>
-</div>
-
 </section>
 
 <footer class="footer_section">
