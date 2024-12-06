@@ -26,9 +26,6 @@ class SubscribeController extends Controller
         // Отправляем POST-запрос в Unisender
         $response = $this->sendPostRequest($url, $data);
 
-        $response = json_decode($response);
-dd($response);  // Выводит весь ответ
-
 var_dump($response);  // Проверим тип данных
 
 // Если это строка, декодируем
