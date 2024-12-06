@@ -6,7 +6,7 @@ use TCG\Voyager\Facades\Voyager;
 use App\Http\Controllers\CarController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\HomeController;
-
+use App\Http\Controllers\SubscribeController;
 
 
 Route::get('/', function () {
@@ -42,8 +42,7 @@ Route::get('/cars', [CarController::class, 'index'])->name('cars.index');
 Route::get('/cars/filter', [CarController::class, 'filter'])->name('cars.filter');
 Route::get('/cars/{id}', [CarController::class, 'show'])->name('cars.show');
 
-
-Route::post('/subscribe', 'SubscribeController@subscribe');
+Route::post('/subscribe', [SubscribeController::class, 'subscribe']);
 
 Route::get('/', [BookingController::class, 'showReservationForm'])->name('home');
 
