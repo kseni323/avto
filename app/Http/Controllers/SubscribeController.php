@@ -26,6 +26,9 @@ class SubscribeController extends Controller
         // Отправляем POST-запрос в Unisender
         $response = $this->sendPostRequest($url, $data);
 
+        $response = json_decode($response);
+dd($response);  // Выводит весь ответ
+
         // Обрабатываем ответ от Unisender
         if ($response && $response->status === 'OK') {
             return back()->with('success', 'Вы успешно подписались на рассылку!');
