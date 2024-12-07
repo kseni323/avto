@@ -236,40 +236,36 @@ document.addEventListener('DOMContentLoaded', function () {
     const carModelSelect = document.getElementById('car_model');
 
     async function updateCarModels() {
-        const pickupDate = pickupDateInput.value;
-        const returnDate = returnDateInput.value;
+    const pickupDate = pickupDateInput.value;
+    const returnDate = returnDateInput.value;
 
-        if (pickupDate && returnDate) {
-            try {
-                const response = await fetch('{{ route('cars.filter') }}', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                    },
-                    body: JSON.stringify({ pickup_date: pickupDate, return_date: returnDate })
-                });
+    if (pickupDate && returnDate) {
+        try {
+            const response = await fetch('{{ route('cars.filter') }}', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                },
+                body: JSON.stringify({
+                    pickup_date: pickupDate,
+                    return_date: returnDate
+                })
+            });
 
-                const availableCars = await response.json();
+            const data = await response.json();
 
-                // Очищаем список и добавляем только доступные машины
-                carModelSelect.innerHTML = '<option value="">Выберите модель</option>';
-                availableCars.forEach(car => {
-                    const option = document.createElement('option');
-                    option.value = car.id;
-                    option.textContent = car.name;
-                    option.setAttribute('data-price', car.price);
-                    carModelSelect.appendChild(option);
-                });
-            } catch (error) {
-                console.error('Ошибка при получении доступных машин:', error);
-            }
+            // Если сервер возвращает HTML
+            const resultsContainer = document.getElementById('results-container'); // Замените на ID вашего контейнера для результатов
+            resultsContainer.innerHTML = data.html;
+        } catch (error) {
+            console.error('Ошибка при обновлении моделей машин:', error);
         }
     }
+}
 
-    // Добавляем обработчики событий для обновления списка машин
-    pickupDateInput.addEventListener('change', updateCarModels);
-    returnDateInput.addEventListener('change', updateCarModels);
+pickupDateInput.addEventListener('change', updateCarModels);
+returnDateInput.addEventListener('change', updateCarModels);
 });
 </script>   
 

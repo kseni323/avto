@@ -20,10 +20,11 @@ class CarController extends Controller
         return view('cars', compact('classes', 'transmissions', 'driveTypes', 'cars'));
     }
 
-    public function filter(Request $request) {
+    public function filter(Request $request)
+    {
         $query = Car::query();
     
-        // Применение фильтров
+        // Фильтрация по классу, трансмиссии и типу привода
         if ($request->has('class') && $request->class) {
             $query->where('class', $request->class);
         }
@@ -36,13 +37,35 @@ class CarController extends Controller
             $query->where('drive_type', $request->drive_type);
         }
     
-        $cars = $query->get();
+        // Фильтрация по доступности на указанные даты
+        if ($request->has('pickup_date') && $request->has('return_date')) {
+            $pickupDate = $request->input('pickup_date');
+            $returnDate = $request->input('return_date');
     
-        if ($cars->isEmpty()) {
-            return response()->json(['html' => '<div class="col-12 text-center mt-4"><p>По выбранным фильтрам ничего не найдено.</p></div>']);
+            $bookedCarIds = DB::table('bookings')
+                ->where(function ($query) use ($pickupDate, $returnDate) {
+                    $query->whereBetween('pickup_date', [$pickupDate, $returnDate])
+                        ->orWhereBetween('return_date', [$pickupDate, $returnDate])
+                        ->orWhere(function ($q) use ($pickupDate, $returnDate) {
+                            $q->where('pickup_date', '<=', $pickupDate)
+                              ->where('return_date', '>=', $returnDate);
+                        });
+                })
+                ->pluck('car_id');
+    
+            $query->whereNotIn('id', $bookedCarIds);
         }
     
-        // Рендеринг вьюшки с результатами
+        $cars = $query->get();
+    
+        // Если машин нет
+        if ($cars->isEmpty()) {
+            return response()->json([
+                'html' => '<div class="col-12 text-center mt-4"><p>По выбранным фильтрам или датам ничего не найдено.</p></div>'
+            ]);
+        }
+    
+        // Рендеринг результатов
         $html = view('car_results', compact('cars'))->render();
         return response()->json(['html' => $html]);
     }
@@ -76,7 +99,5 @@ public function filterAvailableCars(Request $request)
 
     return response()->json($availableCars);
 }
-
-
 
 }
