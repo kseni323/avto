@@ -241,7 +241,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (pickupDate && returnDate) {
         try {
-            const response = await fetch('{{ route('cars.filter') }}', {
+            const response = await fetch('{{ route('cars.filter.availabl') }}', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
