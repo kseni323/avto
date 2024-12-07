@@ -153,12 +153,16 @@
                         </div>
                     </div>
                     <div class="form-group">
-                       <label for="car_model">Модель автомобиля</label>
-                       <select id="car_model" name="car_id" class="form-control" required>
-                           <option value="">Выберите модель</option>
-                                <!-- Опции будут добавляться динамически через JavaScript -->
-                        </select>
-                    </div>
+    <label for="car_model">Модель автомобиля</label>
+    <select id="car_model" name="car_id" class="form-control" required>
+        <option value="">Выберите модель</option>
+        @foreach($cars as $car)
+            <option value="{{ $car->id }}" data-price="{{ $car->price }}">
+                {{ $car->name }}
+            </option>
+        @endforeach
+    </select>
+</div>
                     <div class="form-group">
                         <label for="user_email">E-mail</label>
                         <input type="email" id="user_email" name="user_email" placeholder="Почта..." class="form-control" required>
@@ -223,20 +227,21 @@
         });
         carModelSelect.addEventListener('change', calculateDaysAndPrice);
     });
-</script>        
+</script>   
 
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const pickupDateInput = document.getElementById('pickup_date');
-        const returnDateInput = document.getElementById('return_date');
-        const carModelSelect = document.getElementById('car_model');
+<script>   
+document.addEventListener('DOMContentLoaded', function () {
+    const pickupDateInput = document.getElementById('pickup_date');
+    const returnDateInput = document.getElementById('return_date');
+    const carModelSelect = document.getElementById('car_model');
 
-        async function updateCarModels() {
-            const pickupDate = pickupDateInput.value;
-            const returnDate = returnDateInput.value;
+    async function updateCarModels() {
+        const pickupDate = pickupDateInput.value;
+        const returnDate = returnDateInput.value;
 
-            if (pickupDate && returnDate) {
-                const response = await fetch('{{ route('cars.available') }}', {
+        if (pickupDate && returnDate) {
+            try {
+                const response = await fetch('{{ route('cars.filter') }}', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -247,7 +252,7 @@
 
                 const availableCars = await response.json();
 
-                // Очистить выпадающий список и добавить новые опции
+                // Очищаем список и добавляем только доступные машины
                 carModelSelect.innerHTML = '<option value="">Выберите модель</option>';
                 availableCars.forEach(car => {
                     const option = document.createElement('option');
@@ -256,14 +261,18 @@
                     option.setAttribute('data-price', car.price);
                     carModelSelect.appendChild(option);
                 });
+            } catch (error) {
+                console.error('Ошибка при получении доступных машин:', error);
             }
         }
+    }
 
-        // Добавляем обработчики для обновления списка машин
-        pickupDateInput.addEventListener('change', updateCarModels);
-        returnDateInput.addEventListener('change', updateCarModels);
-    });
-</script>
+    // Добавляем обработчики событий для обновления списка машин
+    pickupDateInput.addEventListener('change', updateCarModels);
+    returnDateInput.addEventListener('change', updateCarModels);
+});
+</script>   
+
 
                 <!-- Уведомление о подтверждении -->
                 <div id="confirmationMessage" class="alert text-center" 
