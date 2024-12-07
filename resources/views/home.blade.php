@@ -193,6 +193,9 @@
 
                 // Обновляем отображение аренды и общей стоимости
                 rentalDetailsElement.textContent = `Аренда ${days} суток: ${days * pricePerDay} ₽`;
+            } else if (pricePerDay > 0) {
+                // Если только выбрана модель автомобиля
+                rentalDetailsElement.textContent = `Цена: ${pricePerDay} ₽ в сутки`;
             } else {
                 rentalDetailsElement.textContent = 'Цена: 0 ₽';
             }
@@ -220,7 +223,7 @@
         });
         carModelSelect.addEventListener('change', calculateDaysAndPrice);
     });
-</script>                
+</script>             
 
                 <!-- Уведомление о подтверждении -->
                 <div id="confirmationMessage" class="alert text-center" 
