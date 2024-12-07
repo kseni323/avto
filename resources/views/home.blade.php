@@ -173,7 +173,7 @@
                     <button type="submit" class="btn sbmt-bttn">Бронируйте мгновенно</button>
                 </form>
 
-<script>
+                <script>
     document.addEventListener('DOMContentLoaded', function () {
         const pickupDateInput = document.getElementById('pickup_date');
         const returnDateInput = document.getElementById('return_date');
@@ -185,7 +185,7 @@
             const pricePerDay = parseFloat(selectedCar.getAttribute('data-price')) || 0;
 
             if (!selectedCar.value) {
-                // Если машина не выбрана, скрываем информацию
+                // Если машина не выбрана, полностью очищаем элемент
                 rentalDetailsElement.textContent = '';
                 return;
             }
@@ -202,8 +202,6 @@
             } else if (pricePerDay > 0) {
                 // Если только выбрана модель автомобиля
                 rentalDetailsElement.textContent = `Цена: ${pricePerDay} ₽ в сутки`;
-            } else {
-                rentalDetailsElement.textContent = '';
             }
         }
 
