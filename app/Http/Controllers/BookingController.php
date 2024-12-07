@@ -62,4 +62,31 @@ class BookingController extends Controller
             })
             ->exists();
     }
+
+    public function checkAvailability(Request $request)
+    {
+        $carId = $request->input('car_id');
+        $pickupDate = $request->input('pickup_date');
+        $returnDate = $request->input('return_date');
+    
+        // Проверяем, есть ли бронирования для этой машины в указанный период
+        $isBooked = DB::table('bookings')
+            ->where('car_id', $carId)
+            ->where(function ($query) use ($pickupDate, $returnDate) {
+                $query->whereBetween('pickup_date', [$pickupDate, $returnDate])
+                    ->orWhereBetween('return_date', [$pickupDate, $returnDate])
+                    ->orWhere(function ($q) use ($pickupDate, $returnDate) {
+                        $q->where('pickup_date', '<=', $pickupDate)
+                          ->where('return_date', '>=', $returnDate);
+                    });
+            })
+            ->exists();
+    
+        if ($isBooked) {
+            return response()->json(['available' => false, 'message' => 'Машина занята на выбранные даты.']);
+        }
+    
+        return response()->json(['available' => true]);
+    }
+
 }

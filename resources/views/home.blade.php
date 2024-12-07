@@ -162,6 +162,7 @@
                             </option>
                                @endforeach
                           </select>
+                          <p id="availability_message" style="color: red; font-size: 14px;"></p>
                     </div>
                     <div class="form-group">
                         <label for="user_email">E-mail</label>
@@ -258,6 +259,47 @@
             carPriceDisplay.textContent = `Цена: ${price} ₽`;
         });
         
+    });
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const carModelSelect = document.getElementById('car_model');
+        const pickupDateInput = document.getElementById('pickup_date');
+        const returnDateInput = document.getElementById('return_date');
+        const availabilityMessage = document.createElement('p');
+        availabilityMessage.style.color = 'red';
+        availabilityMessage.style.fontSize = '14px';
+        carModelSelect.parentElement.appendChild(availabilityMessage);
+
+        async function checkAvailability() {
+            const carId = carModelSelect.value;
+            const pickupDate = pickupDateInput.value;
+            const returnDate = returnDateInput.value;
+
+            availabilityMessage.textContent = ''; // Очищаем сообщение
+
+            if (carId && pickupDate && returnDate) {
+                const response = await fetch('{{ route('booking.checkAvailability') }}', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                    },
+                    body: JSON.stringify({ car_id: carId, pickup_date: pickupDate, return_date: returnDate })
+                });
+
+                const result = await response.json();
+                if (!result.available) {
+                    availabilityMessage.textContent = result.message; // Отображаем сообщение
+                }
+            }
+        }
+
+        // Добавляем обработчики событий
+        carModelSelect.addEventListener('change', checkAvailability);
+        pickupDateInput.addEventListener('change', checkAvailability);
+        returnDateInput.addEventListener('change', checkAvailability);
     });
 </script>
 
