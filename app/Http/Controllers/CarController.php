@@ -20,11 +20,10 @@ class CarController extends Controller
         return view('cars', compact('classes', 'transmissions', 'driveTypes', 'cars'));
     }
 
-    public function filter(Request $request)
-    {
+    public function filter(Request $request) {
         $query = Car::query();
     
-        // Фильтрация по классу, трансмиссии и типу привода
+        // Применение фильтров
         if ($request->has('class') && $request->class) {
             $query->where('class', $request->class);
         }
@@ -37,35 +36,13 @@ class CarController extends Controller
             $query->where('drive_type', $request->drive_type);
         }
     
-        // Фильтрация по доступности на указанные даты
-        if ($request->has('pickup_date') && $request->has('return_date')) {
-            $pickupDate = $request->input('pickup_date');
-            $returnDate = $request->input('return_date');
-    
-            $bookedCarIds = DB::table('bookings')
-                ->where(function ($query) use ($pickupDate, $returnDate) {
-                    $query->whereBetween('pickup_date', [$pickupDate, $returnDate])
-                        ->orWhereBetween('return_date', [$pickupDate, $returnDate])
-                        ->orWhere(function ($q) use ($pickupDate, $returnDate) {
-                            $q->where('pickup_date', '<=', $pickupDate)
-                              ->where('return_date', '>=', $returnDate);
-                        });
-                })
-                ->pluck('car_id');
-    
-            $query->whereNotIn('id', $bookedCarIds);
-        }
-    
         $cars = $query->get();
     
-        // Если машин нет
         if ($cars->isEmpty()) {
-            return response()->json([
-                'html' => '<div class="col-12 text-center mt-4"><p>По выбранным фильтрам или датам ничего не найдено.</p></div>'
-            ]);
+            return response()->json(['html' => '<div class="col-12 text-center mt-4"><p>По выбранным фильтрам ничего не найдено.</p></div>']);
         }
     
-        // Рендеринг результатов
+        // Рендеринг вьюшки с результатами
         $html = view('car_results', compact('cars'))->render();
         return response()->json(['html' => $html]);
     }
@@ -75,29 +52,5 @@ class CarController extends Controller
         $car = Car::findOrFail($id);
         return view('show', compact('car'));
     }
-
-
-public function filterAvailableCars(Request $request)
-{
-    $pickupDate = $request->input('pickup_date');
-    $returnDate = $request->input('return_date');
-
-    // Идентификаторы машин, которые заняты на указанные даты
-    $bookedCarIds = DB::table('bookings')
-        ->where(function ($query) use ($pickupDate, $returnDate) {
-            $query->whereBetween('pickup_date', [$pickupDate, $returnDate])
-                ->orWhereBetween('return_date', [$pickupDate, $returnDate])
-                ->orWhere(function ($q) use ($pickupDate, $returnDate) {
-                    $q->where('pickup_date', '<=', $pickupDate)
-                      ->where('return_date', '>=', $returnDate);
-                });
-        })
-        ->pluck('car_id');
-
-    // Все доступные машины (те, которые не заняты)
-    $availableCars = Car::whereNotIn('id', $bookedCarIds)->get();
-
-    return response()->json($availableCars);
-}
 
 }

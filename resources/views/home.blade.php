@@ -173,7 +173,7 @@
                     <button type="submit" class="btn sbmt-bttn">Бронируйте мгновенно</button>
                 </form>
 
-                <script>
+<script>
     document.addEventListener('DOMContentLoaded', function () {
         const pickupDateInput = document.getElementById('pickup_date');
         const returnDateInput = document.getElementById('return_date');
@@ -229,45 +229,6 @@
     });
 </script>   
 
-<script>   
-document.addEventListener('DOMContentLoaded', function () {
-    const pickupDateInput = document.getElementById('pickup_date');
-    const returnDateInput = document.getElementById('return_date');
-    const carModelSelect = document.getElementById('car_model');
-
-    async function updateCarModels() {
-    const pickupDate = pickupDateInput.value;
-    const returnDate = returnDateInput.value;
-
-    if (pickupDate && returnDate) {
-        try {
-            const response = await fetch('{{ route('cars.filter.availabl') }}', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                },
-                body: JSON.stringify({
-                    pickup_date: pickupDate,
-                    return_date: returnDate
-                })
-            });
-
-            const data = await response.json();
-
-            // Если сервер возвращает HTML
-            const resultsContainer = document.getElementById('results-container'); // Замените на ID вашего контейнера для результатов
-            resultsContainer.innerHTML = data.html;
-        } catch (error) {
-            console.error('Ошибка при обновлении моделей машин:', error);
-        }
-    }
-}
-
-pickupDateInput.addEventListener('change', updateCarModels);
-returnDateInput.addEventListener('change', updateCarModels);
-});
-</script>   
 
 
                 <!-- Уведомление о подтверждении -->
