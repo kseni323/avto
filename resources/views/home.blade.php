@@ -145,7 +145,7 @@
                         </div>
                         <div class="form-group">
                             <label for="pickup_date">Дата аренды</label>
-                            <input type="date" id="return_date" min="{{ now()->addDay()->toDateString() }}" name="return_date" class="form-control" required>
+                            <input type="date" id="pickup_date" min="{{ now()->toDateString() }}" name="pickup_date" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label for="return_date">Дата возврата</label>
@@ -168,12 +168,59 @@
                         <input type="email" id="user_email" name="user_email" placeholder="Почта..." class="form-control" required>
                     </div>
                     <div class="price mt-3">
-    <p><strong>Цена за день:</strong> <span id="price_per_day">0</span> ₽</p>
-    <p><strong>Количество дней аренды:</strong> <span id="rental_days">0</span></p>
-    <p><strong>Итоговая стоимость:</strong> <span id="total_price">0</span> ₽</p>
-</div>
+                       <p id="rental_details">Цена: 0 ₽</p>
+                    </div>
                     <button type="submit" class="btn sbmt-bttn">Бронируйте мгновенно</button>
                 </form>
+
+                <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const pickupDateInput = document.getElementById('pickup_date');
+        const returnDateInput = document.getElementById('return_date');
+        const carModelSelect = document.getElementById('car_model');
+        const rentalDetailsElement = document.getElementById('rental_details');
+
+        function calculateDaysAndPrice() {
+            const selectedCar = carModelSelect.options[carModelSelect.selectedIndex];
+            const pricePerDay = parseFloat(selectedCar.getAttribute('data-price')) || 0;
+
+            const pickupDate = new Date(pickupDateInput.value);
+            const returnDate = new Date(returnDateInput.value);
+
+            if (pickupDate && returnDate && returnDate > pickupDate) {
+                const timeDiff = returnDate - pickupDate;
+                const days = Math.ceil(timeDiff / (1000 * 3600 * 24));
+
+                // Обновляем отображение аренды и общей стоимости
+                rentalDetailsElement.textContent = `Аренда ${days} суток: ${days * pricePerDay} ₽`;
+            } else {
+                rentalDetailsElement.textContent = 'Цена: 0 ₽';
+            }
+        }
+
+        function validateDate(input) {
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            const selectedDate = new Date(input.value);
+
+            if (selectedDate < today) {
+                alert('Пожалуйста, выберите корректные даты.');
+                input.value = '';
+            }
+        }
+
+        // Добавляем обработчики событий
+        pickupDateInput.addEventListener('change', function () {
+            validateDate(pickupDateInput);
+            calculateDaysAndPrice();
+        });
+        returnDateInput.addEventListener('change', function () {
+            validateDate(returnDateInput);
+            calculateDaysAndPrice();
+        });
+        carModelSelect.addEventListener('change', calculateDaysAndPrice);
+    });
+</script>                
 
                 <!-- Уведомление о подтверждении -->
                 <div id="confirmationMessage" class="alert text-center" 
@@ -185,48 +232,6 @@
             </div>
         </div>
     </div>
-
-    <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const carModelSelect = document.getElementById('car_model');
-        const pickupDateInput = document.getElementById('pickup_date');
-        const returnDateInput = document.getElementById('return_date');
-        const pricePerDayElement = document.getElementById('price_per_day');
-        const rentalDaysElement = document.getElementById('rental_days');
-        const totalPriceElement = document.getElementById('total_price');
-
-        function calculatePrice() {
-            // Получаем цену за день из выбранной модели
-            const selectedCar = carModelSelect.options[carModelSelect.selectedIndex];
-            const pricePerDay = parseFloat(selectedCar.getAttribute('data-price')) || 0;
-
-            // Устанавливаем цену за день
-            pricePerDayElement.textContent = pricePerDay.toLocaleString('ru-RU');
-
-            // Получаем даты
-            const pickupDate = new Date(pickupDateInput.value);
-            const returnDate = new Date(returnDateInput.value);
-
-            // Рассчитываем количество дней
-            const timeDiff = returnDate - pickupDate;
-            const rentalDays = timeDiff > 0 ? Math.ceil(timeDiff / (1000 * 60 * 60 * 24)) : 0;
-
-            // Устанавливаем количество дней
-            rentalDaysElement.textContent = rentalDays;
-
-            // Рассчитываем итоговую стоимость
-            const totalPrice = rentalDays * pricePerDay;
-
-            // Устанавливаем итоговую стоимость
-            totalPriceElement.textContent = totalPrice.toLocaleString('ru-RU');
-        }
-
-        // События для пересчета
-        carModelSelect.addEventListener('change', calculatePrice);
-        pickupDateInput.addEventListener('change', calculatePrice);
-        returnDateInput.addEventListener('change', calculatePrice);
-    });
-</script>
 
     <script>
     document.addEventListener('DOMContentLoaded', function () {
