@@ -42,10 +42,11 @@ class BookingController extends Controller
         return redirect()->back()->with('success', 'Бронирование успешно создано!');
     }
 
+
     public function showReservationForm()
 {
     $cars = Car::all(); // Получаем все данные машин
-    return view('booking-form', compact('cars'));
+    return view('home', compact('cars'));
 }
 
     private function isCarBooked($carId, $pickupDate, $returnDate)
