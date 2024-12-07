@@ -154,20 +154,22 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="car_model">Модель автомобиля</label>
-                        <select name="car_id" class="form-control" required>
-                            <option value="">Выберите модель</option>
-                            @foreach($cars as $id => $name)
-                                <option value="{{ $id }}">{{ $name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
+    <label for="car_model">Модель автомобиля</label>
+    <select name="car_id" id="car_id" class="form-control" required>
+        <option value="">Выберите модель</option>
+        @foreach($cars as $car)
+            <option value="{{ $car->id }}" data-price="{{ $car->price }}">
+                {{ $car->name }}
+            </option>
+        @endforeach
+    </select>
+</div>
                     <div class="form-group">
                         <label for="user_email">E-mail</label>
                         <input type="email" id="user_email" name="user_email" placeholder="Почта..." class="form-control" required>
                     </div>
                     <div class="price mt-3">
-                            <p>{{ $cars->price }} ₽ в сутки</p>
+                            <p>{{ $car->price }} ₽ в сутки</p>
                         </div>
                     <button type="submit" class="btn sbmt-bttn">Бронируйте мгновенно</button>
                 </form>

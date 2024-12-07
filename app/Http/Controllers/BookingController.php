@@ -48,6 +48,12 @@ class BookingController extends Controller
         return view('home', compact('cars'));
     }
 
+    public function showBookingForm()
+{
+    $cars = Car::all(); // Получаем все данные машин
+    return view('booking-form', compact('cars'));
+}
+
     private function isCarBooked($carId, $pickupDate, $returnDate)
     {
         return Booking::where('car_id', $carId)
