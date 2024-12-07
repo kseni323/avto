@@ -202,6 +202,21 @@
             // Обновляем текст с ценой
             carPriceDisplay.textContent = `Цена: ${price} ₽`;
         });
+
+        function calculateDaysAndPrice() {
+        const pickupDate = new Date(pickupDateInput.value);
+        const returnDate = new Date(returnDateInput.value);
+
+        if (pickupDate && returnDate && returnDate > pickupDate) {
+            const timeDiff = returnDate.getTime() - pickupDate.getTime();
+            const days = Math.ceil(timeDiff / (1000 * 3600 * 24));
+
+            // Обновляем отображение аренды и общей стоимости на одной строке
+            rentalDetailsElement.textContent = `Аренда ${days} суток: ${days * pricePerDay} ₽`;
+        } else {
+            rentalDetailsElement.textContent = '';
+        }
+    }
     });
 </script>
 
