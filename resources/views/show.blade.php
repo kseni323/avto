@@ -307,6 +307,16 @@ element.style {
             rentalDetailsElement.textContent = '';
         }
     }
+
+    // Добавляем проверку на выбор даты из прошлого
+    pickupDateInput.addEventListener('change', function () {
+        validateDate(pickupDateInput);
+        calculateDaysAndPrice();
+    });
+    returnDateInput.addEventListener('change', function () {
+        validateDate(returnDateInput);
+        calculateDaysAndPrice();
+    });
 });
 </script>
                     <div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="bookingModalLabel" aria-hidden="true">
