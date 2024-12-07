@@ -172,7 +172,6 @@
                     </div>
                     <button type="submit" class="btn sbmt-bttn">Бронируйте мгновенно</button>
                 </form>
-
                 <script>
     document.addEventListener('DOMContentLoaded', function () {
         const pickupDateInput = document.getElementById('pickup_date');
@@ -193,11 +192,14 @@
 
                 // Обновляем отображение аренды и общей стоимости
                 rentalDetailsElement.textContent = `Аренда ${days} суток: ${days * pricePerDay} ₽`;
+                rentalDetailsElement.classList.remove('d-none');
             } else if (pricePerDay > 0) {
                 // Если только выбрана модель автомобиля
                 rentalDetailsElement.textContent = `Цена: ${pricePerDay} ₽ в сутки`;
+                rentalDetailsElement.classList.remove('d-none');
             } else {
                 rentalDetailsElement.textContent = 'Цена: 0 ₽';
+                rentalDetailsElement.classList.add('d-none');
             }
         }
 
@@ -223,7 +225,7 @@
         });
         carModelSelect.addEventListener('change', calculateDaysAndPrice);
     });
-</script>             
+</script>          
 
                 <!-- Уведомление о подтверждении -->
                 <div id="confirmationMessage" class="alert text-center" 
