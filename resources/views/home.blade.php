@@ -166,6 +166,9 @@
                         <label for="user_email">E-mail</label>
                         <input type="email" id="user_email" name="user_email" placeholder="Почта..." class="form-control" required>
                     </div>
+                    <div class="price mt-3">
+                            <p>{{ $car->price }} ₽ в сутки</p>
+                        </div>
                     <button type="submit" class="btn sbmt-bttn">Бронируйте мгновенно</button>
                 </form>
 
@@ -179,6 +182,45 @@
             </div>
         </div>
     </div>
+
+
+    <script>
+ document.addEventListener('DOMContentLoaded', function () {
+    const pickupDateInput = document.querySelector('input[name="pickup_date"]');
+    const returnDateInput = document.querySelector('input[name="return_date"]');
+    const pricePerDay = {{ $car->price }};
+    const rentalDetailsElement = document.createElement('p');
+
+    // Добавляем элемент для отображения аренды и общей стоимости
+    document.querySelector('.price').appendChild(rentalDetailsElement);
+
+    function validateDate(input) {
+        const today = new Date();
+        today.setHours(0, 0, 0, 0); // Устанавливаем время на начало дня
+        const selectedDate = new Date(input.value);
+
+        if (selectedDate < today) {
+            alert('Пожалуйста, выберите корректные даты.');
+            input.value = ''; // Сбрасываем значение
+        }
+    }
+
+    function calculateDaysAndPrice() {
+        const pickupDate = new Date(pickupDateInput.value);
+        const returnDate = new Date(returnDateInput.value);
+
+        if (pickupDate && returnDate && returnDate > pickupDate) {
+            const timeDiff = returnDate.getTime() - pickupDate.getTime();
+            const days = Math.ceil(timeDiff / (1000 * 3600 * 24));
+
+            // Обновляем отображение аренды и общей стоимости на одной строке
+            rentalDetailsElement.textContent = `Аренда ${days} суток: ${days * pricePerDay} ₽`;
+        } else {
+            rentalDetailsElement.textContent = '';
+        }
+    }
+});
+</script>
 
     <script>
         // Устанавливаем минимальную дату возврата на основе даты аренды
