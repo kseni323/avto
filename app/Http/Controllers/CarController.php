@@ -53,5 +53,27 @@ class CarController extends Controller
         return view('show', compact('car'));
     }
 
+    public function getAvailableCars(Request $request)
+{
+    $pickupDate = $request->input('pickup_date');
+    $returnDate = $request->input('return_date');
+
+    // Найти занятые машины на указанные даты
+    $bookedCarIds = DB::table('bookings')
+        ->where(function ($query) use ($pickupDate, $returnDate) {
+            $query->whereBetween('pickup_date', [$pickupDate, $returnDate])
+                ->orWhereBetween('return_date', [$pickupDate, $returnDate])
+                ->orWhere(function ($q) use ($pickupDate, $returnDate) {
+                    $q->where('pickup_date', '<=', $pickupDate)
+                      ->where('return_date', '>=', $returnDate);
+                });
+        })
+        ->pluck('car_id');
+
+    // Получить только свободные машины
+    $availableCars = Car::whereNotIn('id', $bookedCarIds)->get();
+
+    return response()->json($availableCars);
+}
 
 }

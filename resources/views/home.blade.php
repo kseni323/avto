@@ -153,16 +153,11 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="car_model">Модель автомобиля</label>
-                          <select id="car_model" name="car_id" class="form-control" required>
-                            <option value="">Выберите модель</option>
-                               @foreach($cars as $car)
-                            <option value="{{ $car->id }}" data-price="{{ $car->price }}">
-                              {{ $car->name }}
-                            </option>
-                               @endforeach
-                          </select>
-                          <p id="availability_message" style="color: red; font-size: 14px;"></p>
+                       <label for="car_model">Модель автомобиля</label>
+                       <select id="car_model" name="car_id" class="form-control" required>
+                           <option value="">Выберите модель</option>
+                                <!-- Опции будут добавляться динамически через JavaScript -->
+                        </select>
                     </div>
                     <div class="form-group">
                         <label for="user_email">E-mail</label>
@@ -230,6 +225,46 @@
     });
 </script>        
 
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const pickupDateInput = document.getElementById('pickup_date');
+        const returnDateInput = document.getElementById('return_date');
+        const carModelSelect = document.getElementById('car_model');
+
+        async function updateCarModels() {
+            const pickupDate = pickupDateInput.value;
+            const returnDate = returnDateInput.value;
+
+            if (pickupDate && returnDate) {
+                const response = await fetch('{{ route('cars.available') }}', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                    },
+                    body: JSON.stringify({ pickup_date: pickupDate, return_date: returnDate })
+                });
+
+                const availableCars = await response.json();
+
+                // Очистить выпадающий список и добавить новые опции
+                carModelSelect.innerHTML = '<option value="">Выберите модель</option>';
+                availableCars.forEach(car => {
+                    const option = document.createElement('option');
+                    option.value = car.id;
+                    option.textContent = car.name;
+                    option.setAttribute('data-price', car.price);
+                    carModelSelect.appendChild(option);
+                });
+            }
+        }
+
+        // Добавляем обработчики для обновления списка машин
+        pickupDateInput.addEventListener('change', updateCarModels);
+        returnDateInput.addEventListener('change', updateCarModels);
+    });
+</script>
+
                 <!-- Уведомление о подтверждении -->
                 <div id="confirmationMessage" class="alert text-center" 
                      style="display: none; position: fixed; top: 20px; left: 50%; transform: translateX(-50%); 
@@ -259,47 +294,6 @@
             carPriceDisplay.textContent = `Цена: ${price} ₽`;
         });
         
-    });
-</script>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const carModelSelect = document.getElementById('car_model');
-        const pickupDateInput = document.getElementById('pickup_date');
-        const returnDateInput = document.getElementById('return_date');
-        const availabilityMessage = document.createElement('p');
-        availabilityMessage.style.color = 'red';
-        availabilityMessage.style.fontSize = '14px';
-        carModelSelect.parentElement.appendChild(availabilityMessage);
-
-        async function checkAvailability() {
-            const carId = carModelSelect.value;
-            const pickupDate = pickupDateInput.value;
-            const returnDate = returnDateInput.value;
-
-            availabilityMessage.textContent = ''; // Очищаем сообщение
-
-            if (carId && pickupDate && returnDate) {
-                const response = await fetch('{{ route('booking.checkAvailability') }}', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                    },
-                    body: JSON.stringify({ car_id: carId, pickup_date: pickupDate, return_date: returnDate })
-                });
-
-                const result = await response.json();
-                if (!result.available) {
-                    availabilityMessage.textContent = result.message; // Отображаем сообщение
-                }
-            }
-        }
-
-        // Добавляем обработчики событий
-        carModelSelect.addEventListener('change', checkAvailability);
-        pickupDateInput.addEventListener('change', checkAvailability);
-        returnDateInput.addEventListener('change', checkAvailability);
     });
 </script>
 

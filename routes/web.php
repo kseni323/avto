@@ -48,8 +48,7 @@ Route::get('/', [BookingController::class, 'showReservationForm'])->name('home')
 
 Route::post('/booking/store', [BookingController::class, 'storeBooking'])->name('booking.store');
 
-Route::post('/check-availability', [BookingController::class, 'checkAvailability'])->name('booking.checkAvailability');
-
+Route::post('/available-cars', [CarController::class, 'getAvailableCars'])->name('cars.available');
 
 require __DIR__.'/auth.php';
 
