@@ -173,7 +173,7 @@
                     <button type="submit" class="btn sbmt-bttn">Бронируйте мгновенно</button>
                 </form>
 
-                <script>
+<script>
     document.addEventListener('DOMContentLoaded', function () {
         const pickupDateInput = document.getElementById('pickup_date');
         const returnDateInput = document.getElementById('return_date');
