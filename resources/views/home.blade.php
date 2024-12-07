@@ -167,7 +167,7 @@
                         <input type="email" id="user_email" name="user_email" placeholder="Почта..." class="form-control" required>
                     </div>
                     <div class="price mt-3">
-                            <p>{{ $car->price }} ₽ в сутки</p>
+                            <p>{{ $cars->price }} ₽ в сутки</p>
                         </div>
                     <button type="submit" class="btn sbmt-bttn">Бронируйте мгновенно</button>
                 </form>
