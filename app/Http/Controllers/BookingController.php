@@ -43,12 +43,6 @@ class BookingController extends Controller
     }
 
     public function showReservationForm()
-    {
-        $cars = Car::pluck('name', 'id'); // Получаем список автомобилей (id и name)
-        return view('home', compact('cars'));
-    }
-
-    public function showBookingForm()
 {
     $cars = Car::all(); // Получаем все данные машин
     return view('booking-form', compact('cars'));

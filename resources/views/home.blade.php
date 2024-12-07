@@ -155,7 +155,7 @@
 
                     <div class="form-group">
     <label for="car_model">Модель автомобиля</label>
-    <select name="car_id" id="car_id" class="form-control" required>
+    <select id="car_model" name="car_id" class="form-control" required>
         <option value="">Выберите модель</option>
         @foreach($cars as $car)
             <option value="{{ $car->id }}" data-price="{{ $car->price }}">
@@ -169,7 +169,7 @@
                         <input type="email" id="user_email" name="user_email" placeholder="Почта..." class="form-control" required>
                     </div>
                     <div class="price mt-3">
-                            <p>{{ $car->price }} ₽ в сутки</p>
+                            <p id="car_price">₽ в сутки</p>
                         </div>
                     <button type="submit" class="btn sbmt-bttn">Бронируйте мгновенно</button>
                 </form>
@@ -185,43 +185,24 @@
         </div>
     </div>
 
-
     <script>
- document.addEventListener('DOMContentLoaded', function () {
-    const pickupDateInput = document.querySelector('input[name="pickup_date"]');
-    const returnDateInput = document.querySelector('input[name="return_date"]');
-    const pricePerDay = {{ $car->price }};
-    const rentalDetailsElement = document.createElement('p');
+    document.addEventListener('DOMContentLoaded', function () {
+        // Получаем элементы
+        const carModelSelect = document.getElementById('car_model');
+        const carPriceDisplay = document.getElementById('car_price');
 
-    // Добавляем элемент для отображения аренды и общей стоимости
-    document.querySelector('.price').appendChild(rentalDetailsElement);
+        // Обработчик изменения выбора
+        carModelSelect.addEventListener('change', function () {
+            // Получаем выбранный элемент
+            const selectedOption = carModelSelect.options[carModelSelect.selectedIndex];
 
-    function validateDate(input) {
-        const today = new Date();
-        today.setHours(0, 0, 0, 0); // Устанавливаем время на начало дня
-        const selectedDate = new Date(input.value);
+            // Читаем атрибут data-price
+            const price = selectedOption.getAttribute('data-price') || 0;
 
-        if (selectedDate < today) {
-            alert('Пожалуйста, выберите корректные даты.');
-            input.value = ''; // Сбрасываем значение
-        }
-    }
-
-    function calculateDaysAndPrice() {
-        const pickupDate = new Date(pickupDateInput.value);
-        const returnDate = new Date(returnDateInput.value);
-
-        if (pickupDate && returnDate && returnDate > pickupDate) {
-            const timeDiff = returnDate.getTime() - pickupDate.getTime();
-            const days = Math.ceil(timeDiff / (1000 * 3600 * 24));
-
-            // Обновляем отображение аренды и общей стоимости на одной строке
-            rentalDetailsElement.textContent = `Аренда ${days} суток: ${days * pricePerDay} ₽`;
-        } else {
-            rentalDetailsElement.textContent = '';
-        }
-    }
-});
+            // Обновляем текст с ценой
+            carPriceDisplay.textContent = `Цена: ${price} ₽`;
+        });
+    });
 </script>
 
     <script>
