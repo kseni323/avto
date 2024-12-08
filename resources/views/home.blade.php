@@ -151,7 +151,9 @@
                             <label for="return_date">Дата возврата</label>
                             <input type="date" id="return_date" min="{{ now()->addDay()->toDateString() }}" name="return_date" class="form-control" required>
                         </div> 
-                        <div class="form-group">
+</div>
+</div>                 
+<div class="form-group">
     <label for="car_model">Модель автомобиля</label>
     <select id="car_model" name="car_id" class="form-control" required>
         <option value="">Выберите модель</option>
@@ -161,8 +163,6 @@
             </option>
         @endforeach
     </select>
-</div>
-</div>
                     <div class="form-group">
                         <label for="user_email">E-mail</label>
                         <input type="email" id="user_email" name="user_email" placeholder="Почта..." class="form-control" required>
@@ -170,7 +170,7 @@
                     <div class="price mt-3">
                        <p id="rental_details">Цена: 0 ₽</p>
                     </div>
-                    <a href="#" class="btn sbmt-bttn" data-bs-toggle="modal" data-bs-target="#bookingModal">Бронируйте мгновенно</a>
+                    <button type="submit" class="btn sbmt-bttn">Бронируйте мгновенно</button>
                 </form>
 
 
