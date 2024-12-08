@@ -22,10 +22,20 @@ class BookingController extends Controller
             'user_email' => 'required|email',
         ]);
 
-        // Проверка доступности автомобиля
-        if ($this->isCarBooked($request->car_id, $request->pickup_date, $request->return_date)) {
-            return redirect()->back()->withErrors(['car_id' => 'Данная модель на выбранные даты уже занята. Выберите другую дату или автомобиль.']);
-        }
+        $isBooked = Booking::where('car_id', $request->car_id)
+        ->where(function ($query) use ($request) {
+            $query->whereBetween('pickup_date', [$request->pickup_date, $request->return_date])
+                  ->orWhereBetween('return_date', [$request->pickup_date, $request->return_date])
+                  ->orWhere(function ($q) use ($request) {
+                      $q->where('pickup_date', '<=', $request->pickup_date)
+                        ->where('return_date', '>=', $request->return_date);
+                  });
+        })
+        ->exists();
+
+    if ($isBooked) {
+        return redirect()->back()->withErrors(['car_id' => 'Данная модель на выбранные даты уже занята.']);
+    }
 
         // Сохранение бронирования
         Booking::create([
