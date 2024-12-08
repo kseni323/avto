@@ -179,6 +179,10 @@
 <input type="hidden" name="is_v5" value="1">
     </form>
   </div>
+  <script src="https://sf2df4j6wzf.s3.eu-central-1.amazonaws.com/popups/popup.js"></script>
+<script>
+  window.popupForSubscriptionsForm("https://apig.unisender.com");
+</script>
                 </form>
 
 <script>
