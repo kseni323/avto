@@ -351,7 +351,7 @@
 <script>
   window.popupForSubscriptionsForm("https://apig.unisender.com");
 </script>
-
+</div>
 </section>
 
 <footer class="footer_section">
