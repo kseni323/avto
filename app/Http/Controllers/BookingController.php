@@ -10,11 +10,10 @@ class BookingController extends Controller
 {
     public function storeBooking(Request $request)
     {
-
         \Log::info('StoreBooking Called', $request->all()); // Логирование входящих данных
-        // Валидация данных
+
         $request->validate([
-           'car_id' => 'required|exists:cars,id',
+            'car_id' => 'required|exists:cars,id',
             'pickup_location' => 'required|string|max:255',
             'return_location' => 'required|string|max:255',
             'pickup_date' => 'required|date|after_or_equal:today',
@@ -22,22 +21,11 @@ class BookingController extends Controller
             'user_email' => 'required|email',
         ]);
 
-        $isBooked = Booking::where('car_id', $request->car_id)
-        ->where(function ($query) use ($request) {
-            $query->whereBetween('pickup_date', [$request->pickup_date, $request->return_date])
-                  ->orWhereBetween('return_date', [$request->pickup_date, $request->return_date])
-                  ->orWhere(function ($q) use ($request) {
-                      $q->where('pickup_date', '<=', $request->pickup_date)
-                        ->where('return_date', '>=', $request->return_date);
-                  });
-        })
-        ->exists();
-    
-    if ($isBooked) {
-        return redirect()->back()->withErrors(['car_id' => 'Данная модель на выбранные даты уже занята.']);
-    }
+        if ($this->isCarBooked($request->car_id, $request->pickup_date, $request->return_date)) {
+            \Log::info('Car is already booked.', ['car_id' => $request->car_id]);
+            return response()->json(['message' => 'Данная модель на выбранные даты уже занята.'], 409);
+        }
 
-        // Сохранение бронирования
         Booking::create([
             'car_id' => $request->car_id,
             'pickup_location' => $request->pickup_location,
@@ -45,19 +33,12 @@ class BookingController extends Controller
             'pickup_date' => $request->pickup_date,
             'return_date' => $request->return_date,
             'user_email' => $request->user_email,
-            
-            'status' => 'не оплачен', // Статус по умолчанию
+            'status' => 'не оплачен',
         ]);
 
-        return redirect()->back()->with('success', 'Бронирование успешно создано!');
+        \Log::info('Booking created successfully.', ['car_id' => $request->car_id]);
+        return response()->json(['message' => 'Бронирование успешно создано!'], 200);
     }
-
-
-    public function showReservationForm()
-{
-    $cars = Car::all(); // Получаем все данные машин
-    return view('home', compact('cars'));
-}
 
     private function isCarBooked($carId, $pickupDate, $returnDate)
     {
@@ -72,5 +53,10 @@ class BookingController extends Controller
             })
             ->exists();
     }
-    
+
+    public function showReservationForm()
+    {
+        $cars = Car::all(); // Получаем все данные машин
+        return view('home', compact('cars'));
+    }
 }

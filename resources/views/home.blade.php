@@ -187,33 +187,15 @@
                             border-radius: 8px; padding: 15px; z-index: 1060;">
                     Сообщение с дальнейшими деталями отправлено на вашу почту.
                 </div>
+                <div id="errorMessage" class="alert text-center" 
+     style="display: none; position: fixed; top: 70px; left: 50%; transform: translateX(-50%); 
+            background-color: #FF5C5C; color: white; border: 2px solid black; 
+            border-radius: 8px; padding: 15px; z-index: 1060;">
+    Автомобиль уже забронирован на выбранные даты.
+</div>
             </div>
         </div>
     </div>
-
-    <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        // Получаем элементы успешного и ошибочного сообщений
-        const confirmationMessage = document.getElementById('confirmationMessage');
-        const errorMessage = document.getElementById('errorMessage');
-
-        // Функция скрытия элемента через заданное время
-        const hideAfterTimeout = (element, timeout) => {
-            if (element) {
-                setTimeout(() => {
-                    element.style.display = 'none';
-                }, timeout);
-            }
-        };
-
-        // Скрыть успешное сообщение через 3 секунды
-        hideAfterTimeout(confirmationMessage, 3000);
-
-        // Скрыть сообщение об ошибке через 5 секунд
-        hideAfterTimeout(errorMessage, 5000);
-    });
-</script>
-
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
@@ -308,13 +290,42 @@
 
             // Отправка данных через AJAX
             fetch(form.action, {
-                method: 'POST',
-                body: new FormData(form),
-                headers: {
-                    'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value,
-                },
-            })
-            .catch(error => console.error('Ошибка:', error));
+    method: 'POST',
+    body: new FormData(form),
+    headers: {
+        'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value,
+    },
+})
+.then(response => {
+    if (response.ok) {
+        // Уведомление об успешной отправке
+        const confirmationMessage = document.getElementById('confirmationMessage');
+        confirmationMessage.style.display = 'block';
+
+        // Скрыть уведомление через 3 секунды
+        setTimeout(() => {
+            confirmationMessage.style.display = 'none';
+        }, 3000);
+
+        // Очистить форму
+        form.reset();
+    } else if (response.status === 409) {
+        // Уведомление о конфликте (авто занято)
+        response.json().then(data => {
+            const errorMessage = document.getElementById('errorMessage');
+            errorMessage.textContent = data.message;
+            errorMessage.style.display = 'block';
+
+            // Скрыть уведомление через 5 секунд
+            setTimeout(() => {
+                errorMessage.style.display = 'none';
+            }, 5000);
+        });
+    } else {
+        alert('Произошла ошибка, попробуйте снова.');
+    }
+})
+.catch(error => console.error('Ошибка:', error));
         });
     </script>
 </section>
