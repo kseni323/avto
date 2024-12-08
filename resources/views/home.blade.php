@@ -119,6 +119,16 @@
         </div>
     @endif
 
+    @if (session('error'))
+        <div id="errorMessage" 
+             class="alert text-center"  
+             style="display: block; position: fixed; top: 20px; left: 50%; transform: translateX(-50%); 
+                    background-color: #FF6F61; color: white; border: 2px solid black; 
+                    border-radius: 8px; padding: 15px; z-index: 1060;">
+            {{ session('error') }}
+        </div>
+    @endif
+
     @if ($errors->any())
         <div class="alert alert-danger">
             <ul>
@@ -128,6 +138,7 @@
             </ul>
         </div>
     @endif
+    
     <div class="container">
         <div class="row">
             <div class="col-md-5"></div>
@@ -173,15 +184,6 @@
     <p id="rental_details">Цена: 0 ₽</p>
 </div>
                     <button type="submit" class="btn sbmt-bttn">Бронируйте мгновенно</button>
-                    @if (session('error'))
-    <div id="errorMessage" 
-         class="alert text-center"  
-         style="display: block; position: fixed; top: 20px; left: 50%; transform: translateX(-50%); 
-                background-color: #FF6F61; color: white; border: 2px solid black; 
-                border-radius: 8px; padding: 15px; z-index: 1060;">
-        {{ session('error') }}
-    </div>
-@endif
                 </form>
 
                 <!-- Уведомление о подтверждении -->
