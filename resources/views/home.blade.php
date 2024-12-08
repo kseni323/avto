@@ -170,6 +170,8 @@
                     <div class="price mt-3">
                        <p id="rental_details">Цена: 0 ₽</p>
                     </div>
+                    <a href="#" class="btn sbmt-bttn" data-bs-toggle="modal" data-bs-target="#bookingModal">Бронируйте мгновенно</a>
+                </form>
 
 
 <script>
