@@ -340,7 +340,7 @@
   <p style="margin-bottom: 0px;">Ничего не пропустите! Подпишитесь, чтобы получать ежедневные предложения</p>
   <div class="subscribe_form">
   <form method="POST" action="https://cp.unisender.com/ru/subscribe?hash=6adaos894tzmzts3spg1ganwssmyafhxhk8fgoo7z87mfwb7putdo" name="subscribtion_form" us_mode="embed">
-      <input type="e_mail" name="e_mail" class="form_input" placeholder="Почта..." required>
+      <input type="email" name="email" class="form_input" placeholder="Почта..." required>
       <button type="submit" class="btn sbmt-bttn">ПОДПИСАТЬСЯ</button>
       <input type="hidden" name="charset" value="UTF-8">
 <input type="hidden" name="default_list_id" value="1">
