@@ -112,15 +112,6 @@
        
 
 <section class="reservation_section" style="padding:50px 0px" id="reserve">
-@if (session('error'))
-    <div id="errorMessage" 
-         class="alert text-center"  
-         style="display: block; position: fixed; top: 20px; left: 50%; transform: translateX(-50%); 
-                background-color: #FF6F61; color: white; border: 2px solid black; 
-                border-radius: 8px; padding: 15px; z-index: 1060;">
-        {{ session('error') }}
-    </div>
-@endif
 
 @if (session('success'))
         <div class="alert alert-success">
@@ -182,6 +173,15 @@
     <p id="rental_details">Цена: 0 ₽</p>
 </div>
                     <button type="submit" class="btn sbmt-bttn">Бронируйте мгновенно</button>
+                    @if (session('error'))
+    <div id="errorMessage" 
+         class="alert text-center"  
+         style="display: block; position: fixed; top: 20px; left: 50%; transform: translateX(-50%); 
+                background-color: #FF6F61; color: white; border: 2px solid black; 
+                border-radius: 8px; padding: 15px; z-index: 1060;">
+        {{ session('error') }}
+    </div>
+@endif
                 </form>
 
                 <!-- Уведомление о подтверждении -->
