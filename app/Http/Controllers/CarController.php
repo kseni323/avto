@@ -53,4 +53,5 @@ class CarController extends Controller
         return view('show', compact('car'));
     }
 
+
 }

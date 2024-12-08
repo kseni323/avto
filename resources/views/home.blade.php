@@ -170,7 +170,15 @@
                     <div class="price mt-3">
                        <p id="rental_details">Цена: 0 ₽</p>
                     </div>
-                    <button type="submit" class="btn sbmt-bttn">Бронируйте мгновенно</button>
+                    <div class="subscribe_form">
+  <form method="POST" action="https://cp.unisender.com/ru/subscribe?hash=6adaos894tzmzts3spg1ganwssmyafhxhk8fgoo7z87mfwb7putdo" name="subscribtion_form" us_mode="embed">
+       <button type="submit" class="btn sbmt-bttn">Бронируйте мгновенно</button>
+      <input type="hidden" name="charset" value="UTF-8">
+<input type="hidden" name="default_list_id" value="1">
+<input type="hidden" name="overwrite" value="2">
+<input type="hidden" name="is_v5" value="1">
+    </form>
+  </div>
                 </form>
 
 <script>
