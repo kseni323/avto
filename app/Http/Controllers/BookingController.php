@@ -32,9 +32,9 @@ class BookingController extends Controller
                   });
         })
         ->exists();
-
+    
     if ($isBooked) {
-        return redirect()->back()->withErrors(['car_id' => 'Данная модель на выбранные даты уже занята.']);
+        return redirect()->back()->with('error', 'Данная модель на выбранные даты уже занята.');
     }
 
         // Сохранение бронирования

@@ -112,6 +112,16 @@
        
 
 <section class="reservation_section" style="padding:50px 0px" id="reserve">
+@if (session('error'))
+    <div id="errorMessage" 
+         class="alert text-center"  
+         style="display: block; position: fixed; top: 20px; left: 50%; transform: translateX(-50%); 
+                background-color: #FF6F61; color: white; border: 2px solid black; 
+                border-radius: 8px; padding: 15px; z-index: 1060;">
+        {{ session('error') }}
+    </div>
+@endif
+
 @if (session('success'))
         <div class="alert alert-success">
             {{ session('success') }}
@@ -185,6 +195,16 @@
         </div>
     </div>
 
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const errorMessage = document.getElementById('errorMessage');
+        if (errorMessage) {
+            setTimeout(() => {
+                errorMessage.style.display = 'none';
+            }, 5000); // Через 5 секунд сообщение исчезнет
+        }
+    });
+</script>
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
