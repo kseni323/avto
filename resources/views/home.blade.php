@@ -171,19 +171,8 @@
                        <p id="rental_details">Цена: 0 ₽</p>
                     </div>
                 <div class="subscribe_form">
-<form method="POST" action="https://cp.unisender.com/ru/subscribe?hash=6j9kxxejh8qxa7s3spg1ganwssmyafhxhk8fgoo98ye4p5wyxap1o" name="subscribtion_form" us_mode="embed">
 <button type="submit" class="btn sbmt-bttn">Бронируйте мгновенно</button>
-<input type="hidden" name="charset" value="UTF-8">
-<input type="hidden" name="default_list_id" value="1">
-<input type="hidden" name="list_ids[]" value="3">
-<input type="hidden" name="overwrite" value="2">
-<input type="hidden" name="is_v5" value="1">
-</form>
 </div>
-<script src="https://sf2df4j6wzf.s3.eu-central-1.amazonaws.com/popups/popup.js"></script>
-<script>
-  window.popupForSubscriptionsForm("https://apig.unisender.com");
-</script>
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
