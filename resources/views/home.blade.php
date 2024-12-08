@@ -114,31 +114,25 @@
 <section class="reservation_section" style="padding:50px 0px" id="reserve">
 
 @if (session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
-        </div>
-    @endif
+    <div id="confirmationMessage" class="alert text-center" 
+         style="display: block; position: fixed; top: 20px; left: 50%; transform: translateX(-50%); 
+                background-color: #04DBC0; color: black; border: 2px solid black; 
+                border-radius: 8px; padding: 15px; z-index: 1060;">
+        {{ session('success') }}
+    </div>
+@endif
 
-    @if (session('error'))
-        <div id="errorMessage" 
-             class="alert text-center"  
-             style="display: block; position: fixed; top: 20px; left: 50%; transform: translateX(-50%); 
-                    background-color: #FF6F61; color: white; border: 2px solid black; 
-                    border-radius: 8px; padding: 15px; z-index: 1060;">
-            {{ session('error') }}
-        </div>
-    @endif
+@if ($errors->any())
+    <div id="errorMessage" class="alert text-center" 
+         style="display: block; position: fixed; top: 20px; left: 50%; transform: translateX(-50%); 
+                background-color: #FF6F61; color: white; border: 2px solid black; 
+                border-radius: 8px; padding: 15px; z-index: 1060;">
+        @foreach ($errors->all() as $error)
+            {{ $error }}
+        @endforeach
+    </div>
+@endif
 
-    @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
-    
     <div class="container">
         <div class="row">
             <div class="col-md-5"></div>
@@ -199,14 +193,27 @@
 
     <script>
     document.addEventListener('DOMContentLoaded', function () {
+        // Получаем элементы успешного и ошибочного сообщений
+        const confirmationMessage = document.getElementById('confirmationMessage');
         const errorMessage = document.getElementById('errorMessage');
-        if (errorMessage) {
-            setTimeout(() => {
-                errorMessage.style.display = 'none';
-            }, 5000); // Через 5 секунд сообщение исчезнет
-        }
+
+        // Функция скрытия элемента через заданное время
+        const hideAfterTimeout = (element, timeout) => {
+            if (element) {
+                setTimeout(() => {
+                    element.style.display = 'none';
+                }, timeout);
+            }
+        };
+
+        // Скрыть успешное сообщение через 3 секунды
+        hideAfterTimeout(confirmationMessage, 3000);
+
+        // Скрыть сообщение об ошибке через 5 секунд
+        hideAfterTimeout(errorMessage, 5000);
     });
 </script>
+
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
@@ -306,23 +313,6 @@
                 headers: {
                     'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value,
                 },
-            })
-            .then(response => {
-                if (response.ok) {
-                    // Уведомление об успешной отправке
-                    const confirmationMessage = document.getElementById('confirmationMessage');
-                    confirmationMessage.style.display = 'block';
-
-                    // Скрыть уведомление через 3 секунды
-                    setTimeout(() => {
-                        confirmationMessage.style.display = 'none';
-                    }, 3000);
-
-                    // Очистить форму
-                    form.reset();
-                } else {
-                    alert('Произошла ошибка, попробуйте снова.');
-                }
             })
             .catch(error => console.error('Ошибка:', error));
         });
