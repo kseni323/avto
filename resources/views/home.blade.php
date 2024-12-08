@@ -162,6 +162,7 @@
         @endforeach
     </select>
 </div>
+</div>
                     <div class="form-group">
                         <label for="user_email">E-mail</label>
                         <input type="email" id="user_email" name="user_email" placeholder="Почта..." class="form-control" required>
@@ -169,7 +170,7 @@
                     <div class="price mt-3">
                        <p id="rental_details">Цена: 0 ₽</p>
                     </div>
-</div>
+
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
