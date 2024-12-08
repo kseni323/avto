@@ -170,9 +170,7 @@
                     <div class="price mt-3">
                        <p id="rental_details">Цена: 0 ₽</p>
                     </div>
-                <div class="subscribe_form">
-<button type="submit" class="btn sbmt-bttn">Бронируйте мгновенно</button>
-</div>
+
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
