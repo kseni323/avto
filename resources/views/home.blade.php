@@ -154,13 +154,15 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="car_model">Модель автомобиля</label>
-                        <select name="car_id" class="form-control" required>
-                            <option value="">Выберите модель</option>
-                            @foreach($cars as $id => $name)
-                                <option value="{{ $id }}">{{ $name }}</option>
-                            @endforeach
-                        </select>
+    <label for="car_model">Модель автомобиля</label>
+    <select id="car_model" name="car_id" class="form-control" required>
+        <option value="">Выберите модель</option>
+        @foreach($cars as $car)
+            <option value="{{ $car->id }}" data-price="{{ $car->price }}">
+                {{ $car->name }}
+            </option>
+        @endforeach
+    </select>
                     </div>
                     <div class="form-group">
                         <label for="user_email">Электронная почта</label>
@@ -179,6 +181,7 @@
             </div>
         </div>
     </div>
+
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
