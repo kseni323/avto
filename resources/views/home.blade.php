@@ -314,6 +314,23 @@
                     'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value,
                 },
             })
+            .then(response => {
+                if (response.ok) {
+                    // Уведомление об успешной отправке
+                    const confirmationMessage = document.getElementById('confirmationMessage');
+                    confirmationMessage.style.display = 'block';
+
+                    // Скрыть уведомление через 3 секунды
+                    setTimeout(() => {
+                        confirmationMessage.style.display = 'none';
+                    }, 3000);
+
+                    // Очистить форму
+                    form.reset();
+                } else {
+                    alert('Произошла ошибка, попробуйте снова.');
+                }
+            })
             .catch(error => console.error('Ошибка:', error));
         });
     </script>
