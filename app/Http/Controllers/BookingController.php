@@ -49,7 +49,7 @@ class BookingController extends Controller
             'status' => 'не оплачен', // Статус по умолчанию
         ]);
 
-        return redirect()->back()->with('success', 'Сообщение с дальнейшими деталями отправлено на вашу почту.');
+        return redirect()->back()->with('success', 'Бронирование успешно создано!');
     }
 
 
