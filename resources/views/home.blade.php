@@ -150,29 +150,35 @@
                         <div class="form-group">
                             <label for="return_date">Дата возврата</label>
                             <input type="date" id="return_date" min="{{ now()->addDay()->toDateString() }}" name="return_date" class="form-control" required>
-                        </div> 
-</div>
-</div>                 
-<div class="form-group">
-    <label for="car_model">Модель автомобиля</label>
-    <select id="car_model" name="car_id" class="form-control" required>
-        <option value="">Выберите модель</option>
-        @foreach($cars as $car)
-            <option value="{{ $car->id }}" data-price="{{ $car->price }}">
-                {{ $car->name }}
-            </option>
-        @endforeach
-    </select>
-                    <div class="form-group">
-                        <label for="user_email">E-mail</label>
-                        <input type="email" id="user_email" name="user_email" placeholder="Почта..." class="form-control" required>
+                        </div>
                     </div>
-                    <div class="price mt-3">
-                       <p id="rental_details">Цена: 0 ₽</p>
+
+                    <div class="form-group">
+                        <label for="car_model">Модель автомобиля</label>
+                        <select name="car_id" class="form-control" required>
+                            <option value="">Выберите модель</option>
+                            @foreach($cars as $id => $name)
+                                <option value="{{ $id }}">{{ $name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="user_email">Электронная почта</label>
+                        <input type="email" id="user_email" name="user_email" placeholder="your@mail.com" class="form-control" required>
                     </div>
                     <button type="submit" class="btn sbmt-bttn">Бронируйте мгновенно</button>
                 </form>
 
+                <!-- Уведомление о подтверждении -->
+                <div id="confirmationMessage" class="alert text-center" 
+                     style="display: none; position: fixed; top: 20px; left: 50%; transform: translateX(-50%); 
+                            background-color: #04DBC0; color: black; border: 2px solid black; 
+                            border-radius: 8px; padding: 15px; z-index: 1060;">
+                    Сообщение с дальнейшими деталями отправлено на вашу почту.
+                </div>
+            </div>
+        </div>
+    </div>
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
@@ -230,18 +236,6 @@
     });
 </script>   
 
-
-
-                <!-- Уведомление о подтверждении -->
-                <div id="confirmationMessage" class="alert text-center" 
-                     style="display: none; position: fixed; top: 20px; left: 50%; transform: translateX(-50%); 
-                            background-color: #04DBC0; color: black; border: 2px solid black; 
-                            border-radius: 8px; padding: 15px; z-index: 1060;">
-                    Сообщение с дальнейшими деталями отправлено на вашу почту.
-                </div>
-            </div>
-        </div>
-    </div>
 
     <script>
     document.addEventListener('DOMContentLoaded', function () {
