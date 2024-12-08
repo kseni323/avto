@@ -150,9 +150,8 @@
                         <div class="form-group">
                             <label for="return_date">Дата возврата</label>
                             <input type="date" id="return_date" min="{{ now()->addDay()->toDateString() }}" name="return_date" class="form-control" required>
-                        </div>
-                    </div>
-                    <div class="form-group">
+                        </div> 
+                        <div class="form-group">
     <label for="car_model">Модель автомобиля</label>
     <select id="car_model" name="car_id" class="form-control" required>
         <option value="">Выберите модель</option>
@@ -170,7 +169,7 @@
                     <div class="price mt-3">
                        <p id="rental_details">Цена: 0 ₽</p>
                     </div>
-
+</div>
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
