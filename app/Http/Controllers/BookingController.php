@@ -9,23 +9,21 @@ use Illuminate\Support\Facades\Log;
 
 class BookingController extends Controller
 {
-    // Показ формы бронирования
-    public function showReservationForm()
-    {
-        $cars = Car::all(); // Получаем все данные машин
-        return view('home', compact('cars'));
-    }
-
-    // Создание бронирования
     public function storeBooking(Request $request)
     {
-        Log::info('StoreBooking Called', $request->all());
+        Log::info('StoreBooking Called', $request->all()); // Логируем входящие данные
 
         // Валидация данных
         $validatedData = $this->validateBooking($request);
 
         // Проверка занятости автомобиля
-        if ($this->isCarBooked($validatedData['car_id'], $validatedData['pickup_date'], $validatedData['return_date'], $validatedData['pickup_time'], $validatedData['return_time'])) {
+        if ($this->isCarBooked(
+            $validatedData['car_id'], 
+            $validatedData['pickup_date'], 
+            $validatedData['return_date'], 
+            $validatedData['pickup_time'], 
+            $validatedData['return_time']
+        )) {
             Log::info('Car is already booked.', ['car_id' => $validatedData['car_id']]);
             return response()->json(['message' => 'Данная модель на выбранные даты и время уже занята.'], 409);
         }
@@ -47,7 +45,7 @@ class BookingController extends Controller
         return response()->json(['message' => 'Бронирование успешно создано!'], 200);
     }
 
-    // Метод для валидации данных
+    // Валидация данных
     private function validateBooking(Request $request)
     {
         return $request->validate([
@@ -57,7 +55,12 @@ class BookingController extends Controller
             'pickup_date' => 'required|date|after_or_equal:today',
             'return_date' => 'required|date|after_or_equal:pickup_date',
             'pickup_time' => 'nullable|required_if:pickup_date,'.$request->return_date.'|date_format:H:i',
-            'return_time' => 'nullable|required_if:pickup_date,'.$request->return_date.'|date_format:H:i|after:pickup_time',
+            'return_time' => [
+                'nullable',
+                'required_if:pickup_date,'.$request->return_date,
+                'date_format:H:i',
+                'after:pickup_time', // Проверка, чтобы return_time > pickup_time
+            ],
             'user_email' => 'required|email',
         ]);
     }
@@ -67,7 +70,6 @@ class BookingController extends Controller
     {
         return Booking::where('car_id', $carId)
             ->where(function ($query) use ($pickupDate, $returnDate, $pickupTime, $returnTime) {
-                // Проверка по датам и времени
                 $query->where(function ($q) use ($pickupDate, $returnDate, $pickupTime, $returnTime) {
                     $q->where('pickup_date', $pickupDate)
                       ->where('return_date', $returnDate);
