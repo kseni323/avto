@@ -157,45 +157,78 @@
                             <label for="return_date">Дата возврата</label>
                             <input type="date" id="return_date" min="{{ now()->addDay()->toDateString() }}" name="return_date" class="form-control" required>
                         </div>
-                    </div>
-
-                    <div class="form-group">
-    <label for="car_model">Модель автомобиля</label>
-    <select id="car_model" name="car_id" class="form-control" required>
-        <option value="" data-price="0">Выберите модель</option>
-        @foreach($cars as $car)
-            <option value="{{ $car->id }}" data-price="{{ $car->price }}">
-                {{ $car->name }}
-            </option>
-        @endforeach
-    </select>
+                        <div id="time_fields" style="display: none;">
+    <div class="form-group">
+        <label for="pickup_time">Время получения</label>
+        <input type="time" id="pickup_time" name="pickup_time" class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="return_time">Время возврата</label>
+        <input type="time" id="return_time" name="return_time" class="form-control">
+    </div>
 </div>
-     <div class="form-group">
+                    </div>
+                    <div class="form-group">
+                        <label for="car_model">Модель автомобиля</label>
+                        <select id="car_model" name="car_id" class="form-control" required>
+                           <option value="" data-price="0">Выберите модель</option>
+                              @foreach($cars as $car)
+                           <option value="{{ $car->id }}" data-price="{{ $car->price }}">
+                             {{ $car->name }}
+                           </option>
+                              @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group">
                         <label for="user_email">Электронная почта</label>
                         <input type="email" id="user_email" name="user_email" placeholder="your@mail.com" class="form-control" required>
                     </div>
                     <div class="price mt-3">
-    <p id="rental_details">Цена: 0 ₽</p>
-</div>
+                          <p id="rental_details">Цена: 0 ₽</p>
+                    </div>
                     <button type="submit" class="btn sbmt-bttn">Бронируйте мгновенно</button>
                 </form>
 
                 <!-- Уведомление о подтверждении -->
                 <div id="confirmationMessage" class="alert text-center" 
-                     style="display: none; position: fixed; top: 20px; left: 50%; transform: translateX(-50%); 
+                    style="display: none; position: fixed; top: 20px; left: 50%; transform: translateX(-50%); 
                             background-color: #04DBC0; color: black; border: 2px solid black; 
                             border-radius: 8px; padding: 15px; z-index: 1060;">
                     Сообщение с дальнейшими деталями отправлено на вашу почту.
                 </div>
                 <div id="errorMessage" class="alert text-center" 
-     style="display: none; position: fixed; top: 70px; left: 50%; transform: translateX(-50%); 
-            background-color: #FF5C5C; color: white; border: 2px solid black; 
-            border-radius: 8px; padding: 15px; z-index: 1060;">
-    Автомобиль уже забронирован на выбранные даты.
-</div>
+                    style="display: none; position: fixed; top: 70px; left: 50%; transform: translateX(-50%); 
+                            background-color: #FF5C5C; color: white; border: 2px solid black; 
+                            border-radius: 8px; padding: 15px; z-index: 1060;">
+                    Автомобиль уже забронирован на выбранные даты.
+                </div>
             </div>
         </div>
     </div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const pickupDateInput = document.getElementById('pickup_date');
+        const returnDateInput = document.getElementById('return_date');
+        const timeFields = document.getElementById('time_fields');
+
+        function toggleTimeFields() {
+            if (pickupDateInput.value && returnDateInput.value) {
+                if (pickupDateInput.value === returnDateInput.value) {
+                    timeFields.style.display = 'block';
+                } else {
+                    timeFields.style.display = 'none';
+                    // Очистка значений времени, если даты разные
+                    document.getElementById('pickup_time').value = '';
+                    document.getElementById('return_time').value = '';
+                }
+            }
+        }
+
+        pickupDateInput.addEventListener('change', toggleTimeFields);
+        returnDateInput.addEventListener('change', toggleTimeFields);
+    });
+</script>
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
@@ -290,21 +323,21 @@
 
             // Отправка данных через AJAX
             fetch(form.action, {
-    method: 'POST',
-    body: new FormData(form),
-    headers: {
-        'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value,
-    },
-})
-.then(response => {
-    if (response.ok) {
-        // Уведомление об успешной отправке
-        const confirmationMessage = document.getElementById('confirmationMessage');
-        confirmationMessage.style.display = 'block';
+               method: 'POST',
+               body: new FormData(form),
+            headers: {
+                'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value,
+                },
+        })
+            .then(response => {
+               if (response.ok) {
+                // Уведомление об успешной отправке
+                const confirmationMessage = document.getElementById('confirmationMessage');
+                confirmationMessage.style.display = 'block';
 
-        // Скрыть уведомление через 3 секунды
-        setTimeout(() => {
-            confirmationMessage.style.display = 'none';
+                // Скрыть уведомление через 3 секунды
+            setTimeout(() => {
+              confirmationMessage.style.display = 'none';
         }, 3000);
 
         // Очистить форму
