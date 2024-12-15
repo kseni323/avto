@@ -9,6 +9,12 @@ use Illuminate\Support\Facades\Log;
 
 class BookingController extends Controller
 {
+    public function showReservationForm()
+    {
+        $cars = Car::all(); // Получаем все данные машин
+        return view('home', compact('cars'));
+    }
+
     public function storeBooking(Request $request)
     {
         Log::info('StoreBooking Called', $request->all()); // Логируем входящие данные
