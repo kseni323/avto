@@ -285,10 +285,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 rentalDetailsElement.textContent = `Аренда ${totalDays} суток: ${totalPrice.toFixed(2)} ₽`;
             } else {
                 totalPrice = totalHours * pricePerHour;
-                rentalDetailsElement.textContent = `Аренда ${totalHours.toFixed()} часов: ${totalPrice.toFixed(2)} ₽`;
+                rentalDetailsElement.textContent = `Аренда ${totalHours.toFixed(1)} часов: ${totalPrice.toFixed(2)} ₽`;
             }
         } else {
-            rentalDetailsElement.textContent = 'Введите корректные дату и время.';
+            rentalDetailsElement.textContent = `Цена: ${pricePerDay} ₽ в сутки`;
         }
     }
 
