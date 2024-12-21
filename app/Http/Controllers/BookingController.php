@@ -34,6 +34,17 @@ class BookingController extends Controller
             return response()->json(['message' => 'Данная модель на выбранные даты и время уже занята.'], 409);
         }
 
+        $pickupDateTime = $request->pickup_date . ' ' . $request->pickup_time;
+$returnDateTime = $request->return_date . ' ' . $request->return_time;
+
+$hours = (strtotime($returnDateTime) - strtotime($pickupDateTime)) / 3600;
+$car = Car::findOrFail($request->car_id);
+
+// Если время больше суток, считаем по суточной цене
+$price = $hours >= 24 
+    ? ceil($hours / 24) * $car->price
+    : $hours * $car->hourly_price;
+
         // Создание записи бронирования
         Booking::create([
             'car_id' => $validatedData['car_id'],
@@ -41,8 +52,8 @@ class BookingController extends Controller
             'return_location' => $validatedData['return_location'],
             'pickup_date' => $validatedData['pickup_date'],
             'return_date' => $validatedData['return_date'],
-            'pickup_time' => $validatedData['pickup_time'] ?? null,
-            'return_time' => $validatedData['return_time'] ?? null,
+            'pickup_time' => date('H:00:00', strtotime($request->pickup_time)),
+            'return_time' => date('H:00:00', strtotime($request->return_time)),
             'user_email' => $validatedData['user_email'],
             'status' => 'не оплачен',
         ]);
@@ -60,10 +71,16 @@ class BookingController extends Controller
             'return_location' => 'required|string|max:255',
             'pickup_date' => 'required|date|after_or_equal:today',
             'return_date' => 'required|date|after_or_equal:pickup_date',
-            'pickup_time' => 'nullable|required_if:pickup_date,'.$request->return_date.'|date_format:H:i',
+            'pickup_time' => [
+                'nullable',
+                'required_if:pickup_date,' . $request->return_date,
+                'regex:/^\d{2}:00$/', // Проверка, что время только в формате HH:00
+                'date_format:H:i', // Убедиться, что формат времени корректный
+            ],
             'return_time' => [
                 'nullable',
-                'required_if:pickup_date,'.$request->return_date,
+                'required_if:pickup_date,' . $request->return_date,
+                'regex:/^\d{2}:00$/', // Проверка, что время только в формате HH:00
                 'date_format:H:i',
                 'after:pickup_time', // Проверка, чтобы return_time > pickup_time
             ],
