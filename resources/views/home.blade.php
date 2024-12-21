@@ -159,6 +159,8 @@
                         </div>
                         <div id="time_fields" style="display: none;">
                         <div class="form-group">
+                        <input type="time" id="pickup_time" name="pickup_time">
+                        <input type="time" id="return_time" name="return_time">
     <label for="pickup_time">Время получения</label>
     <select id="pickup_time" name="pickup_time" class="form-control" required>
         <option value="">Выберите время</option>
@@ -248,68 +250,50 @@
 </script>
 
 <script>
- document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function () {
+    const carModelSelect = document.getElementById('car_model');
     const pickupDateInput = document.getElementById('pickup_date');
     const returnDateInput = document.getElementById('return_date');
     const pickupTimeInput = document.getElementById('pickup_time');
     const returnTimeInput = document.getElementById('return_time');
-    const carModelSelect = document.getElementById('car_model');
     const rentalDetailsElement = document.getElementById('rental_details');
 
     function calculateRentalPrice() {
         const selectedCar = carModelSelect.options[carModelSelect.selectedIndex];
-        const pricePerHour = parseFloat(selectedCar.getAttribute('data-hourly-price')) || 0;
         const pricePerDay = parseFloat(selectedCar.getAttribute('data-price')) || 0;
+        const pricePerHour = parseFloat(selectedCar.getAttribute('data-hourly-price')) || 0;
 
         if (!selectedCar.value) {
-            rentalDetailsElement.textContent = 'Выберите автомобиль.';
+            rentalDetailsElement.textContent = 'Выберите автомобиль';
             return;
         }
 
-        const pickupDateTime = new Date(`${pickupDateInput.value}T${pickupTimeInput.value}`);
-        const returnDateTime = new Date(`${returnDateInput.value}T${returnTimeInput.value}`);
+        const pickupDate = new Date(pickupDateInput.value);
+        const returnDate = new Date(returnDateInput.value);
+        const pickupTime = pickupTimeInput.value ? pickupTimeInput.value.split(':') : [0, 0];
+        const returnTime = returnTimeInput.value ? returnTimeInput.value.split(':') : [0, 0];
 
-        if (pickupDateTime && returnDateTime && returnDateTime > pickupDateTime) {
-            const timeDiff = returnDateTime - pickupDateTime; // Разница в миллисекундах
-            const totalHours = timeDiff / (1000 * 60 * 60); // Перевод в часы
+        pickupDate.setHours(pickupTime[0], pickupTime[1]);
+        returnDate.setHours(returnTime[0], returnTime[1]);
 
-            let totalPrice;
-            if (totalHours >= 24) {
-                const totalDays = Math.ceil(totalHours / 24); // Округляем дни вверх
-                totalPrice = totalDays * pricePerDay;
-                rentalDetailsElement.textContent = `Аренда ${totalDays} суток: ${totalPrice.toFixed(2)} ₽`;
-            } else {
-                totalPrice = totalHours * pricePerHour;
-                rentalDetailsElement.textContent = `Аренда ${totalHours.toFixed()} часов: ${totalPrice.toFixed(2)} ₽`;
-            }
+        if (pickupDate && returnDate && returnDate > pickupDate) {
+            const diffInMs = returnDate - pickupDate;
+            const hours = diffInMs / (1000 * 60 * 60);
+            const days = Math.floor(hours / 24);
+            const remainingHours = hours % 24;
+
+            const totalPrice = days * pricePerDay + remainingHours * pricePerHour;
+            rentalDetailsElement.textContent = `Общая стоимость: ${totalPrice.toFixed(2)} ₽`;
         } else {
-            rentalDetailsElement.textContent = 'Введите корректные дату и время.';
+            rentalDetailsElement.textContent = `Цена: ${pricePerDay} ₽ в сутки, ${pricePerHour} ₽ в час`;
         }
     }
 
-    function validateDate(input) {
-        const today = new Date();
-        today.setHours(0, 0, 0, 0); // Устанавливаем время на начало дня
-        const selectedDate = new Date(input.value);
-
-        if (selectedDate < today) {
-            alert('Пожалуйста, выберите корректные даты.');
-            input.value = '';
-        }
-    }
-
-    // Добавляем обработчики событий
-    pickupDateInput.addEventListener('change', function () {
-        validateDate(pickupDateInput);
-        calculateRentalPrice();
-    });
-    returnDateInput.addEventListener('change', function () {
-        validateDate(returnDateInput);
-        calculateRentalPrice();
-    });
+    carModelSelect.addEventListener('change', calculateRentalPrice);
+    pickupDateInput.addEventListener('change', calculateRentalPrice);
+    returnDateInput.addEventListener('change', calculateRentalPrice);
     pickupTimeInput.addEventListener('change', calculateRentalPrice);
     returnTimeInput.addEventListener('change', calculateRentalPrice);
-    carModelSelect.addEventListener('change', calculateRentalPrice);
 });
 </script>   
 

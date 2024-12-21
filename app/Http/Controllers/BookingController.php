@@ -71,19 +71,8 @@ $price = $hours >= 24
             'return_location' => 'required|string|max:255',
             'pickup_date' => 'required|date|after_or_equal:today',
             'return_date' => 'required|date|after_or_equal:pickup_date',
-            'pickup_time' => [
-                'nullable',
-                'required_if:pickup_date,' . $request->return_date,
-                'regex:/^\d{2}:00$/', // Проверка, что время только в формате HH:00
-                'date_format:H:i', // Убедиться, что формат времени корректный
-            ],
-            'return_time' => [
-                'nullable',
-                'required_if:pickup_date,' . $request->return_date,
-                'regex:/^\d{2}:00$/', // Проверка, что время только в формате HH:00
-                'date_format:H:i',
-                'after:pickup_time', // Проверка, чтобы return_time > pickup_time
-            ],
+            'pickup_time' => 'nullable|required_if:pickup_date,'.$request->return_date.'|date_format:H:i',
+            'return_time' => 'nullable|required_if:pickup_date,'.$request->return_date.'|date_format:H:i|after:pickup_time',
             'user_email' => 'required|email',
         ]);
     }
