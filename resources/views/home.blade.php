@@ -159,8 +159,6 @@
                         </div>
                         <div id="time_fields" style="display: none;">
                         <div class="form-group">
-                        <input type="time" id="pickup_time" name="pickup_time">
-                        <input type="time" id="return_time" name="return_time">
     <label for="pickup_time">Время получения</label>
     <select id="pickup_time" name="pickup_time" class="form-control" required>
         <option value="">Выберите время</option>
