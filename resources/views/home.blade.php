@@ -276,14 +276,19 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (pickupDate && returnDate && returnDate > pickupDate) {
             const diffInMs = returnDate - pickupDate;
-            const hours = diffInMs / (1000 * 60 * 60);
-            const days = Math.floor(hours / 24);
-            const remainingHours = hours % 24;
+            const totalHours = diffInMs / (1000 * 60 * 60);
 
-            const totalPrice = days * pricePerDay + remainingHours * pricePerHour;
-            rentalDetailsElement.textContent = `Общая стоимость: ${totalPrice.toFixed(2)} ₽`;
+            let totalPrice;
+            if (totalHours >= 24) {
+                const totalDays = Math.ceil(totalHours / 24); // Округляем дни вверх
+                totalPrice = totalDays * pricePerDay;
+                rentalDetailsElement.textContent = `Аренда ${totalDays} суток: ${totalPrice.toFixed(2)} ₽`;
+            } else {
+                totalPrice = totalHours * pricePerHour;
+                rentalDetailsElement.textContent = `Аренда ${totalHours.toFixed()} часов: ${totalPrice.toFixed(2)} ₽`;
+            }
         } else {
-            rentalDetailsElement.textContent = `Цена: ${pricePerDay} ₽ в сутки, ${pricePerHour} ₽ в час`;
+            rentalDetailsElement.textContent = 'Введите корректные дату и время.';
         }
     }
 
