@@ -24,15 +24,15 @@
     margin-bottom: 15px; /* Отступ между вкладками и фильтрами */
 }
 
-.nav-item {
+.nav-items {
     margin-right: 10px; /* Отступы между городами */
 }
 
-.nav-link {
+.nav-links {
     color: #6c757d; /* Темно-серый цвет */
 }
 
-.nav-link.active {
+.nav-links.active {
     color: #000; /* Черный цвет для активной вкладки */
 }
 </style>
@@ -40,23 +40,23 @@
 <section class="container my-4">
     <h2>Автомобили в городе {{ $city }}</h2>
     <ul class="nav nav-tabs">
-    <li class="nav-item">
-        <a class="nav-link {{ request('city') ? '' : 'active' }}" href="?city=">Все города</a>
+    <li class="nav-items">
+        <a class="nav-links {{ request('city') ? '' : 'active' }}" href="?city=">Все города</a>
     </li>
-    <li class="nav-item">
-        <a class="nav-link {{ request('city') == 'Воронеж' ? 'active' : '' }}" href="?city=Воронеж">Воронеж</a>
+    <li class="nav-items">
+        <a class="nav-links {{ request('city') == 'Воронеж' ? 'active' : '' }}" href="?city=Воронеж">Воронеж</a>
     </li>
-    <li class="nav-item">
-        <a class="nav-link {{ request('city') == 'Москва' ? 'active' : '' }}" href="?city=Москва">Москва</a>
+    <li class="nav-items">
+        <a class="nav-links {{ request('city') == 'Москва' ? 'active' : '' }}" href="?city=Москва">Москва</a>
     </li>
-    <li class="nav-item">
-        <a class="nav-link {{ request('city') == 'Санкт-Петербург' ? 'active' : '' }}" href="?city=Санкт-Петербург">Санкт-Петербург</a>
+    <li class="nav-items">
+        <a class="nav-links {{ request('city') == 'Санкт-Петербург' ? 'active' : '' }}" href="?city=Санкт-Петербург">Санкт-Петербург</a>
     </li>
-    <li class="nav-item">
-        <a class="nav-link {{ request('city') == 'Калининград' ? 'active' : '' }}" href="?city=Калининград">Калининград</a>
+    <li class="nav-items">
+        <a class="nav-links {{ request('city') == 'Калининград' ? 'active' : '' }}" href="?city=Калининград">Калининград</a>
     </li>
-    <li class="nav-item">
-        <a class="nav-link {{ request('city') == 'Краснодар' ? 'active' : '' }}" href="?city=Краснодар">Краснодар</a>
+    <li class="nav-items">
+        <a class="nav-links {{ request('city') == 'Краснодар' ? 'active' : '' }}" href="?city=Краснодар">Краснодар</a>
     </li>
 </ul>
     <form id="filterForm" method="GET" action="{{ route('cars.filter') }}" class="row g-3">
