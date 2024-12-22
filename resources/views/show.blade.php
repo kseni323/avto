@@ -240,8 +240,7 @@ element.style {
                     <p><strong>Кондиционер:</strong> {{ $car->air_conditioning ? 'Есть' : 'Нет' }}</p>
                 </div>
             </div>
-</div>
-</div>
+
             <!-- Booking Parameters -->
             <div class="col-md-4">
                 <div class="booking-box p-4">
