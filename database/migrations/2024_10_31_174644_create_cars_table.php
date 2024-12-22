@@ -20,6 +20,7 @@ return new class extends Migration
             $table->enum('class', ['Эконом', 'Бизнес', 'Внедорожник']); // Класс автомобиля
             $table->enum('transmission', ['Автоматическая', 'Механическая']); // Тип трансмиссии
             $table->enum('drive_type', ['Передний', 'Задний', 'Полный']); // Тип привода
+            $table->string('city')->default('Воронеж');
             $table->timestamps(); // Дата создания и обновления записи
         });
     }
