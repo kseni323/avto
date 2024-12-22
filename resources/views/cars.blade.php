@@ -28,9 +28,6 @@
     margin-right: 10px; /* Отступы между городами */
 }
 
-.nav-link {
-    color: #6c757d; /* Темно-серый цвет */
-}
 
 .nav-link.active {
     color: #000; /* Черный цвет для активной вкладки */
@@ -41,22 +38,22 @@
     <h2>Автомобили в городе {{ $city }}</h2>
     <ul class="nav nav-tabs">
     <li class="nav-items">
-        <a class="nav-link {{ request('city') ? '' : 'active' }}" href="?city=">Все города</a>
+        <a class="nav-link {{ request('city') ? '' : 'active' }}" href="?city=" style="color: #6c757d;">Все города</a>
     </li>
     <li class="nav-items">
-        <a class="nav-link {{ request('city') == 'Воронеж' ? 'active' : '' }}" href="?city=Воронеж">Воронеж</a>
+        <a class="nav-link {{ request('city') == 'Воронеж' ? 'active' : '' }}" href="?city=Воронеж" style="color: #6c757d;">Воронеж</a>
     </li>
     <li class="nav-items">
-        <a class="nav-link {{ request('city') == 'Москва' ? 'active' : '' }}" href="?city=Москва">Москва</a>
+        <a class="nav-link {{ request('city') == 'Москва' ? 'active' : '' }}" href="?city=Москва" style="color: #6c757d;">Москва</a>
     </li>
     <li class="nav-items">
-        <a class="nav-link {{ request('city') == 'Санкт-Петербург' ? 'active' : '' }}" href="?city=Санкт-Петербург">Санкт-Петербург</a>
+        <a class="nav-link {{ request('city') == 'Санкт-Петербург' ? 'active' : '' }}" href="?city=Санкт-Петербург" style="color: #6c757d;">Санкт-Петербург</a>
     </li>
     <li class="nav-items">
-        <a class="nav-link {{ request('city') == 'Калининград' ? 'active' : '' }}" href="?city=Калининград">Калининград</a>
+        <a class="nav-link {{ request('city') == 'Калининград' ? 'active' : '' }}" href="?city=Калининград" style="color: #6c757d;">Калининград</a>
     </li>
     <li class="nav-items">
-        <a class="nav-link {{ request('city') == 'Краснодар' ? 'active' : '' }}" href="?city=Краснодар">Краснодар</a>
+        <a class="nav-link {{ request('city') == 'Краснодар' ? 'active' : '' }}" href="?city=Краснодар" style="color: #6c757d;">Краснодар</a>
     </li>
 </ul>
     <form id="filterForm" method="GET" action="{{ route('cars.filter') }}" class="row g-3">
