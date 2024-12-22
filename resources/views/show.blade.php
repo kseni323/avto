@@ -263,6 +263,31 @@ element.style {
         <label for="return_date">Дата возврата</label>
         <input type="date" id="return_date" min="{{ now()->addDay()->toDateString() }}" name="return_date" class="form-control" required>
     </div>
+    <div id="time_fields" style="display: none;">
+                        <div class="form-group">
+    <label for="pickup_time">Время получения</label>
+    <select id="pickup_time" name="pickup_time" class="form-control" required>
+        <option value="">Выберите время</option>
+        @for ($hour = 0; $hour < 24; $hour++)
+            <option value="{{ str_pad($hour, 2, '0', STR_PAD_LEFT) }}:00">
+                {{ str_pad($hour, 2, '0', STR_PAD_LEFT) }}:00
+            </option>
+        @endfor
+    </select>
+</div>
+
+<div class="form-group">
+    <label for="return_time">Время возврата</label>
+    <select id="return_time" name="return_time" class="form-control" required>
+        <option value="">Выберите время</option>
+        @for ($hour = 0; $hour < 24; $hour++)
+            <option value="{{ str_pad($hour, 2, '0', STR_PAD_LEFT) }}:00">
+                {{ str_pad($hour, 2, '0', STR_PAD_LEFT) }}:00
+            </option>
+        @endfor
+    </select>
+</div>
+</div>
     <div class="form-group">
         <label for="car_model">Модель автомобиля</label>
         <input type="text" id="car_model" name="car_model" value="{{ $car->name }}" class="form-control" readonly>
