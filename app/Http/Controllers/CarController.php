@@ -17,6 +17,7 @@ class CarController extends Controller
         // Получить уникальные города
         $cities = Car::select('city')->distinct()->pluck('city');
 
+        $city = $request->city ?? 'Все города';
         // Фильтрация по городу
         $query = Car::query();
 
@@ -26,7 +27,7 @@ class CarController extends Controller
 
         $cars = $query->get(); // Получить автомобили для отображения (включая фильтр по городу)
 
-        return view('cars', compact('classes', 'transmissions', 'driveTypes', 'cities', 'cars'));
+        return view('cars', compact('classes', 'transmissions', 'driveTypes', 'cities', 'cars', 'city'));
     }
 
     public function filter(Request $request)
