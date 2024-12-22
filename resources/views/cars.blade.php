@@ -29,6 +29,16 @@
 }
 
 .nav-links {
+    .nav-link 
+    display: block;
+    padding: var(--bs-nav-link-padding-y) var(--bs-nav-link-padding-x);
+    font-weight: var(--bs-nav-link-font-weight);
+    text-decoration: none;
+    background: 0 0;
+    border: 0;
+    font-size: 17px;
+    font-family: "Montserrat";
+    font-weight: bold;
     color: #6c757d; /* Темно-серый цвет */
 }
 
