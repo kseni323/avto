@@ -240,7 +240,8 @@ element.style {
                     <p><strong>Кондиционер:</strong> {{ $car->air_conditioning ? 'Есть' : 'Нет' }}</p>
                 </div>
             </div>
-
+</div>
+</div>
             <!-- Booking Parameters -->
             <div class="col-md-4">
                 <div class="booking-box p-4">
@@ -313,6 +314,7 @@ element.style {
                             border-radius: 8px; padding: 15px; z-index: 1060;">
                     Автомобиль уже забронирован на выбранные даты.
                 </div>
+            </div>
             </div>
 
             <script>
