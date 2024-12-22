@@ -15,7 +15,27 @@
     <script src="js/forms.js" defer></script>
     <script src="{{ asset('js/carFilter.js') }}"></script>
 </head>
+<style>
+    h2 {
+    margin-bottom: 20px; /* Отступ между заголовком и вкладками */
+}
 
+.nav-tabs {
+    margin-bottom: 15px; /* Отступ между вкладками и фильтрами */
+}
+
+.nav-item {
+    margin-right: 10px; /* Отступы между городами */
+}
+
+.nav-link {
+    color: #6c757d; /* Темно-серый цвет */
+}
+
+.nav-link.active {
+    color: #000; /* Черный цвет для активной вкладки */
+}
+</style>
 <body>
 <section class="container my-4">
     <h2>Автомобили в городе {{ $city }}</h2>
