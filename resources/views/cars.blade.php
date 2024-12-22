@@ -24,10 +24,6 @@
     margin-bottom: 15px; /* Отступ между вкладками и фильтрами */
 }
 
-.nav-items {
-    margin-right: 10px; /* Отступы между городами */
-}
-
 .nav-links {
     .nav-link 
     display: block;
@@ -50,22 +46,22 @@
 <section class="container my-4">
     <h2>Автомобили в городе {{ $city }}</h2>
     <ul class="nav nav-tabs">
-    <li class="nav-items">
+    <li class="nav-item">
         <a class="nav-links {{ request('city') ? '' : 'active' }}" href="?city=">Все города</a>
     </li>
-    <li class="nav-items">
+    <li class="nav-item">
         <a class="nav-links {{ request('city') == 'Воронеж' ? 'active' : '' }}" href="?city=Воронеж">Воронеж</a>
     </li>
-    <li class="nav-items">
+    <li class="nav-item">
         <a class="nav-links {{ request('city') == 'Москва' ? 'active' : '' }}" href="?city=Москва">Москва</a>
     </li>
-    <li class="nav-items">
+    <li class="nav-item">
         <a class="nav-links {{ request('city') == 'Санкт-Петербург' ? 'active' : '' }}" href="?city=Санкт-Петербург">Санкт-Петербург</a>
     </li>
-    <li class="nav-items">
+    <li class="nav-item">
         <a class="nav-links {{ request('city') == 'Калининград' ? 'active' : '' }}" href="?city=Калининград">Калининград</a>
     </li>
-    <li class="nav-items">
+    <li class="nav-item">
         <a class="nav-links {{ request('city') == 'Краснодар' ? 'active' : '' }}" href="?city=Краснодар">Краснодар</a>
     </li>
 </ul>
