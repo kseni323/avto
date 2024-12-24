@@ -327,7 +327,7 @@ element.style {
 <section>
 <div class="services mt-5">
         <h2>Дополнительные услуги</h2>
-        <div class="row">
+        <div class="row_e">
             @foreach ($services as $service)
                 <div class="col-md-4 mb-4">
                     <div class="card">
