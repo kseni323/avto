@@ -366,7 +366,7 @@ element.style {
     }
   </style>
 <body>
-  <h8>Правила и условия аренды</h8>
+  <h2>Правила и условия аренды</h2>
 
   <details class="accordion">
     <summary>Требования к арендаторам</summary>
