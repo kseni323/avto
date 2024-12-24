@@ -105,7 +105,39 @@ div {
     color: #ddd;
 }
 
+.footer_container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    color: #e0e0e0; /* Цвет текста */
+}
 
+.footer_widget {
+    margin-left: 20px;
+}
+
+.footer_widget h3 {
+    margin-bottom: 15px;
+    font-size: 1.5em;
+    color: #fff; /* Цвет заголовка */
+}
+
+.contact_info {
+    list-style: none;
+    padding: 0;
+}
+
+.contact_info li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 1.1em;
+}
+
+.contact_info i {
+    margin-right: 10px;
+    color: #04DBC0; /* Цвет иконок */
+}
     /* Обнуляем отступы и размеры */
 * {
     margin: 0;
