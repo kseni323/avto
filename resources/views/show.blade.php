@@ -221,11 +221,19 @@ element.style {
     padding: 50px 0px;
 }
 
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
 
 </style>
 <body>
     <div class="container my-5">
-        <div class="row">
+        < class="row">
             <!-- Car Image and Details -->
             <div class="col-md-8">
                 <h2 class="car-title">Аренда {{ $car->name }}</h2>
@@ -315,6 +323,28 @@ element.style {
                 </div>
             </div>
             </div>
+
+<section>
+<div class="services mt-5">
+        <h2>Дополнительные услуги</h2>
+        <div class="row">
+            @foreach ($services as $service)
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="{{ asset($service->image) }}" class="card-img-top" alt="{{ $service->title }}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ $service->title }}</h5>
+                            <p class="card-text">{{ Str::limit($service->description, 100) }}</p>
+                            <a href="{{ route('services.show', $service->slug) }}" class="btn btn-primary">Подробнее</a>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    </div>
+</div>
+</section>
+
 
             <script>
     document.addEventListener('DOMContentLoaded', function () {

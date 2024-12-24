@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Car;
 use Illuminate\Http\Request;
+use App\Models\Service;
 
 class CarController extends Controller
 {
@@ -65,7 +66,9 @@ class CarController extends Controller
 
     public function show($id)
     {
-        $car = Car::findOrFail($id);
-        return view('show', compact('car'));
+        $car = Car::findOrFail($id);  
+        $services = Service::all();
+
+        return view('show', compact('car','services'));
     }
 }

@@ -7,7 +7,7 @@ use App\Http\Controllers\CarController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SubscribeController;
-use App\Http\Controllers\SubscribeController1;
+use App\Http\Controllers\ServiceController;
 
 
 Route::get('/', function () {
@@ -48,6 +48,8 @@ Route::post('/subscribe', [SubscribeController::class, 'subscribe']);
 Route::get('/', [BookingController::class, 'showReservationForm'])->name('home');
 
 Route::post('/booking/store', [BookingController::class, 'storeBooking'])->name('booking.store');
+
+Route::get('/services/{slug}', [ServiceController::class, 'show'])->name('services.show');
 
 require __DIR__.'/auth.php';
 
