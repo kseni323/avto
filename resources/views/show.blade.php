@@ -339,10 +339,6 @@ element.style {
 
 <section>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      line-height: 1.6;
-    }
     h1 {
       font-size: 24px;
       margin-bottom: 20px;
