@@ -233,7 +233,7 @@ element.style {
 </style>
 <body>
     <div class="container my-5">
-        < class="row">
+        <div class="row">
             <!-- Car Image and Details -->
             <div class="col-md-8">
                 <h2 class="car-title">Аренда {{ $car->name }}</h2>
