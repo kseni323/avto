@@ -221,15 +221,6 @@ element.style {
     padding: 50px 0px;
 }
 
-.card {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
-
 </style>
 <body>
     <div class="container my-5">
