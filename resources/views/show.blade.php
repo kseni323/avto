@@ -337,6 +337,89 @@ element.style {
 </section>
 
 
+<section>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+    }
+    h1 {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+    .accordion {
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      margin-bottom: 10px;
+      overflow: hidden;
+    }
+    .accordion summary {
+      cursor: pointer;
+      padding: 15px;
+      background: #f8f8f8;
+      border-bottom: 1px solid #ddd;
+      font-weight: bold;
+    }
+    .accordion summary:hover {
+      background: #e8e8e8;
+    }
+    .accordion p {
+      padding: 15px;
+      margin: 0;
+      background: #fff;
+    }
+  </style>
+<body>
+  <h8>Правила и условия аренды</h8>
+
+  <details class="accordion">
+    <summary>Требования к арендаторам</summary>
+    <p>К аренде допускаются водители старше 21 лет. Минимальный стаж вождения арендатора — 2 года...</p>
+  </details>
+  
+  <details class="accordion">
+    <summary>Оплата аренды и допустимые формы оплаты</summary>
+    <p>Информация о формах оплаты...</p>
+  </details>
+  
+  <details class="accordion">
+    <summary>Ответственность арендатора</summary>
+    <p>Описание ответственности...</p>
+  </details>
+
+  <details class="accordion">
+    <summary>Снижение ответственности арендатора в случае повреждения автомобиля</summary>
+    <p>Информация о снижении ответственности...</p>
+  </details>
+
+  <details class="accordion">
+    <summary>Территориальные ограничения и ограничения по пробегу</summary>
+    <p>Информация об ограничениях...</p>
+  </details>
+  
+  <details class="accordion">
+    <summary>Запреты и ограничения при использовании ТС</summary>
+    <p>Описание запретов...</p>
+  </details>
+  
+  <details class="accordion">
+    <summary>Возврат автомобиля на другой станции аренды / в другом городе</summary>
+    <p>Информация о возврате...</p>
+  </details>
+</section>
+<script>
+    document.querySelectorAll('.accordion').forEach(details => {
+  details.addEventListener('toggle', () => {
+    if (details.open) {
+      document.querySelectorAll('.accordion').forEach(other => {
+        if (other !== details) {
+          other.removeAttribute('open');
+        }
+      });
+    }
+  });
+});
+</script>
             <script>
     document.addEventListener('DOMContentLoaded', function () {
         const pickupDateInput = document.getElementById('pickup_date');
