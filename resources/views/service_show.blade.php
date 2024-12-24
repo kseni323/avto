@@ -1,4 +1,6 @@
+@extends('header')
 
+@section('content')
 <div class="container mt-5">
     <div class="service-details">
         <h1>{{ $service->title }}</h1>
@@ -6,3 +8,4 @@
         <p>{{ $service->description }}</p>
     </div>
 </div>
+@endsection

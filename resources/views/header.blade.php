@@ -79,5 +79,7 @@
 
 @yield('regi_content')
 
+@yield('content')
+
 </body>
 </html>
