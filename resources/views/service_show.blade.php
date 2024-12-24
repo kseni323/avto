@@ -1,14 +1,8 @@
-@extends('header')
 
-@section('content')
 <div class="container mt-5">
-    <div class="card">
-        <img src="{{ asset($service->image) }}" class="card-img-top" alt="{{ $service->title }}">
-        <div class="card-body">
-            <h1 class="card-title">{{ $service->title }}</h1>
-            <p class="card-text">{{ $service->description }}</p>
-            <a href="{{ route('services.index') }}" class="btn btn-primary">Вернуться к услугам</a>
-        </div>
+    <div class="service-details">
+        <h1>{{ $service->title }}</h1>
+        <img src="{{ asset($service->image) }}" alt="{{ $service->title }}" style="width: 100%; max-height: 400px;">
+        <p>{{ $service->description }}</p>
     </div>
 </div>
-@endsection
