@@ -403,6 +403,103 @@ element.style {
     <p>Информация о возврате...</p>
   </details>
 </section>
+
+
+<section class="widget_section" id="contact-us">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-6">
+                <div class="footer_widget section-padding">
+                    <a class="navbar-brand" href=""><ya-tr-span data-index="123-0" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="drive" data-translation="drive" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">drive</ya-tr-span><span style="color:#04DBC0"><ya-tr-span data-index="123-1" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Go" data-translation="Вперед" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">Go</ya-tr-span></span><ya-tr-span data-index="123-2" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="" data-translation="" data-ch="0" data-type="trSpan" style="visibility: inherit !important;"> </ya-tr-span></a>
+                    <p>Путешествие с хорошими друзьями подарит<br>вам незабываемые впечатления.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+    <div class="footer_widget">
+        <h3>Контактная информация</h3>
+        <ul class="contact_info section-padding">
+            <li>
+                <i class="fas fa-map-marker-alt"></i> Воронеж, ул.Колесниченко, 15
+            </li>
+            <li>
+                <i class="far fa-envelope"></i> contact@carrental.com
+            </li>
+            <li>
+                <i class="fas fa-phone-alt"></i> +7 (654) 128-09-87
+            </li>
+        </ul>
+    </div>
+</div>
+
+            <div class="col-lg-4 col-md-6">
+
+  <div class="footer_widget section-padding">
+    <h3>Рассылка</h3>
+    <p style="margin-bottom:0px">Ничего не пропустите! Подпишитесь, чтобы получать ежедневные предложения</p>
+    
+    <div class="subscribe_form">
+      <!-- Форма с полем для email и кнопкой -->
+      <form id="subscribeForm" class="subscribe_form" novalidate>
+        <input type="email" name="EMAIL" id="subs-email" class="form_input" placeholder="Почта..." required>
+        <button type="button" id="subscribeButton" class="btn btn-primaary">ПОДПИСАТЬСЯ</button>
+        <div class="clearfix"></div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Уведомление о подписке -->
+<div id="subscribeConfirmation" class="alert text-center" 
+     style="display: none; position: fixed; top: 20px; left: 50%; transform: translateX(-50%); z-index: 1060; background-color: #28a745; color: #fff; border-radius: 8px; padding: 15px 30px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); border: none; max-width: 500px; width: 90%;">
+  Спасибо за подписку! Подтверждение отправлено на вашу почту.
+</div>
+
+<script>
+  // Функция для показа уведомления
+  function subscribeUser() {
+    const emailField = document.getElementById("subs-email");
+    const confirmationMessage = document.getElementById("subscribeConfirmation");
+
+    // Проверяем, заполнен ли email
+    if (emailField.checkValidity()) {
+      // Показываем уведомление
+      confirmationMessage.style.display = "block";
+
+      // Скрываем уведомление через 3 секунды
+      setTimeout(() => {
+        confirmationMessage.style.display = "none";
+      }, 3000);
+
+      // Очищаем поле ввода
+      emailField.value = "";
+    } else {
+      // Показываем сообщение об ошибке, если email некорректен
+      emailField.reportValidity();
+    }
+  }
+
+  // Добавляем обработчик события для кнопки
+  document.getElementById("subscribeButton").addEventListener("click", subscribeUser);
+</script>
+</section>
+
+<footer class="footer_section">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-6">
+						<div class="copyright">
+							driveGo© 
+							<script type="text/javascript"> 
+								document.write(new Date().getFullYear())
+							</script>
+							Все правы защищены
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+
+
 <script>
     document.querySelectorAll('.accordion').forEach(details => {
   details.addEventListener('toggle', () => {
