@@ -189,7 +189,7 @@ a {
 <div class="container mt-5">
     <div class="service-details">
         <h1>{{ $service->title }}</h1>
-        <img src="{{ asset($service->image) }}" alt="{{ $service->title }}" style="width: 100%; max-height: 400px;">
+        <img class="w-12 h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 xl:w-[72px] xl:h-[72px]" src="{{ asset($service->image) }}" alt="{{ $service->title }}">
         <p>{{ $service->description }}</p>
     </div>
 </div>
