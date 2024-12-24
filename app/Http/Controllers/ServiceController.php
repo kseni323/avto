@@ -28,9 +28,9 @@ class ServiceController extends Controller
     {
         // Найти услугу по slug
         $service = Service::where('slug', $slug)->firstOrFail();
-
+    
         // Передать данные об услуге в представление
-        return view('services.show', compact('service'));
+        return view('service_show', compact('service'));
     }
 }
 

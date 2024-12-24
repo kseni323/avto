@@ -51,6 +51,7 @@ Route::post('/booking/store', [BookingController::class, 'storeBooking'])->name(
 
 Route::get('/services/{slug}', [ServiceController::class, 'show'])->name('services.show');
 
+
 require __DIR__.'/auth.php';
 
 Route::group(['prefix' => 'admin'], function () {
