@@ -110,10 +110,10 @@ $price = $hours >= 24
     public function findBooking(Request $request)
     {
         $request->validate([
-            'email' => 'required|email'
+            'user_email' => 'required|user_email'
         ]);
 
-        $bookings = Booking::where('email', $request->email)->get();
+        $bookings = Booking::where('user_email', $request->user_email)->get();
 
         if ($bookings->isEmpty()) {
             return back()->with('error', 'Бронирования с таким email не найдено.');
