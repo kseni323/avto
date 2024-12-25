@@ -359,7 +359,7 @@ element.style {
     .service-item .service-description {
         margin: 5px 0 0;
         color: #555;
-        font-size: 14px;
+        font-size: 20px;
     }
 </style>
 <div class="services mt-5">
