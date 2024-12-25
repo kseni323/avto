@@ -184,9 +184,6 @@ a {
     border: 2px solid #eee;
     
 }
-    .service-details {
-        text-align: center;
-    }
 
     .service-details img {
         display: block;
