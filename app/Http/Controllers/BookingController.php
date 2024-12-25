@@ -110,7 +110,7 @@ $price = $hours >= 24
     public function findBooking(Request $request)
     {
         $request->validate([
-            'user_email' => 'required|user_email'
+            'email' => 'required|email'
         ]);
 
         $bookings = Booking::where('user_email', $request->user_email)->get();
