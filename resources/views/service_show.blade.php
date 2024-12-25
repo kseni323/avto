@@ -188,8 +188,8 @@ a {
 <div class="container mt-5">
     <div class="service-details">
         <h1>{{ $service->title }}</h1>
-        <img src="{{ asset($service->image_image) }}" alt="{{ $service->title }}" style="width: 100%; max-height: 400px;">
-        <p>{{ $service->description }}</p>
+        <img src="{{ asset($service->image_image) }}" alt="{{ $service->title }}" style="width: 70%; max-height: 400px;">
+        <p>{{ $service->description_description }}</p>
     </div>
 </div>
 @endsection

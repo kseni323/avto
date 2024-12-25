@@ -322,7 +322,7 @@ element.style {
             @foreach ($services as $service)
                 <div class="col-md-4 mb-4">
                     <div class="card">
-                        <img src="{{ asset($service->image) }}" alt="{{ $service->title }}">
+                        <img src="{{ asset($service->image) }}" alt="{{ $service->title }}" style="width: 80px; height: auto; margin: auto;">
                         <div class="card-body">
                             <h5 class="card-title">{{ $service->title }}</h5>
                             <p class="card-text">{{ Str::limit($service->description, 100) }}</p>
