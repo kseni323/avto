@@ -43,6 +43,9 @@
         <a class="nav-link" href="{{ url('/#reserve') }}">Бронирование</a>
     </li>
     <li class="nav-item">
+    <a class="nav-link" href="{{ route('booking.search') }}">Моё бронирование</a>
+</li>
+    <li class="nav-item">
          <a class="nav-link" href="{{ url('/#contact-us') }}">Контакты</a>
     </li>
     @auth
@@ -80,6 +83,12 @@
 @yield('regi_content')
 
 @yield('content')
+
+@yield('book_content')
+
+@yield('edit_content')
+
+@yield('res_content')
 
 </body>
 </html>

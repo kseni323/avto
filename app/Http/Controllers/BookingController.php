@@ -100,4 +100,58 @@ $price = $hours >= 24
             })
             ->exists();
     }
+
+    public function showSearchForm()
+    {
+        return view('my-booking');
+    }
+
+    // Поиск бронирования
+    public function findBooking(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email'
+        ]);
+
+        $bookings = Booking::where('email', $request->email)->get();
+
+        if ($bookings->isEmpty()) {
+            return back()->with('error', 'Бронирования с таким email не найдено.');
+        }
+
+        return view('booking-results', ['bookings' => $bookings]);
+    }
+
+    // Форма редактирования бронирования
+    public function editBooking($id)
+    {
+        $booking = Booking::findOrFail($id);
+        return view('edit-booking', ['booking' => $booking]);
+    }
+
+    // Обновление бронирования
+    public function updateBooking(Request $request, $id)
+    {
+        $request->validate([
+            'car_model' => 'required|string|max:255',
+            'booking_date' => 'required|date'
+        ]);
+
+        $booking = Booking::findOrFail($id);
+        $booking->car_model = $request->car_model;
+        $booking->booking_date = $request->booking_date;
+        $booking->save();
+
+        return redirect()->route('booking.search')->with('success', 'Бронирование успешно обновлено.');
+    }
+
+    // Отмена бронирования
+    public function cancelBooking($id)
+    {
+        $booking = Booking::findOrFail($id);
+        $booking->status = 'cancelled';
+        $booking->save();
+
+        return redirect()->route('booking.search')->with('success', 'Бронирование успешно отменено.');
+    }
 }
