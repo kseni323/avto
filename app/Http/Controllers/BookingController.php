@@ -149,7 +149,7 @@ $price = $hours >= 24
     public function cancelBooking($id)
     {
         $booking = Booking::findOrFail($id);
-        $booking->status = 'cancelled';
+        $booking->status = 'отменен';
         $booking->save();
 
         return redirect()->route('booking.search')->with('success', 'Бронирование успешно отменено.');
