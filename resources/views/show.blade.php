@@ -317,46 +317,49 @@ element.style {
 
 <section>
 <style>
-    .services .service-card {
+    .service-item {
         display: flex;
         align-items: center;
         margin-bottom: 20px;
-        border: 1px solid #ddd;
         padding: 15px;
-        border-radius: 8px;
-        transition: box-shadow 0.3s ease;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        text-decoration: none;
+        color: #333;
+        transition: background-color 0.3s ease, box-shadow 0.3s ease;
     }
 
-    .services .service-card:hover {
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    .service-item:hover {
+        background-color: #f9f9f9;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     }
 
-    .services .service-card img {
+    .service-item img {
         width: 80px;
-        height: auto;
+        height: 80px;
+        object-fit: cover;
         margin-right: 15px;
+        border-radius: 5px;
     }
 
-    .services .service-card h5 {
-        margin: 0;
+    .service-item .service-content {
+        flex: 1;
+    }
+
+    .service-item .service-title {
         font-size: 20px;
-        color: #000; /* Черный текст */
-    }
-
-    .services .service-card p {
-        margin: 5px 0 0;
-        font-size: 16px; /* Увеличенный размер нижнего текста */
-        color: #000; /* Черный текст */
-    }
-
-    .services .service-card a {
-        text-decoration: none; /* Убираем подчеркивание */
-        color: #000; /* Черный текст */
         font-weight: bold;
+        margin: 0;
     }
 
-    .services .service-card a:hover {
-        text-decoration: underline; /* Подчеркивание только при наведении */
+    .service-item .service-title:hover {
+        text-decoration: none;
+    }
+
+    .service-item .service-description {
+        margin: 5px 0 0;
+        color: #555;
+        font-size: 14px;
     }
 </style>
 <div class="services mt-5">
