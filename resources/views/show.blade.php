@@ -316,23 +316,67 @@ element.style {
             </div>
 
 <section>
+<style>
+    .service-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+        padding: 15px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        text-decoration: none;
+        color: #333;
+        transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .service-item:hover {
+        background-color: #f9f9f9;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .service-item img {
+        width: 80px;
+        height: 80px;
+        object-fit: cover;
+        margin-right: 15px;
+        border-radius: 5px;
+    }
+
+    .service-item .service-content {
+        flex: 1;
+    }
+
+    .service-item .service-title {
+        font-size: 18px;
+        font-weight: bold;
+        margin: 0;
+        color: #007bff;
+    }
+
+    .service-item .service-title:hover {
+        text-decoration: underline;
+    }
+
+    .service-item .service-description {
+        margin: 5px 0 0;
+        color: #555;
+        font-size: 14px;
+    }
+</style>
 <div class="services mt-5">
-        <h2>Дополнительные услуги</h2>
-        <div class="row_e">
-            @foreach ($services as $service)
-                <div class="col-md-4 mb-4">
-                    <div class="card">
-                        <img src="{{ asset($service->image) }}" alt="{{ $service->title }}" style="width: 80px; height: auto; margin: auto;">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ $service->title }}</h5>
-                            <p class="card-text">{{ Str::limit($service->description, 100) }}</p>
-                            <a href="{{ route('services.show', $service->slug) }}" class="btn btn-primary">Подробнее</a>
-                        </div>
-                    </div>
+    <h2>Дополнительные услуги</h2>
+    <div class="row_e">
+        @foreach ($services as $service)
+            <a href="{{ route('services.show', $service->slug) }}" class="service-item">
+                <img src="{{ asset($service->image) }}" alt="{{ $service->title }}">
+                <div class="service-content">
+                    <h5 class="service-title">{{ $service->title }}</h5>
+                    <p class="service-description">{{ Str::limit($service->description, 100) }}</p>
                 </div>
-            @endforeach
-        </div>
+            </a>
+        @endforeach
     </div>
+</div>
 </div>
 </section>
 

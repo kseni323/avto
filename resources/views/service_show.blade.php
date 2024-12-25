@@ -184,6 +184,23 @@ a {
     border: 2px solid #eee;
     
 }
+    .service-details {
+        text-align: center;
+    }
+
+    .service-details img {
+        display: block;
+        margin: 0 auto;
+        width: 70%;
+        max-height: 400px;
+    }
+
+    .service-details p {
+        font-size: 18px; /* Увеличиваем размер текста */
+        line-height: 1.6; /* Улучшаем читаемость */
+        margin-top: 20px; /* Отступ от картинки */
+        color: #333; /* Нейтральный цвет текста */
+    }
 </style>
 <div class="container mt-5">
     <div class="service-details">
