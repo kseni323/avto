@@ -231,7 +231,7 @@ element.style {
 </div>
 
 <section>
-  <style>
+<style>
     h1 {
       font-size: 24px;
       margin-bottom: 20px;
@@ -256,18 +256,7 @@ element.style {
       padding: 15px;
       margin: 0;
       background: #fff;
-    } 
-
-/* Стили для блока "Часто задаваемые вопросы" */
-details.accordion {
-    margin-left: 0; /* Выровнять с основным текстом */
-    margin-bottom: 15px; /* Отступ между элементами */
-}
-
-/* Добавить отступ у последнего элемента */
-details.accordion:last-child {
-    margin-bottom: 30px; /* Отступ от конца страницы */
-}
+    }
   </style>
 <body>
   <h2>Часто задаваемые вопросы</h2>
