@@ -233,7 +233,8 @@ element.style {
 <style>
     h2 {
       font-size: 24px;
-      margin-bottom: 40px;
+      margin-bottom: 20px;
+      margin-top: 20px;
       margin-left: 17rem;
     }
     .accordion {
