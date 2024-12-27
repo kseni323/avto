@@ -261,7 +261,7 @@ element.style {
     }
     
     .section {
-       
+        margin-left: 1.5rem;
     }
     
   </style>
