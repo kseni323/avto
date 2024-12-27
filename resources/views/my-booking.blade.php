@@ -237,13 +237,6 @@ element.style {
       margin-top: 20px;
       margin-left: 18.5rem;
     }
-    .accordion {
-      border: 1px solid #ddd;
-      border-radius: 5px;
-      margin-bottom: 10px;
-      overflow: hidden;
-      margin-left: 18.5rem;
-    }
     .accordion summary {
       cursor: pointer;
       padding: 15px;
