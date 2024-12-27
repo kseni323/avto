@@ -256,18 +256,7 @@ element.style {
       padding: 15px;
       margin: 0;
       background: #fff;
-    }
-    .container {
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 800px; /* Установите подходящую ширину */
-}
-
-/* Заголовок блока */
-h2 {
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
+    } 
 
 /* Стили для блока "Часто задаваемые вопросы" */
 details.accordion {
@@ -280,7 +269,7 @@ details.accordion:last-child {
     margin-bottom: 30px; /* Отступ от конца страницы */
 }
   </style>
-<div class="container">
+<body>
   <h2>Часто задаваемые вопросы</h2>
   <details class="accordion">
     <summary>Водительское Удостоверение</summary>
@@ -326,7 +315,7 @@ details.accordion:last-child {
     <summary>Дополнительное оборудование</summary>
     <p>Согласно закону РФ детские кресла обязательны для всех пассажиров младше 12 лет. DriveGo предлагает аренду детских кресел для детей всех возрастов в любой станции аренды. Помимо детских кресел DriveGo предлагает аренду навигаторы.</p>
   </details>
- </div>
+ 
 </section>
 
 <script>
