@@ -247,6 +247,7 @@ element.style {
       background: #f8f8f8;
       border-bottom: 1px solid #ddd;
       font-weight: bold;
+      margin-left: 1.5rem;
     }
     .accordion summary:hover {
       background: #e8e8e8;
