@@ -234,12 +234,14 @@ element.style {
     h2 {
       font-size: 24px;
       margin-bottom: 20px;
+      margin-left: 1.5rem;
     }
     .accordion {
       border: 1px solid #ddd;
       border-radius: 5px;
       margin-bottom: 10px;
       overflow: hidden;
+      margin-left: 1.5rem;
     }
     .accordion summary {
       cursor: pointer;
@@ -247,7 +249,7 @@ element.style {
       background: #f8f8f8;
       border-bottom: 1px solid #ddd;
       font-weight: bold;
-      margin-left: 1.5rem;
+      
     }
     .accordion summary:hover {
       background: #e8e8e8;
@@ -259,7 +261,7 @@ element.style {
     }
     
     .section {
-        margin-left: 1.5rem;
+       
     }
     
   </style>
