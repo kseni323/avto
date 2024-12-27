@@ -214,7 +214,7 @@ element.style {
 }
 
 </style>
-<div class="container">
+<div class="container mt-5">
     <h1 class="mb-4">Ваши бронирования</h1>
     @foreach($bookings as $booking)
         <div class="card mb-3">

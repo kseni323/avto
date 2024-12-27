@@ -214,7 +214,7 @@ element.style {
 }
 
 </style>
-<div class="container">
+<div class="container mt-5">
     <h1 class="mb-4">Редактировать бронирование</h1>
     <form action="{{ route('booking.update', $booking->id) }}" method="POST">
         @csrf
@@ -226,7 +226,7 @@ element.style {
             <label for="booking_date">Дата бронирования</label>
             <input type="date" name="booking_date" id="booking_date" class="form-control" value="{{ $booking->booking_date }}" required>
         </div>
-        <button type="submit" class="btn btn-primary">Сохранить изменения</button>
+        <button type="submit" class="btn btn-primary mt-3">Сохранить изменения</button>
     </form>
 </div>
 @endsection
