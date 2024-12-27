@@ -230,9 +230,8 @@ element.style {
     </form>
 </div>
 
-<section>
 <style>
-    h1 {
+    h2 {
       font-size: 24px;
       margin-bottom: 20px;
     }
@@ -258,6 +257,7 @@ element.style {
       background: #fff;
     }
   </style>
+
   <h2>Часто задаваемые вопросы</h2>
   <details class="accordion">
     <summary>Водительское Удостоверение</summary>
@@ -303,8 +303,6 @@ element.style {
     <summary>Дополнительное оборудование</summary>
     <p>Согласно закону РФ детские кресла обязательны для всех пассажиров младше 12 лет. DriveGo предлагает аренду детских кресел для детей всех возрастов в любой станции аренды. Помимо детских кресел DriveGo предлагает аренду навигаторы.</p>
   </details>
- 
-</section>
 
 <script>
     document.querySelectorAll('.accordion').forEach(details => {
