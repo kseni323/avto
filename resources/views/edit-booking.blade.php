@@ -218,14 +218,90 @@ element.style {
     <h1 class="mb-4">Редактировать бронирование</h1>
     <form action="{{ route('booking.update', $booking->id) }}" method="POST">
         @csrf
+        @method('PUT') <!-- Для HTTP-метода PUT -->
+
+        <!-- Выбор модели автомобиля -->
         <div class="form-group">
-            <label for="car_model">Модель автомобиля</label>
-            <input type="text" name="car_model" id="car_model" class="form-control" value="{{ $booking->car_model }}" required>
+            <label for="car_id">Модель машины</label>
+            <select name="car_id" id="car_id" class="form-control" required>
+                <!-- Текущая забронированная машина -->
+                <option value="{{ $booking->car->id }}" selected>
+                    {{ $booking->car->name }} (текущая модель)
+                </option>
+                <!-- Другие доступные машины -->
+                @foreach($cars as $car)
+                    @if($car->id !== $booking->car->id)
+                        <option value="{{ $car->id }}">{{ $car->name }}</option>
+                    @endif
+                @endforeach
+            </select>
         </div>
+
+        <!-- Место получения -->
         <div class="form-group">
-            <label for="booking_date">Дата бронирования</label>
-            <input type="date" name="booking_date" id="booking_date" class="form-control" value="{{ $booking->booking_date }}" required>
+            <label for="pickup_location">Место получения</label>
+            <input 
+                type="text" 
+                name="pickup_location" 
+                id="pickup_location" 
+                class="form-control" 
+                value="{{ $booking->pickup_location }}" 
+                required
+            >
         </div>
+
+        <!-- Место возврата -->
+        <div class="form-group">
+            <label for="return_location">Место возврата</label>
+            <input 
+                type="text" 
+                name="return_location" 
+                id="return_location" 
+                class="form-control" 
+                value="{{ $booking->return_location }}" 
+                required
+            >
+        </div>
+
+        <!-- Дата получения -->
+        <div class="form-group">
+            <label for="pickup_date">Дата получения</label>
+            <input 
+                type="date" 
+                name="pickup_date" 
+                id="pickup_date" 
+                class="form-control" 
+                value="{{ $booking->pickup_date }}" 
+                required
+            >
+        </div>
+
+        <!-- Дата возврата -->
+        <div class="form-group">
+            <label for="return_date">Дата возврата</label>
+            <input 
+                type="date" 
+                name="return_date" 
+                id="return_date" 
+                class="form-control" 
+                value="{{ $booking->return_date }}" 
+                required
+            >
+        </div>
+
+        <!-- Email -->
+        <div class="form-group">
+            <label for="user_email">Почта пользователя</label>
+            <input 
+                type="email" 
+                name="user_email" 
+                id="user_email" 
+                class="form-control" 
+                value="{{ $booking->user_email }}" 
+                required
+            >
+        </div>
+
         <button type="submit" class="btn btn-primary mt-3">Сохранить изменения</button>
     </form>
 </div>
