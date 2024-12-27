@@ -234,14 +234,14 @@ element.style {
     h2 {
       font-size: 24px;
       margin-bottom: 20px;
-      margin-left: 1.5rem;
+      margin-left: 5rem;
     }
     .accordion {
       border: 1px solid #ddd;
       border-radius: 5px;
       margin-bottom: 10px;
       overflow: hidden;
-      margin-left: 1.5rem;
+      margin-left: 5rem;
     }
     .accordion summary {
       cursor: pointer;
@@ -261,12 +261,12 @@ element.style {
     }
     
     .section {
-        margin-left: 1.5rem;
+        margin-left: 5rem;
     }
     
   </style>
 <section>
-  <h2>Часто задаваемые вопросы</h2>
+  <h2 class="mb-4">Часто задаваемые вопросы</h2>
   <details class="accordion">
     <summary>Водительское Удостоверение</summary>
     <p>Арендатор/водитель должен предъявить действительное водительское удостоверение, сроком выдачи не менее 2 лет и банковскую карту на его/её имя, которая будет использована для оплаты бронирования.</p>
