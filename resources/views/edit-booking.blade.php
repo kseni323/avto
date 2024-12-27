@@ -1,6 +1,9 @@
 @extends('header')
 
 @section('edit_content')
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <style>
     /* Обнуляем отступы и размеры */
 * {
@@ -212,7 +215,7 @@ element.style {
 
 </style>
 <div class="container">
-    <h1>Редактировать бронирование</h1>
+    <h1 class="mb-4">Редактировать бронирование</h1>
     <form action="{{ route('booking.update', $booking->id) }}" method="POST">
         @csrf
         <div class="form-group">
