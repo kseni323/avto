@@ -54,8 +54,10 @@ Route::get('/services/{slug}', [ServiceController::class, 'show'])->name('servic
 Route::get('/my-booking', [BookingController::class, 'showSearchForm'])->name('booking.search');
 Route::post('/find-booking', [BookingController::class, 'findBooking'])->name('booking.find');
 Route::get('/edit-booking/{id}', [BookingController::class, 'editBooking'])->name('booking.edit');
-Route::post('/update-booking/{id}', [BookingController::class, 'updateBooking'])->name('booking.update');
 Route::post('/cancel-booking/{id}', [BookingController::class, 'cancelBooking'])->name('booking.cancel');
+
+Route::match(['put', 'post'], '/update-booking/{id}', [BookingController::class, 'updateBooking'])->name('booking.update');
+
 
 require __DIR__.'/auth.php';
 
