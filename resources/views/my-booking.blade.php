@@ -235,14 +235,14 @@ element.style {
       font-size: 24px;
       margin-bottom: 20px;
       margin-top: 20px;
-      margin-left: 17rem;
+      margin-left: 18.5rem;
     }
     .accordion {
       border: 1px solid #ddd;
       border-radius: 5px;
       margin-bottom: 10px;
       overflow: hidden;
-      margin-left: 17rem;
+      margin-left: 18.5rem;
     }
     .accordion summary {
       cursor: pointer;
@@ -262,7 +262,7 @@ element.style {
     }
     
     .section {
-        margin-left: 17rem;
+        margin-left: 18.5rem;
     }
     
   </style>
