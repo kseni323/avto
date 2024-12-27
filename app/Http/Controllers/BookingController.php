@@ -126,10 +126,10 @@ $price = $hours >= 24
     public function editBooking($id)
     {
         $booking = Booking::findOrFail($id);
-        $cars = Car::all();
-        return view('edit-booking', ['booking' => $booking]);
+        $cars = Car::all(); // Загружаем все автомобили из базы данных
+        return view('edit-booking', ['booking' => $booking, 'cars' => $cars]); // Передаем обе переменные
     }
-
+    
     // Обновление бронирования
     public function updateBooking(Request $request, $id)
     {
