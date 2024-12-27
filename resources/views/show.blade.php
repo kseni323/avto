@@ -447,7 +447,7 @@ element.style {
   
   <details class="accordion">
     <summary>Возврат автомобиля на другой станции аренды / в другом городе</summary>
-    <p>Арендатор может вернуть автомобиль на другой станции аренды DriveGo, в том числе в другом городе. Для расчета суммы сбора при сдаче автомобиля в другом городе, воспользуйтесь формой:</p>
+    <p>Арендатор может вернуть автомобиль на другой станции аренды DriveGo, в том числе в другом городе.</p>
   </details> 
 
   <details class="accordion">
@@ -475,6 +475,7 @@ element.style {
   });
 });
 </script>
+
             <script>
     document.addEventListener('DOMContentLoaded', function () {
         const pickupDateInput = document.getElementById('pickup_date');

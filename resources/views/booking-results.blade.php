@@ -215,23 +215,94 @@ element.style {
 
 </style>
 <div class="container mt-5">
-    <h1 class="mb-4">Ваши бронирования</h1>
-    @foreach($bookings as $booking)
-        <div class="card mb-3">
-            <div class="card-body">
-                <p class="card-text">Модель машины: {{ $booking->car->name }}</p>
-                <p class="card-text">Место получения: {{ $booking->pickup_location	}}</p>
-                <p class="card-text">Место возврата: {{ $booking->return_location}}</p>
-                <p class="card-text">Дата получения: {{ $booking->pickup_date}}</p>
-                <p class="card-text">Дата возврата: {{ $booking->return_date}}</p>
-                <p class="card-text">Статус: {{ $booking->status }}</p>
-                <a href="{{ route('booking.edit', $booking->id) }}" class="btn btn-warning">Изменить</a>
-                <form action="{{ route('booking.cancel', $booking->id) }}" method="POST" class="d-inline">
-                    @csrf
-                    <button type="submit" class="btn btn-danger">Отменить</button>
-                </form>
-            </div>
+    <h1 class="mb-4">Редактировать бронирование</h1>
+    <form action="{{ route('booking.update', $booking->id) }}" method="POST">
+        @csrf
+        @method('PUT') <!-- Для HTTP-метода PUT -->
+
+        <!-- Выбор модели автомобиля -->
+        <div class="form-group">
+            <label for="car_id">Модель машины</label>
+            <select name="car_id" id="car_id" class="form-control" required>
+                <!-- Текущая забронированная машина -->
+                <option value="{{ $booking->car->id }}" selected>
+                    {{ $booking->car->name }} (текущая модель)
+                </option>
+                <!-- Другие доступные машины -->
+                @foreach($cars as $car)
+                    @if($car->id !== $booking->car->id)
+                        <option value="{{ $car->id }}">{{ $car->name }}</option>
+                    @endif
+                @endforeach
+            </select>
         </div>
-    @endforeach
+
+        <!-- Место получения -->
+        <div class="form-group">
+            <label for="pickup_location">Место получения</label>
+            <input 
+                type="text" 
+                name="pickup_location" 
+                id="pickup_location" 
+                class="form-control" 
+                value="{{ $booking->pickup_location }}" 
+                required
+            >
+        </div>
+
+        <!-- Место возврата -->
+        <div class="form-group">
+            <label for="return_location">Место возврата</label>
+            <input 
+                type="text" 
+                name="return_location" 
+                id="return_location" 
+                class="form-control" 
+                value="{{ $booking->return_location }}" 
+                required
+            >
+        </div>
+
+        <!-- Дата получения -->
+        <div class="form-group">
+            <label for="pickup_date">Дата получения</label>
+            <input 
+                type="date" 
+                name="pickup_date" 
+                id="pickup_date" 
+                class="form-control" 
+                value="{{ $booking->pickup_date }}" 
+                required
+            >
+        </div>
+
+        <!-- Дата возврата -->
+        <div class="form-group">
+            <label for="return_date">Дата возврата</label>
+            <input 
+                type="date" 
+                name="return_date" 
+                id="return_date" 
+                class="form-control" 
+                value="{{ $booking->return_date }}" 
+                required
+            >
+        </div>
+
+        <!-- Email -->
+        <div class="form-group">
+            <label for="user_email">Почта пользователя</label>
+            <input 
+                type="email" 
+                name="user_email" 
+                id="user_email" 
+                class="form-control" 
+                value="{{ $booking->user_email }}" 
+                required
+            >
+        </div>
+
+        <button type="submit" class="btn btn-primary mt-3">Сохранить изменения</button>
+    </form>
 </div>
 @endsection

@@ -126,6 +126,7 @@ $price = $hours >= 24
     public function editBooking($id)
     {
         $booking = Booking::findOrFail($id);
+        $cars = Car::all();
         return view('edit-booking', ['booking' => $booking]);
     }
 
@@ -133,14 +134,24 @@ $price = $hours >= 24
     public function updateBooking(Request $request, $id)
     {
         $request->validate([
-            'car_model' => 'required|string|max:255',
-            'booking_date' => 'required|date'
+            'car_id' => 'required|exists:cars,id',
+            'pickup_location' => 'required|string|max:255',
+            'return_location' => 'required|string|max:255',
+            'pickup_date' => 'required|date|after_or_equal:today',
+            'return_date' => 'required|date|after_or_equal:pickup_date',
+            'user_email' => 'required|email',
         ]);
 
         $booking = Booking::findOrFail($id);
-        $booking->car_model = $request->car_model;
-        $booking->booking_date = $request->booking_date;
-        $booking->save();
+        
+        $booking->update([
+            'car_id' => $request->car_id,
+            'pickup_location' => $request->pickup_location,
+            'return_location' => $request->return_location,
+            'pickup_date' => $request->pickup_date,
+            'return_date' => $request->return_date,
+            'user_email' => $request->user_email,
+        ]);
 
         return redirect()->route('booking.search')->with('success', 'Бронирование успешно обновлено.');
     }
