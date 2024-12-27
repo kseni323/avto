@@ -258,7 +258,6 @@ element.style {
       background: #fff;
     }
   </style>
-<body>
   <h2>Часто задаваемые вопросы</h2>
   <details class="accordion">
     <summary>Водительское Удостоверение</summary>
