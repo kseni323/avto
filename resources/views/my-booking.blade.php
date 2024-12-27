@@ -1,31 +1,6 @@
 @extends('header')
 
 @section('book_content')
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f8f9fa;
-        }
-        .booking-section {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            margin: 20px auto;
-            max-width: 600px;
-        }
-        .faq-section {
-            margin-top: 40px;
-        }
-        .faq-section h2 {
-            font-size: 24px;
-            font-weight: bold;
-        }
-        .faq-item {
-            margin-bottom: 15px;
-        }
-    </style>
 <style>
     /* Обнуляем отступы и размеры */
 * {
@@ -251,20 +226,4 @@ element.style {
         <button type="submit" class="btn btn-primary btn-block mt-3">Найти бронирование</button>
     </form>
 </div>
-<div class="faq-section">
-            <h2>Часто задаваемые вопросы</h2>
-            <div class="faq-item">
-                <h5>Водительское удостоверение</h5>
-                <p>Арендатор/водитель должен предъявить действительное водительское удостоверение, сроком выдачи не менее 2 лет и банковскую карту на его/её имя.</p>
-            </div>
-            <div class="faq-item">
-                <h5>Способы оплаты и депозит</h5>
-            </div>
-            <div class="faq-item">
-                <h5>Возраст и стаж водителя</h5>
-            </div>
-            <div class="faq-item">
-                <h5>Штрафы и компенсация ущерба</h5>
-            </div>
-            </div>
 @endsection
